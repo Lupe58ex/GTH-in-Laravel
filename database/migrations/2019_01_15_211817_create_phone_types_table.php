@@ -15,8 +15,8 @@ class CreatePhoneTypesTable extends Migration
     {
         Schema::create('phone_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_long',100);
-            $table->string('name_short',30);
+            $table->string('name_long',100)->nullable(false);
+            $table->string('name_short',30)->nullable(false);
             $table->timestamps();
         });
     }

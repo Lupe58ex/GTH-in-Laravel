@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIdentificationTypesTable extends Migration
+class CreatePayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('identification_types', function (Blueprint $table) {
+        Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('varchar',100)->nullable(false);
-            $table->string('name_short',30)->nullable(false);
+            $table->tinyInteger('month')->nullable(false);
+            $table->smallinteger('year')->nullable(false);
+            $table->integer('user_id')->nullable();
+            $table->string('observations',2500)->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identification_types');
+        Schema::dropIfExists('payrolls');
     }
 }

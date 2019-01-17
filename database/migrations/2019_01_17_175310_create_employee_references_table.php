@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIdentificationTypesTable extends Migration
+class CreateEmployeeReferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('identification_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('varchar',100)->nullable(false);
-            $table->string('name_short',30)->nullable(false);
+        Schema::create('employee_references', function (Blueprint $table) {
+            $table->integer('employee_id')->nullable(false);
+            $table->integer('reference_id')->nullable(false);
+            $table->boolean('removed')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identification_types');
+        Schema::dropIfExists('employee_references');
     }
 }

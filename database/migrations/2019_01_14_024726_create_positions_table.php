@@ -15,6 +15,11 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name_long',300)->nullable(false);
+            $table->string('name_short',30)->nullable(false);
+            $table->string('description',1000)->nullable();
+            $table->boolean('loan_evaluator')->nullable(false);
+            $table->boolean('loan_promoter')->nullable(false);
             $table->timestamps();
         });
     }
