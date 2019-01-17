@@ -29,10 +29,10 @@ class CreateEmployeesTable extends Migration
             via							SERIAL 			NOT NULL	REFERENCES Human_resources.vias(id),
             $table->string('address',500)->nullable(false);
             $table->string('address_reference',500)->nullable(false);
+            $table->binary('address_sketch')->nullable();
             $table->string('email_main',100)->nullable(false);
             $table->string('email_alternative',100)->nullable(false);
             $table->boolean('active')->nullable(false),
-            
             id_position					INTEGER			NOT NULL	REFERENCES Human_resources.positions(id),
             $table->string('phone_number01',30)->nullable;
             $table->string('phone_number02',30)->nullable;
@@ -46,6 +46,58 @@ class CreateEmployeesTable extends Migration
             $table->string('phone_notes01',30)->nullable();
             $table->string('phone_notes02',30)->nullable();
             $table->string('phone_notes03',30)->nullable();
+            $table->binary('photo')->nulllable();
+            $table->datetime('date_update_photo')->nullable();
+
+            /**Llave foranea de cargo */
+            $table->date('admission_date')->nullable();
+            $table->date('hire_date')->nullable();
+            $table->date('planning_date')->nullable();
+            $table->smallinteger('contract_term')->nullable();
+            $table->char('contract_type',5)->nullable();
+            $table->binary('contract_image')->nullable();
+            $table->date('real_end_hiredate')->nullable();
+            $table->char('type_job',5)->nullable();
+            $table->char('work_modality',2)->nullable();
+            $tabel->smallinteger('projected_number_time')->nullable(false);
+            $table->char('projected_unity_time',2)->nullable();
+            $table->date('date_cessation')->nullable();
+            $table->string('reason_cessation',1000)->nullable();
+
+            $table->decimal('salary_advance_allowed',5,2)->nullable();
+            $table->decimal('salary',9,2)->nullable();
+            $table->decimal('payrollsalary',9,2)->nullable();
+            
+            $table->varchar('marital_status',20)->nullable();
+            $table->string('home_condition',250)->nullable();
+            $table->smallint('number_of_children')->nullable();
+            $table->datetime('registerphoto_date')->nullable();
+            $table->boolean('availability_travel')->nullable(false);
+            $table->smallint('work_area')->nullable();
+            $table->string('clothing_size',4)->nullable();
+            
+            $table->binary('newsletter')->nullable();
+            $table->string('linkedln',80)->nullable();
+            $table->binary('medical_status')->nullable();
+            
+            $table->varchar('driver_license_number',30)->nullable();
+            $table->date('date_expedition_driver_license')->nullable();
+            $table->date('sellbydate_driver_license')->nullable();
+            $table->char('type_driver_license',1)->nullable();
+            
+
+            $table->binary('image_schedule')->nullable();
+            $table->datime('date_update_schedule'->nullable();
+
+            $table->string('cuspp',20)->nullable();
+            $table->tyninteger('bank')->nullable();
+            $table->string('bank_account_number',150)->nullable();
+            $table->char('payment_type',1)->nullable();
+            $table->smallinteger('bank_deposit')->nullable();
+            $table->string('bank_account')
+            $table->boolean('student_children')->nullable();
+
+            
             $table->timestamps();
         });
     }
