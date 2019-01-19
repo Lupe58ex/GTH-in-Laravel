@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAcademicTrainingsTable extends Migration
+class CreateDateClosesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateAcademicTrainingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('academic__trainings', function (Blueprint $table) {
+        Schema::create('date_closes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description',150)->nullable(false);
-            $table->string('institute',300)->nullable(false);
-            $table->string('period',100)->nullable(false);
-            $table->string('condition',50)->nullable(false);
+            $table->date('date')->nullable(false);
             $table->integer('user_id')->nullable(false);
-            $table->integer('employee_id')->nullable(false);
+            $table->string('observation',2500)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->reference('id')->on('users')
+                  ->onDelete('cascade');
+      
         });
     }
 
@@ -32,6 +34,6 @@ class CreateAcademicTrainingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('academic__trainings');
+        Schema::dropIfExists('date_closes');
     }
 }

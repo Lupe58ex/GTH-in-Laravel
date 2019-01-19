@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCriminalBackgroundsTable extends Migration
+class CreateMedicalConditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,16 @@ class CreateCriminalBackgroundsTable extends Migration
      */
     public function up()
     {
-        Schema::create('criminal_backgrounds', function (Blueprint $table) {
+        Schema::create('medical_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description',500)->nullable();
             $table->integer('user_id')->nullable(false);
             $table->date('expedition_date')->nullable();
-            $table->date('expiry_date')->nullable();
-            $table->string('employee_id',20)->nullable(false);
+            $table->integer('employee_id')->nullable(false);
             $table->binary('document')->nullable();
+            $table->date('expired_date')->nullable(false);
             $table->boolean('removed')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')
-                    ->reference('id')->on('users')
-                    ->onDelete('cascade');
-            $table->foreign('employee_id')
-                    ->reference('id')->on('employees')
-                    ->onDelete('cascade');
         });
     }
 
@@ -40,6 +33,6 @@ class CreateCriminalBackgroundsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('criminal_backgrounds');
+        Schema::dropIfExists('medical_conditions');
     }
 }

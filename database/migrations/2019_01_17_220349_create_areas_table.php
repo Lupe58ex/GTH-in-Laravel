@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->smallincrements('id');
             $table->string('name',500)->nullable(false);
             $table->string('description',2500)->nullable(false);
+            $table->smallinteger('internal_code')->nullable(false);
             $table->timestamps();
         });
     }

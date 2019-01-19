@@ -37,6 +37,10 @@ class CreateGeneratedPayrollsTable extends Migration
             $table->decimal('business_quantity',10,2)->nullable(false);
             $table->decimal('employee_quantity',10,2)->nullable(false);
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                    ->reference('id')->on('employees')
+                    ->onDelete('cascade');
         });
     }
 

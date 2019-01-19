@@ -16,7 +16,10 @@ class CreateContractTypesTable extends Migration
         Schema::create('contract_types', function (Blueprint $table) {
             $table->tinyincrements('id');
             $table->string('name',150)->nullable(false);
+            $table->string('short_name',15)->nullable(false);
+            $table->smallInteger('suggested_duration')->nullable(false);
             $table->string('description',2500)->nullable();
+            $table->boolean('appears')-nullable(false);
             $table->timestamps();
         });
     }

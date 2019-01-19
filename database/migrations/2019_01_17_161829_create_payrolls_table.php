@@ -20,6 +20,10 @@ class CreatePayrollsTable extends Migration
             $table->integer('user_id')->nullable();
             $table->string('observations',2500)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                    ->reference('id')->on('users')
+                    ->onDelete('cascade');
         });
     }
 

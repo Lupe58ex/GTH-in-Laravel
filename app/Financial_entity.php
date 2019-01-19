@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class IdentificationType extends Model
+class Financial_entity extends Model
 {
     //
     protected $fillable = [
-        'varchar',
-        'name_short'
+        'large_name',
+        'short_name'
     ];
-   
 }

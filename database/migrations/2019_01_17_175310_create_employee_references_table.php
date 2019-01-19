@@ -18,6 +18,13 @@ class CreateEmployeeReferencesTable extends Migration
             $table->integer('reference_id')->nullable(false);
             $table->boolean('removed')->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->reference('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('reference_id')
+                  ->reference('id')->on('references')
+                  ->onDelete('cascade');
         });
     }
 

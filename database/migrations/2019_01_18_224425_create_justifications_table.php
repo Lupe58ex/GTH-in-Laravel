@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractsTable extends Migration
+class CreateJustificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,21 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('justifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description',150)->nullable();
-            $table->binary('file')->nullable(false);
-            $table->integer('employee_id')->nullable(false);
+            $table->string('reason',2500)->nullable(false);
+            $table->date('justified_date')->nullable(false);
+            $table->integer('schedule_id')->nullable(false);
             $table->integer('user_id')->nullable(false);
-            $table->date('generated_date')->nullable(false);
-            $table->date('expired_date')->nullable(false);
+            $table->string('observation',2500)->nullable();
+            $table->boolean('is_discount')->nullable(false);
             $table->timestamps();
-            
-            $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
-                  ->onDelete('cascade');
+
             $table->foreign('user_id')
                   ->reference('id')->on('users')
+                  ->onDelete('cascade');
+            $table->foreign('schedule_id')
+                  ->reference('id')->on('schedules')
                   ->onDelete('cascade');
         });
     }
@@ -39,6 +39,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('justifications');
     }
 }

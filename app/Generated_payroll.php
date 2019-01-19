@@ -7,4 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Generated_payroll extends Model
 {
     //
+    protected $fillable = [
+        'month',
+        'year',
+        'employee_id',
+        'real_salary',
+        'payroll_salary',
+        'quantity_consider',
+        'household_allowance',
+        'role_bonus',
+        'bonus',
+        'commission',
+        'holiday_bonus',
+        'salary_advance',
+        'discount',
+        'permit',
+        'license',
+        'tardiness',
+        'onp',
+        'pension_system',
+        'essalud',
+        'business_quantity',
+        'employee_quantity'
+    ];
 }

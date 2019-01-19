@@ -22,6 +22,13 @@ class CreateEquifaxesTable extends Migration
             $table->date('generation_date')->nullable(false);
             $table->date('expire_date')->nullable(false);
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->reference('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('user_id')
+                  ->reference('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

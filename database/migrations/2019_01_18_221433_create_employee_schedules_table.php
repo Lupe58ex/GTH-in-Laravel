@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractsTable extends Migration
+class CreateScheduleUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,15 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('employee_schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description',150)->nullable();
-            $table->binary('file')->nullable(false);
-            $table->integer('employee_id')->nullable(false);
+            $table->bigInteger('employee')->nullable(false);
+            $table->Integer('schedule')->nullable(false);
+            $table->char('day',1)->nullable(false);
             $table->integer('user_id')->nullable(false);
-            $table->date('generated_date')->nullable(false);
-            $table->date('expired_date')->nullable(false);
+            $table->boolean('droped')->nullable(false);
             $table->timestamps();
-            
-            $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
-                  ->onDelete('cascade');
+
             $table->foreign('user_id')
                   ->reference('id')->on('users')
                   ->onDelete('cascade');
@@ -39,6 +35,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('employee_schedules');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractsTable extends Migration
+class CreateAcademicTrainingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('academic_trainings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description',150)->nullable();
-            $table->binary('file')->nullable(false);
-            $table->integer('employee_id')->nullable(false);
+            $table->string('description',150)->nullable(false);
+            $table->string('institute',300)->nullable(false);
+            $table->string('period',100)->nullable(false);
+            $table->string('condition',50)->nullable(false);
             $table->integer('user_id')->nullable(false);
-            $table->date('generated_date')->nullable(false);
-            $table->date('expired_date')->nullable(false);
+            $table->integer('employee_id')->nullable(false);
             $table->timestamps();
-            
+
             $table->foreign('employee_id')
                   ->reference('id')->on('employees')
                   ->onDelete('cascade');
@@ -39,6 +39,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('academic_trainings');
     }
 }

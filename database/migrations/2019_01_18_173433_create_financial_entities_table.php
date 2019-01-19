@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompaniesTable extends Migration
+class CreateFinancialEntitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('large_name',500)->nullable(false);
-            $table->string('short_name',150)->nullable(false);
-            $table->string('description',2500)->nullable(false);
+        Schema::create('financial_entities', function (Blueprint $table) {
+            $table->tinyIncrements('id');
+            $table->string('large_name',250)->nullable(false);
+            $table->string('short_name',70)->nullable(false);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('financial_entities');
     }
 }

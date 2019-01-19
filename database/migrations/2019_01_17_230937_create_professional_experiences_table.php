@@ -15,7 +15,7 @@ class CreateProfessionalExperiencesTable extends Migration
     {
         Schema::create('professional_experiences', function (Blueprint $table) {
             $table->bigincrements('id');
-            $table->smallinteger('area_id')->nullable(false);
+            $table->string('area',500)->nullable(false);
             $table->smallinteger('experience_role_id')->nullable(false);
             $table->integer('company_id')->nullable();
             $table->tinyInteger('start_month')->nullable(false);
@@ -29,6 +29,22 @@ class CreateProfessionalExperiencesTable extends Migration
             $table->integer('employee_id')->nullable(false);
             $table->string('exit_reason',5000)->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->reference('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('user_id')
+                  ->reference('id')->on('users')
+                  ->onDelete('cascade');
+            $table->foreign('experience_role_id')
+                  ->reference('id')->on('experience_roles')
+                  ->onDelete('cascade');
+            $table->foreign('company_id')
+                  ->reference('id')->on('companies')
+                  ->onDelete('cascade');
+            $table->foreign('contract_type_id')
+                  ->reference('id')->on('contract_types')
+                  ->onDelete('cascade');
         });
     }
 

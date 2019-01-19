@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bonus_Discount_Category extends Model
+class PensionSystem extends Pivot
 {
     //
     protected $fillable = [
         'name',
-        'description',
-        'enabled',
-        'appears_in'
+        'short_name',
+        'descripction',
+        'actual_percent'
     ];
 }

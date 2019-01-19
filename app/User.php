@@ -18,7 +18,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+            'name',
+            'email',
+            'email_verified_at',
+            'password'
     ];
 
     /**
@@ -29,4 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Date_closes(){
+        return $this->hasMany(Date_close::class);
+    }
 }
