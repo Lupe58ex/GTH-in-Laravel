@@ -22,4 +22,13 @@ class Assistance extends Model
         'observations',
         'justification'
     ];
+    public function Employee(){
+        return $this->belongsTo(Employee::class);
+    }
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+    public function Schedule(){
+        return $this->belonsTo(Schedule::class);
+    }
 }

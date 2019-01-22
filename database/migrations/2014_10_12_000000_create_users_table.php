@@ -33,4 +33,8 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
+    public function Academic_Trainings(){
+        return $this->hasMany(Academic_Training::class);
+    }
+
 }

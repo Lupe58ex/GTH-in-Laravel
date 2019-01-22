@@ -16,4 +16,14 @@ class Bonus_Discount extends Model
         'year',
         'bonus_discount_category_id'
     ];
+
+    public function Employee(){
+        return $this->belongsTo(Employee::class);
+    }
+    public function Bonus_discount_category(){
+        return $this->belongTo(Bonus_discount_category::class);
+    }
+    Public function User(){
+        return $this->belongsTo(User::class);
+    }
 }

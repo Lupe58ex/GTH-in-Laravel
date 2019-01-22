@@ -12,4 +12,7 @@ class Area extends Model
         'description',
         'internal_code'
     ];
+    public function Employees(){
+        return $this->hasMany(Employee::class);
+    }
 }

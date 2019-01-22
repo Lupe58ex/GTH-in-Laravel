@@ -15,4 +15,12 @@ class Academic_Training extends Model
             'user_id',
             'employee_id'
     ];
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+    public function Employee(){
+        return $this->belongsTo(Employee::class);
+    }
+
+
 }

@@ -13,4 +13,7 @@ class Bonus_Discount_Category extends Model
         'enabled',
         'appears_in'
     ];
+    public function Bonus_Discounts(){
+        return $this->hasMany(Bonus_Discount::class);
+    }
 }

@@ -71,7 +71,7 @@ class CreateEmployeesTable extends Migration
             $table->tinyInteger('number_of_children')->nullable();
             $table->datetime('registerphoto_date')->nullable();
             $table->boolean('availability_travel')->nullable(false);
-            $table->smallint('work_area')->nullable();
+            $table->smallint('area_id')->nullable();
             $table->string('clothing_size',4)->nullable();
             
             $table->binary('newsletter')->nullable();
@@ -132,6 +132,9 @@ class CreateEmployeesTable extends Migration
             $table->foreign('financial_entity_id')
                   ->reference('id')->on('financial_entities')
                   ->onDelete('cascade');
+            $table->foreign('area_id')
+                  ->reference('id')->on('areas')
+                  ->onDelete('cascade');
         });
     }
 
@@ -144,4 +147,12 @@ class CreateEmployeesTable extends Migration
     {
         Schema::dropIfExists('employees');
     }
+
+    public function Academic_Trainings(){
+          return $this->hasMany(Academic_Training::class);
+    }
+    public function Area(){
+          return $this->belongsTo(Area::class);
+    }
+    
 }
