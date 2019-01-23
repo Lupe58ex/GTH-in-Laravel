@@ -33,7 +33,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Date_closes(){
+    public function date_closes(){
         return $this->hasMany(Date_close::class);
+    }
+    public function academic_Trainings(){
+        return $this->hasMany(Academic_Training::class);
+    }
+    public function assistances(){
+        return $this->hasMany(Assistances::class);
+    }
+    public function bonus_Discounts(){
+        return $this->hasMany(bonus_Discount::class);
     }
 }

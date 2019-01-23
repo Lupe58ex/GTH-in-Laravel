@@ -17,13 +17,13 @@ class Bonus_Discount extends Model
         'bonus_discount_category_id'
     ];
 
-    public function Employee(){
+    public function employee(){
         return $this->belongsTo(Employee::class);
     }
-    public function Bonus_discount_category(){
+    public function bonus_discount_category(){
         return $this->belongTo(Bonus_discount_category::class);
     }
-    Public function User(){
+    Public function user(){
         return $this->belongsTo(User::class);
     }
 }

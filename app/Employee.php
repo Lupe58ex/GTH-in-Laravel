@@ -93,6 +93,18 @@ class Employee extends Model
     public function licenses () {
         return $this->hasMany(License::class);
     }
+    public function Academic_Trainings(){
+        return $this->hasMany(Academic_Training::class);
+    }
+    public function Assistances(){
+        return $this->hasMany(Assistances::class);
+    }
+    public function bonus_discount(){
+        return $this->hasMany(Bonus_Discount::class);
+    }
+    public function Area(){
+        return $this->belongsTo(Area::class);
+    }
     public function schedules() {
         return $this->belongsToMany(Schedule::class);
     }

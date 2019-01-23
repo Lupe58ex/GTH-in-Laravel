@@ -143,16 +143,10 @@ class CreateEmployeesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('employees');
-    }
+      public function down()
+      {
+            Schema::dropIfExists('employees');
+      }
 
-    public function Academic_Trainings(){
-          return $this->hasMany(Academic_Training::class);
-    }
-    public function Area(){
-          return $this->belongsTo(Area::class);
-    }
     
 }

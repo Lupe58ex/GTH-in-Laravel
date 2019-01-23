@@ -41,4 +41,5 @@ class CreateSchedulesTable extends Migration
     {
         Schema::dropIfExists('schedules');
     }
+  
 }
