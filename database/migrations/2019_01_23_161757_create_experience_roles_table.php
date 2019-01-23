@@ -21,6 +21,7 @@ class CreateExperienceRolesTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Academic_Training extends Model
+class AcademicTraining extends Model
 {
     //
     protected $fillable=[
@@ -21,6 +21,4 @@ class Academic_Training extends Model
     public function Employee(){
         return $this->belongsTo(Employee::class);
     }
-
-
 }

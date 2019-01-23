@@ -22,4 +22,5 @@ class Cessation extends Model
     Public function User(){
         return $this->belongsTo(User::class);
     }
+
 }

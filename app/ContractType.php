@@ -14,4 +14,7 @@ class ContractType extends Model
         'description',
         'appears'
     ];
+    public function professionalExperiences(){
+        return $this->hasMany(ProfessionalExperience::class);
+    }
 }

@@ -13,4 +13,7 @@ class Payroll extends Model
         'user_id',
         'observations'
     ];
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
 }

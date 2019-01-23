@@ -8,10 +8,11 @@ class Via extends Model
 {
     //
     protected $fillable =[
-        'start_date',
-        'end_date',
-        'employee_id',
-        'start_period',
-        'end_period'
+        'name_long',
+        'name_short'
     ];
+    public function employee(){
+        return $this->hasMany(Emplyee::class);
+    }
+    
 }

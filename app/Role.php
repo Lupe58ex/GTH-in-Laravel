@@ -14,5 +14,8 @@ class Role extends Model
         'loan_evaluator',
         'loan_promoter'
     ];
+    public function employees(){
+        return $this->hasMany(Employee::class);
+    }
     
 }

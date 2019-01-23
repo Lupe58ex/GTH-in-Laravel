@@ -14,4 +14,7 @@ class Vacation extends Model
         'start_period',
         'end_period'
     ];
+    public function employee(){
+        return $this->belongsTo(Employee::class);
+    }
 }

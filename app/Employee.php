@@ -13,7 +13,7 @@ class Employee extends Model
             'lastname_father',
             'lastname_mother',
             'identity_number',
-           'identification_type_id',
+            'identificationType_id',
             'gender',
             'birthdate',
             'district',
@@ -26,22 +26,21 @@ class Employee extends Model
             'email_main',
             'email_alternative',
             'active',
-            'position_id',
+            'role_id',
             'phone_number01',
             'phone_number02',
             'phone_number03',
-            'phone_type1_id',
-            'phone_type2_id',
-            'phone_type3_id',
-            'phone_operator1_id',
-            'phone_operator2_id',
-            'phone_operator3_id',
+            'phoneType1_id',
+            'phoneType2_id',
+            'phoneType3_id',
+            'phoneOperator1_id',
+            'phoneOperator2_id',
+            'phoneOperator3_id',
             'phone_notes01',
             'phone_notes02',
             'phone_notes03',
             'photo',
             'date_update_photo',
-            'role_id',
             'admission_date',
             'hire_date',
             'planning_date',
@@ -49,7 +48,7 @@ class Employee extends Model
             'contract_type',
             'contract_image',
             'real_end_hiredate',
-            'job_type_id',
+            'jobType_id',
             'work_modality',
             'projected_number_time',
             'projected_unity_time',
@@ -83,7 +82,7 @@ class Employee extends Model
             'cuspp',
             'bank_account_number',
             'payment_type',
-            'financial_entity_id',
+            'financialEntity_id',
             
             'bank_account',
             'student_children',
@@ -93,21 +92,82 @@ class Employee extends Model
     public function licenses () {
         return $this->hasMany(License::class);
     }
-    public function Academic_Trainings(){
+    public function academicTrainings(){
         return $this->hasMany(Academic_Training::class);
     }
-    public function Assistances(){
+    public function assistances(){
         return $this->hasMany(Assistances::class);
     }
-    public function bonus_discount(){
+    public function bonusDiscounts(){
         return $this->hasMany(Bonus_Discount::class);
     }
-    public function Area(){
+    public function cessations(){
+        return $this->hasMany(Cessation::class);
+    }
+    public function contracts(){
+        return $this->hasMany(Contract::class);
+    }
+    public function criminalBackgrounds(){
+        return $this->hasMany(CriminalBackground::class);
+    }
+    public function equifaxes(){
+        return $this->hasMany(Equifax::class);
+    }
+    public function generatedPayrolls(){
+        return $this->hasMany(GeneratedPayroll::class);
+    }
+    public function medicalConditions(){
+        return $this->hasMany(MedicalCondition::class);
+    }
+    public function professionalExperiences(){
+        return $this->hasMany(ProfessionalExperience::class);
+    }
+    public function vacations(){
+        return $this->hasMany(Vacation::class);
+    }
+    
+
+    public function area(){
         return $this->belongsTo(Area::class);
     }
-    public function schedules() {
-        return $this->belongsToMany(Schedule::class);
+    public function identificationType(){
+        return $this->belongsTo(IdentificationType::class);
     }
+    public function via(){
+        return $this->belongsTo(Via::class);
+    }
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }   
+    public function phoneType1(){
+        return $this->belongsTo(PhoneType::class,'phoneType1_id');
+    }            
+    public function phoneType2(){
+        return $this->belongsTo(PhoneType::class,'phoneType2_id');
+    }  
+    public function phoneType3(){
+        return $this->belongsTo(PhoneType::class,'phoneType3_id');
+    }
+    public function phoneOpertor1(){
+        return $this->belongsTo(PhoneType::class,'phoneOperator1_id');
+    }            
+    public function phoneOperator2(){
+        return $this->belongsTo(PhoneType::class,'phoneOperator2_id');
+    }  
+    public function phoneOperator3(){
+        return $this->belongsTo(PhoneType::class,'phoneOperator3_id');
+    }
+    public function schedules() {
+        return $this->belongsToMany(Schedule::class,Employee_schedule)->withPivot('day','droped');
+    }
+    public function jobType(){
+        return $this->belongsTo(JobType::class);
+    }
+    public function financialEntity(){
+        return $this->belongsTo(FinancialEntity::class);
+    }
+   
+
 }
 
 

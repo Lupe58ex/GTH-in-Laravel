@@ -18,7 +18,6 @@ class CreateScheduleUsersTable extends Migration
             $table->bigInteger('employee')->nullable(false);
             $table->Integer('schedule')->nullable(false);
             $table->char('day',1)->nullable(false);
-            $table->integer('user_id')->nullable(false);
             $table->boolean('droped')->nullable(false);
             $table->timestamps();
 

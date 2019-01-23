@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bonus_Discount_Category extends Model
+class BonusDiscountCategory extends Model
 {
     //
     protected $fillable = [
@@ -13,7 +13,7 @@ class Bonus_Discount_Category extends Model
         'enabled',
         'appears_in'
     ];
-    public function bonus_Discounts(){
-        return $this->hasMany(Bonus_Discount::class);
+    public function bonusDiscounts(){
+        return $this->hasMany(BonusDiscount::class);
     }
 }

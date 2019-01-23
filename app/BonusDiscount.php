@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bonus_Discount extends Model
+class BonusDiscount extends Model
 {
-    //
     protected $fillable =[
         'quantity',
         'reason',
@@ -20,10 +19,11 @@ class Bonus_Discount extends Model
     public function employee(){
         return $this->belongsTo(Employee::class);
     }
-    public function bonus_discount_category(){
-        return $this->belongTo(Bonus_discount_category::class);
+    public function bonusDiscountCategory(){
+        return $this->belongTo(BonusDiscountCategory::class);
     }
     Public function user(){
         return $this->belongsTo(User::class);
     }
+
 }

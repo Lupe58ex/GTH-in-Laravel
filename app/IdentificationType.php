@@ -11,5 +11,8 @@ class IdentificationType extends Model
         'varchar',
         'name_short'
     ];
+    public function employee(){
+        return $this->hasMany(Employee::class);
+    }
    
 }

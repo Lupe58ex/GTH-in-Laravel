@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Medical_condition extends Model
+class MedicalCondition extends Model
 {
     //
     protected $fillable = [
@@ -16,4 +16,10 @@ class Medical_condition extends Model
         'expired_date',
         'removed'
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function employee(){
+        return $this->belongsTo(Employee::class);
+    }
 }

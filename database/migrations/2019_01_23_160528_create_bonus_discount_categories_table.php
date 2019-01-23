@@ -30,6 +30,6 @@ class CreateBonusDiscountCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonus__discount__categories');
+        Schema::dropIfExists('bonus_discount_categories');
     }
 }

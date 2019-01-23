@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Criminal_background extends Model
+class CriminalBackground extends Model
 {
-    //
     protected $fillable = [
         'description',
         'user_id',
@@ -16,4 +15,11 @@ class Criminal_background extends Model
         'document',
         'removed'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    Public function Employee(){
+        return $this->belonsTo(Employee::class);
+    }
 }

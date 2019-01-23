@@ -11,6 +11,7 @@ class CreateAcademicTrainingsTable extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('academic_trainings', function (Blueprint $table) {
@@ -24,11 +25,11 @@ class CreateAcademicTrainingsTable extends Migration
             $table->timestamps();
 
             $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
-                  ->onDelete('cascade');
+                ->reference('id')->on('employees')
+                ->onDelete('cascade');
             $table->foreign('user_id')
-                  ->reference('id')->on('users')
-                  ->onDelete('cascade');
+                ->reference('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
