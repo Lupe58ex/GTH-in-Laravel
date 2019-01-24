@@ -21,4 +21,7 @@ class Justification extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function assistances(){
+        return $this->hasMany(Assistance::class);
+    }
 }

@@ -16,7 +16,7 @@ class CreateAssistancesTable extends Migration
         Schema::create('assistances', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date')->nullable(false);
-            $table->bigIntener('employee_id')->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
             $table->time('planned_start_hour')->nullable(false);
             $table->time('planned_end_hour')->nullable(false);
             $table->time('real_start_time')->nullable();
@@ -27,18 +27,21 @@ class CreateAssistancesTable extends Migration
             $table->boolean('no_attendance')->nullable(false);
             $table->decimal('discount_quantity',6,2)->nullable(false);
             $table->string('observations',2500)->nullable();
-            $table->integer('justification')->nullable();
+            $table->integer('justification_id')->nullable();
             $table->timestamps();
             
             $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
-                  ->onDelete('cascade');
+                ->references('id')->on('employees')
+                ->onDelete('cascade');
             $table->foreign('user_id')
-                  ->reference('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
             $table->foreign('schedule_id')
-                  ->reference('id')->on('schedules')
-                  ->onDelete('cascade');
+                ->references('id')->on('schedules')
+                ->onDelete('cascade');
+            $table->foreign('justification_id')
+                ->references('id')->on('justifications')
+                ->onDelete('cascade');
         });
     }
 

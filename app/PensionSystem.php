@@ -13,4 +13,7 @@ class PensionSystem extends Pivot
         'descripction',
         'actual_percent'
     ];
+    public function employees(){
+        return $this->belongsToMany(Employee::class);
+    }
 }

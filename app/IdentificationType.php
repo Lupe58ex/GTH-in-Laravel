@@ -8,10 +8,10 @@ class IdentificationType extends Model
 {
     //
     protected $fillable = [
-        'varchar',
+        'name_long',
         'name_short'
     ];
-    public function employee(){
+    public function employees(){
         return $this->hasMany(Employee::class);
     }
    

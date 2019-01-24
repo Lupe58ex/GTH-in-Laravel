@@ -25,4 +25,7 @@ class Relative extends Model
         'student',
         'reference'
     ];
+    public function employees(){
+        return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot();
+    }
 }

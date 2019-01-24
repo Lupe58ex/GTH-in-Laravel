@@ -16,10 +16,10 @@ class Cessation extends Model
         'user_id'
     ];
 
-    public function Employee(){
+    public function employee(){
         return $this->belongsTo(Employee::class);
     }
-    Public function User(){
+    Public function user(){
         return $this->belongsTo(User::class);
     }
 

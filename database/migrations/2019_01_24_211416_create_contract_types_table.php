@@ -14,12 +14,12 @@ class CreateContractTypesTable extends Migration
     public function up()
     {
         Schema::create('contract_types', function (Blueprint $table) {
-            $table->tinyincrements('id');
+            $table->tinyIncrements('id');
             $table->string('name',150)->nullable(false);
             $table->string('short_name',15)->nullable(false);
             $table->smallInteger('suggested_duration')->nullable(false);
             $table->string('description',2500)->nullable();
-            $table->boolean('appears')-nullable(false);
+            $table->boolean('appears')->nullable(false);
             $table->timestamps();
         });
     }

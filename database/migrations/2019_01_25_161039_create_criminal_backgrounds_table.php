@@ -19,16 +19,16 @@ class CreateCriminalBackgroundsTable extends Migration
             $table->integer('user_id')->nullable(false);
             $table->date('expedition_date')->nullable();
             $table->date('expiry_date')->nullable();
-            $table->string('employee_id',20)->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
             $table->binary('document')->nullable();
             $table->boolean('removed')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
-                    ->reference('id')->on('users')
+                    ->references('id')->on('users')
                     ->onDelete('cascade');
             $table->foreign('employee_id')
-                    ->reference('id')->on('employees')
+                    ->references('id')->on('employees')
                     ->onDelete('cascade');
         });
     }

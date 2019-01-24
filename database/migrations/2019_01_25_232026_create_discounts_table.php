@@ -25,10 +25,10 @@ class CreateDiscountsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-                ->reference('id')->on('users')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreign('employee_pension_system_id')
-                ->reference('id')->on('employee_pension_systems')
+                ->references('id')->on('employee_pension_systems')
                 ->onDelete('cascade');
         });
     }

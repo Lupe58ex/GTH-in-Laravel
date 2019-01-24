@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIdentificationTypesTable extends Migration
+class CreateEmployeeSchedulesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('identification_types', function (Blueprint $table) {
+        Schema::create('employee_schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('varchar',100)->nullable(false);
-            $table->string('name_short',30)->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
+            $table->Integer('schedule_id')->nullable(false);
+            $table->char('day',1)->nullable(false);
+            $table->boolean('droped')->nullable(false);
             $table->timestamps();
+
         });
     }
 
@@ -28,6 +31,6 @@ class CreateIdentificationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('identification_types');
+        Schema::dropIfExists('employee_schedules');
     }
 }

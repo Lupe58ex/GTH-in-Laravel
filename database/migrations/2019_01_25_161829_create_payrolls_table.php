@@ -22,7 +22,7 @@ class CreatePayrollsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-                    ->reference('id')->on('users')
+                    ->references('id')->on('users')
                     ->onDelete('cascade');
         });
     }

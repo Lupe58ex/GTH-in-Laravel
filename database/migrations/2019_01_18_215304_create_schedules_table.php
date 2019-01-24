@@ -24,10 +24,10 @@ class CreateSchedulesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user1_id')
-                  ->reference('id')->on('users')
+                  ->references('id')->on('users')
                   ->onDelete('cascade');
             $table->foreign('user2_id')
-                  ->reference('id')->on('users')
+                  ->references('id')->on('users')
                   ->onDelete('cascade');
         });
     }

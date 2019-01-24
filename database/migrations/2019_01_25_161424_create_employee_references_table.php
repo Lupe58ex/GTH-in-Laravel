@@ -20,10 +20,10 @@ class CreateEmployeeReferencesTable extends Migration
             $table->timestamps();
 
             $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
             $table->foreign('reference_id')
-                  ->reference('id')->on('references')
+                  ->references('id')->on('references')
                   ->onDelete('cascade');
         });
     }

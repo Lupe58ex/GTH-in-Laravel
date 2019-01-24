@@ -19,7 +19,7 @@ class CriminalBackground extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    Public function Employee(){
+    Public function employee(){
         return $this->belonsTo(Employee::class);
     }
 }

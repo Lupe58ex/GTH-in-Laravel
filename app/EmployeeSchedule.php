@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeReference extends Pivot
+class EmployeeSchedule extends Pivot
 {
     //
     protected $fillable=[
-        'removed'
+        'day','droped'
     ];
-
 }

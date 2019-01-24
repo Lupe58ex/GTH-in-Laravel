@@ -16,7 +16,7 @@ class CreateEmployeeRelativesTable extends Migration
         Schema::create('employee_relatives', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('employee1_id')->nullable(false);
-            $table->bigInteger('employee2_id')->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
             $table->bigInteger('relative_id')->nullable(false);
             $table->string('relationship',50)->nullable(false);
             $table->string('observation',1500)->nullable();
@@ -27,13 +27,13 @@ class CreateEmployeeRelativesTable extends Migration
             $table->timestamps();
 
             $table->foreign('employee1_id')
-                  ->reference('id')->on('employees')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
-            $table->foreign('employee2_id')
-                  ->reference('id')->on('employees')
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
             $table->foreign('relative_id')
-                  ->reference('id')->on('relatives')
+                  ->references('id')->on('relatives')
                   ->onDelete('cascade');
         });
     }

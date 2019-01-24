@@ -22,10 +22,10 @@ class CreateLicensesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')
-                  ->reference('id')->on('users')
+                  ->references('id')->on('users')
                   ->onDelete('cascade');
             $table->foreign('employee_id')
-                  ->reference('id')->on('employees')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
         });
     }

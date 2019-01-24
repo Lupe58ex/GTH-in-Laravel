@@ -19,7 +19,6 @@ class CreateEmployeePensionSystemsTable extends Migration
             $table->integer('employee_id')->nullable(false);
             $table->boolean('actual')->nullable(false);
             $table->integer('user_id')->nullable(false);
-            $table->bigInteger('Discount_id')->nullable(false);
             $table->char('comission_type',1)->nullable();
             $table->decimal('comission_on_flow',9,2)->nullable(false);
             $table->decimal('annual_comission',9,2)->nullable(false);
@@ -27,6 +26,10 @@ class CreateEmployeePensionSystemsTable extends Migration
             $table->decimal('insurance_premium',9,2)->nullable(false);
             $table->decimal('mandatory_contribution',9,2)->nullable(false);
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

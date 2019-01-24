@@ -17,7 +17,7 @@ class CreateGeneratedPayrollsTable extends Migration
             $table->increments('id');
             $table->tinyInteger('month')->nullable(false);
             $table->smallinteger('year')->nullable(false);
-            $table->string('employee_id',20)->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
             $table->decimal('real_salary',10,2)->nullable(false);
             $table->decimal('payroll_salary',10,2)->nullable(false);
             $table->decimal('quantity_consider',10,2)->nullable(false);
@@ -39,7 +39,7 @@ class CreateGeneratedPayrollsTable extends Migration
             $table->timestamps();
 
             $table->foreign('employee_id')
-                    ->reference('id')->on('employees')
+                    ->references('id')->on('employees')
                     ->onDelete('cascade');
         });
     }

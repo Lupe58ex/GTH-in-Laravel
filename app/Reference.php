@@ -16,4 +16,7 @@ class Reference extends Model
         'business',
         'commets'
     ];
+    public function employees(){
+        return $this->belongsToMany(Employee::class);
+    }
 }

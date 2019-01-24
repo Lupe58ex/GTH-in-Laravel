@@ -18,21 +18,21 @@ class CreateBonusDiscountsTable extends Migration
             $table->increments('id');
             $table->decimal('quantity',10,2)->nullable(false);
             $table->string('reason',2000)->nullable();
-            $table->string('employee_id',20)->nullable(false);
-            $table->string('user_id')->nullable(false);
+            $table->bigInteger('employee_id')->nullable(false);
+            $table->Integer('user_id')->nullable(false);
             $table->tinyInteger('month')->nullable(false);
-            $table->smallinteger('year')->nullable(false);
-            $table->integer('bonusDiscountCategory_id')->nullable(false);
+            $table->smallInteger('year')->nullable(false);
+            $table->Integer('bonus_discount_category_id')->nullable(false);
             $table->timestamps();
 
             $table->foreign('employee_id')
-                ->reference('id')->on('employees')
+                ->references('id')->on('employees')
                 ->onDelete('cascade');
             $table->foreign('user_id')
-                ->reference('id')->on('users')
+                ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreign('bonus_discount_category_id')
-                ->reference('id')->on('bonus_discount_categories')
+                ->references('id')->on('bonus_discount_categories')
                 ->onDelete('cascade');
         });
     }

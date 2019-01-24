@@ -20,15 +20,18 @@ class Assistance extends Model
         'no_attendance',
         'discount_quantity',
         'observations',
-        'justification'
+        'justification_id'
     ];
-    public function Employee(){
+    public function employee(){
         return $this->belongsTo(Employee::class);
     }
-    public function User(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
-    public function Schedule(){
-        return $this->belonsTo(Schedule::class);
+    public function schedule(){
+        return $this->belongsTo(Schedule::class);
+    }
+    public function justification(){
+        return $this->belongsTo(Justification::class);
     }
 }

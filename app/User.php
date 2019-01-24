@@ -84,4 +84,7 @@ class User extends Authenticatable
     public function discounts(){
         return $this->hasMany(Discount::class);
     }
+    public function employeePensionSystems(){
+        return $this->hasMany(EmployeePensionSystem::class);
+    }
 }

@@ -15,10 +15,10 @@ class AcademicTraining extends Model
             'user_id',
             'employee_id'
     ];
-    public function User(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
-    public function Employee(){
+    public function employee(){
         return $this->belongsTo(Employee::class);
     }
 }

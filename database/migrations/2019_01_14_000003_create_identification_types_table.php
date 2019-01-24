@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBonusDiscountCategoriesTable extends Migration
+class CreateIdentificationTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateBonusDiscountCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('bonus_discount_categories', function (Blueprint $table) {
+        Schema::create('identification_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',250)->nullable(false);
-            $table->string('description',2000)->nullable();
-            $table->boolean('enabled')->nullable(false);
-            $table->char('appears_in',1)->nullable(false);
+            $table->string('name_long',100)->nullable(false);
+            $table->string('name_short',30)->nullable(false);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBonusDiscountCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bonus_discount_categories');
+        Schema::dropIfExists('identification_types');
     }
 }
