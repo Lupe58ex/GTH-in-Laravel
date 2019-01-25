@@ -45,7 +45,7 @@ class Employee extends Model
             'hire_date',
             'planning_date',
             'contract_term',
-            'contract_type',
+            'contract_type_id',
             'contract_image',
             'real_end_hiredate',
             'job_Type_id',
@@ -165,6 +165,9 @@ class Employee extends Model
     }
     public function financial_Entity(){
         return $this->belongsTo(FinancialEntity::class);
+    }
+    public function contract_Type(){
+        return $this->belongsTo(ContractType::class);
     }
 
     public function schedules() {

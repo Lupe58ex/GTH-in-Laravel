@@ -19,6 +19,7 @@ class AuthController extends Controller
 
         return response()->json(['status' => 201]);
     }
+
     public function login(Request $request)
     {
         $user = User::whereEmail($request->username)->first();

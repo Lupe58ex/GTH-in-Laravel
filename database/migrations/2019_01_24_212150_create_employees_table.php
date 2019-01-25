@@ -51,7 +51,7 @@ class CreateEmployeesTable extends Migration
             $table->date('hire_date')->nullable();
             $table->date('planning_date')->nullable();
             $table->smallInteger('contract_term')->nullable();
-            $table->tinyInteger('contract_type')->nullable();
+            $table->tinyInteger('contract_type_id')->nullable();
             $table->binary('contract_image')->nullable();
             $table->date('real_end_hiredate')->nullable();
             $table->tinyInteger('job_Type_id')->nullable();
