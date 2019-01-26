@@ -15,6 +15,10 @@ use Illuminate\Http\Request;
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 
+Route::post('/jobTypeCreate', 'JobTypeController@store');
+Route::get('/jobTypeIndex', 'JobTypeController@index');
+Route::get('/Show/{id}', 'JobTypeController@show');
+
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', 'Api\AuthController@logout');
 });

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Employee;
-use App\Http\Resouces\EmployeeResource;
+use App\JobType;
+use App\Http\Resources\JobTypeResource;
 
-class EmployeeController extends Controller
+class JobTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //return EmployeeResource::all();
-        return EmployeeResource::collection();
+        //
+        $JobType = JobType::paginate(15);
+        return $JobType;
     }
 
     /**
@@ -25,16 +26,10 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        /*
-        Employee::create([
-            
-        ]);
-        return response()->json(['status=>201']);
-        */
-
-    } 
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -44,9 +39,17 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return Employee::create($request->all());
-        return response()->json($article, 201);
+        
+        $JobType=JobType::create([
+            'name'=>$request->name,
+        ]);
+         new JobTypeResource($JobType);
+        /*
+        $JobType = new JobType;
+        $JobType->name=$request->name;
+
+        $JobType->save();*/
+        return  $JobType;
     }
 
     /**
@@ -58,7 +61,10 @@ class EmployeeController extends Controller
     public function show($id)
     {
         //
-        $employee = Employee::find($id);
+        $JobType = JobType::findOrFail($id);
+        //return $JobType;
+       new JobTypeResource($JobType);
+       return $JobType;
     }
 
     /**
@@ -82,8 +88,6 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $employee = Employee::findORFail($id);
-        $employee->update($request->all());
     }
 
     /**

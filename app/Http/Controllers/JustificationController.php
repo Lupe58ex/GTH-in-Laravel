@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Employee;
-use App\Http\Resouces\EmployeeResource;
 
-class EmployeeController extends Controller
+class JustificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //return EmployeeResource::all();
-        return EmployeeResource::collection();
+        //
     }
 
     /**
@@ -25,16 +22,10 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        /*
-        Employee::create([
-            
-        ]);
-        return response()->json(['status=>201']);
-        */
-
-    } 
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -45,8 +36,6 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
-        return Employee::create($request->all());
-        return response()->json($article, 201);
     }
 
     /**
@@ -58,7 +47,6 @@ class EmployeeController extends Controller
     public function show($id)
     {
         //
-        $employee = Employee::find($id);
     }
 
     /**
@@ -82,8 +70,6 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $employee = Employee::findORFail($id);
-        $employee->update($request->all());
     }
 
     /**
