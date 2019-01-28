@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MedicalConditionResource extends JsonResource
+class AreaResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,13 +15,9 @@ class MedicalConditionResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'name'=>$this->name,
             'description'=>$this->description,
-            'user_id',
-            'expedition_date'=>$this->expedition_date,
-            'employee_id',
-            'document'=>$this->document,
-            'expired_date'=>$this->expired_date,
-            'removed'=>$this->removed,
+            'internal_code'=>$this->internal_code,
         ];
     }
 }
