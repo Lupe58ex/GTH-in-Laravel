@@ -43,7 +43,7 @@ class JobTypeController extends Controller
         $JobType=JobType::create([
             'name'=>$request->name,
         ]);
-         new JobTypeResource($JobType);
+        new JobTypeResource($JobType);
         /*
         $JobType = new JobType;
         $JobType->name=$request->name;
@@ -60,11 +60,8 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        //
         $JobType = JobType::findOrFail($id);
-        //return $JobType;
-       new JobTypeResource($JobType);
-       return $JobType;
+        return $JobType;
     }
 
     /**

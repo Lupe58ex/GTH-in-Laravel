@@ -20,8 +20,8 @@ class CessationResource extends JsonResource
             'entry_reason'=>$this->entry_reason,
             'cessation_date'=>$this->cessation_date,
             'cessation_reason'=>$this->cessation_reason,
-            'employee_id',
-            'user_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
+            'user_id'=>UserResource::collection($this->user),
         ];
     }
 }

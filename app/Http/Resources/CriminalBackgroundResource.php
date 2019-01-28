@@ -17,10 +17,10 @@ class CriminalBackgroundResource extends JsonResource
         return [
             'id'=>$this->id,
             'description'=>$this->description,
-            'user_id',
+            'user_id'=>UserResource::collection($this->user),
             'expedition_date'=>$this->expiration_date,
             'expiry_date'=>$this->expiry_date,
-            'employee_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
             'document'=>$this->document,
             'removed'=>$this->removed,
         ];

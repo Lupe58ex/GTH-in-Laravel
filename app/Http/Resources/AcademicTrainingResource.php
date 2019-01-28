@@ -20,8 +20,8 @@ class AcademicTrainingResource extends JsonResource
             'institute'=>$this->insitute,
             'period'=>$this->period,
             'condition'=>$this->condition,
-            'user_id',
-            'employee_id'
+            'user_id'=>UserResource::collection($this->user),
+            'employee_id'=>EmployeeResource::collection($this->employee),
             
         ];
     }

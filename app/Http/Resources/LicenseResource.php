@@ -16,8 +16,8 @@ class LicenseResource extends JsonResource
     {
         return [
             'date'=>$this->date,
-            'user_id',
-            'employee_id',
+            'user_id'=>UserResource::collection($this->user),
+            'employee_id'=>EmployeeResource::collection($this->employee),
             'observation'=>$this->observation,
         ];
     }

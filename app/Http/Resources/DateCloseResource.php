@@ -16,7 +16,7 @@ class DateCloseResource extends JsonResource
     {
         return [
             'date'=>$this->date,
-            'user_id',
+            'user_id'=>UserResource::collection($this->user),
             'observation'=>$this->observation,
         ];
     }

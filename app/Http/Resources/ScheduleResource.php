@@ -18,9 +18,9 @@ class ScheduleResource extends JsonResource
             'start_hour'=>$this->start_hour,
             'end_hour'=>$this->end_hour,
             'description'=>$this->description,
-            'user1_id',
+            'user1_id'=>UserResource::collection($this->user1),
             'droped'=>$this->droped,
-            'user2_id',
+            'user2_id'=>UserResource::collection($this->user2),
         ];
     }
 }

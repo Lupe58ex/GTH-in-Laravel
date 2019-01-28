@@ -18,8 +18,8 @@ class ContractResource extends JsonResource
             'id'=>$this->id,
             'description'=>$this->description,
             'file'=>$this->file,
-            'employee_id',
-            'user_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
+            'user_id'=>UserResource::collection($this->user),
             'generated_date'=>$this->genertaed_date,
             'expired_date'=>$this->expired_date,
         ];

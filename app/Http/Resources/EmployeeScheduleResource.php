@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class VacationResource extends JsonResource
+class EmployeeScheduleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,8 @@ class VacationResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'start_date'=>$this->start_date,
-            'end_date'=>$this->end_date,
-            'employee_id'=>EmployeeResource::collection($this->employee),
-            'start_period'=>$this->start_period,
-            'end_period'=>$this->end_period,
+            'day'=>$this->day,
+            'droped'=>$this->droped,
         ];
     }
 }

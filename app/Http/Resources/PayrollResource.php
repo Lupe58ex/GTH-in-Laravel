@@ -17,7 +17,7 @@ class PayrollResource extends JsonResource
         return [
             'month'=>$this->month,
             'year'=>$this->year,
-            'user_id',
+            'user_id'=>UserResource::collection($this->user),
             'observations'=>$this->observations,
         ];
     }

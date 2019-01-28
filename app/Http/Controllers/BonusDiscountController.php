@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\BonusDiscount;
+use App\Http\Resources\BonusDiscountResource;
 
 class BonusDiscountController extends Controller
 {
@@ -15,6 +17,7 @@ class BonusDiscountController extends Controller
     public function index()
     {
         //
+        $BonusDiscount = BonusDiscount::paginate(15);
     }
 
     /**
@@ -35,7 +38,7 @@ class BonusDiscountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

@@ -18,10 +18,10 @@ class DiscountResource extends JsonResource
             'id'=>$this->id,
             'month'=>$this->month,
             'year'=>$this->year,
-            'employee_pension_system_id',
+            'employee_pension_system_id'=>EmployeePensionSystemResource::collection($this->employee_pemsion_system),
             'percent_discount'=>$this->percent_discount,
             'discount_quantity'=>$this->discount_quantity,
-            'user_id',
+            'user_id'=>UserResource::collection($this->user),
             'observations'=>$this->observations,
         ];
     }

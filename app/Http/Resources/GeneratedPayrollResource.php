@@ -17,7 +17,7 @@ class GeneratedPayrollResource extends JsonResource
         return [
             'month'=>$this->month,
             'year'=>$this->year,
-            'employee_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
             'real_salary'=>$this->real_salary,
             'payroll_salary'=>$this->payroll_salary,
             'quantity_consider'=>$this->quantity_consider,

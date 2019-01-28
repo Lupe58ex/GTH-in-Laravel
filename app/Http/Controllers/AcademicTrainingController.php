@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\AcademicTraining;
+use App\Http\Resource\AcademicTrainingResource; 
 
 class AcademicTrainingController extends Controller
 {
@@ -14,7 +16,8 @@ class AcademicTrainingController extends Controller
      */
     public function index()
     {
-        //
+        $AcademicTraining::paginate(15);
+        return $AcademicTraining;
     }
 
     /**
@@ -35,7 +38,16 @@ class AcademicTrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $AcademicTraining=AcademicTraining::Create([
+            'description'=>$request->description,
+            'institute'=>$request->insitute,
+            'period'=>$request->period,
+            'condition'=>$request->condition,
+            'user_id'=>UserResource::collection($request->user),
+            'employee_id'=>EmployeeResource::collection($request->employee),
+        ]);
+        new AcademicTraining($AcademicTraining);
+        return $AcademicTraining;
     }
 
     /**
@@ -46,7 +58,9 @@ class AcademicTrainingController extends Controller
      */
     public function show($id)
     {
-        //
+        $AcademicTraining=AcademicTraining::findOrFail($id);
+        //new AcademicTraining($AcademicTraining);
+        return $AcademicTraining;
     }
 
     /**

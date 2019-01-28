@@ -17,18 +17,18 @@ class AssistanceResource extends JsonResource
         return [
             'id'=>$this->id,
             'date'=>$this->date,
-            'employee_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
             'planned_start_hour'=>$this->planned_start_hour,
             'planned_end_hour'=>$this->planned_end_hour,
             'real_start_time'=>$this->real_start_time,
             'real_end_time'=>$this->real_end_time,
-            'user_id',
-            'schedule_id',
+            'user_id'=>UserResource::collection($this->user),
+            'schedule_id'=>ScheduleResource::collection($this->schedule),
             'observation'=>$this->observation,
             'no_attendance'=>$this->no_attendance,
             'discount_quantity'=>$this->discount_quantity,
             'observations'=>$this->observations,
-            'justification_id'
+            'justification_id'=>JustificationResource::collection($this->justification)
         ];
     }
 }

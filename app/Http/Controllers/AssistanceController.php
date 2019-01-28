@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Assistance;
+use App\Http\Resources\AssistanceResource;
 
-class AssitanceController extends Controller
+class AssistanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +17,8 @@ class AssitanceController extends Controller
     public function index()
     {
         //
+        $Assistance = Assistance::pagination(15);
+        return $Assistance;
     }
 
     /**
@@ -24,7 +28,7 @@ class AssitanceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +39,22 @@ class AssitanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Assistance=Assistance::create([
+            'date'=>$request->date,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'planned_start_hour'=>$request->planned_start_hour,
+            'planned_end_hour'=>$request->planned_end_hour,
+            'real_start_time'=>$request->real_start_time,
+            'real_end_time'=>$request->real_end_time,
+            'user_id'=>UserResource::collection($request->user),
+            'schedule_id'=>ScheduleResource::collection($request->schedule),
+            'observation'=>$request->observation,
+            'no_attendance'=>$request->no_attendance,
+            'discount_quantity'=>$request->discount_quantity,
+            'observations'=>$request->observations,
+            'justification_id'=>JustificationResource::collection($request->justification)
+        ]);
+        
     }
 
     /**
@@ -46,7 +65,8 @@ class AssitanceController extends Controller
      */
     public function show($id)
     {
-        //
+        $Assistance = Assistance::findOrFail($id);
+        
     }
 
     /**

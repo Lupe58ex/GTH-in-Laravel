@@ -18,12 +18,11 @@ class BonusDiscountResource extends JsonResource
             'id'=>$this->id,
             'quantity'=>$this->quantity,
             'reason'=>$this->reason,
-            'employee_id',
-            'user_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
+            'user_id'=>UserResource::collection($this->user),
             'month'=>$this->month,
             'year'=>$this->year,
-            'bonus_discount_category_id'
-
+            'bonus_discount_category_id'=>BonusDiscountCategoryResource::collection($this->bonusDiscountCategory),
         ];
     }
 }

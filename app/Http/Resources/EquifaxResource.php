@@ -18,8 +18,8 @@ class EquifaxResource extends JsonResource
             'id'=>$this->id,
             'description'=>$this->description,
             'file'=>$this->file,
-            'employee_id',
-            'user_id',
+            'employee_id'=>EmployeeResource::collection($this->employee),
+            'user_id'=>UserResource::collection($this->user),
             'generation_date'=>$this->generation_date,
             'expire_date'=>$this->expire_date,
         ];

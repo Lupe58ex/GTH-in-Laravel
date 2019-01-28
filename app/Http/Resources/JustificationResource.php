@@ -17,8 +17,8 @@ class JustificationResource extends JsonResource
         return [
             'reason'=>$this->reason,
             'justified_date'=>$this->justified_date,
-            'schedule_id',
-            'user_id',
+            'schedule_id'=>ScheduleResource::collection($this->schedule),
+            'user_id'=>UserResource::collection($this->user),
             'observation'=>$this->observation,
             'is_discount'=>$this->is_discount,
         ];

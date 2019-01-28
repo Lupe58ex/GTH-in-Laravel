@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\BonusDiscountCategory;
+use App\Http\Resources\BonusDiscountCategoryResource;
 
 class BonusDiscountCategoryController extends Controller
 {
@@ -15,6 +17,7 @@ class BonusDiscountCategoryController extends Controller
     public function index()
     {
         //
+        $BonusDiscountCategory = BonusDiscountCategory::paginate(15);
     }
 
     /**
@@ -35,7 +38,13 @@ class BonusDiscountCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $BonusDiscountCategory = BonusDiscountCategory::create([
+            'id'=>$request->id,
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'enabled'=>$request->enabled,
+            'appears_in'=>$request->appears_in,
+        ]);
     }
 
     /**
@@ -47,6 +56,7 @@ class BonusDiscountCategoryController extends Controller
     public function show($id)
     {
         //
+        $BonusDiscountCategory =  BonusDiscountCategory::findOrFail($id);
     }
 
     /**
