@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Cessation;
+use App\Http\Resources\CessationResource;
 
 class CessationController extends Controller
 {
@@ -14,7 +16,7 @@ class CessationController extends Controller
      */
     public function index()
     {
-        //
+        $Cessation = Cessation::paginate(15);
     }
 
     /**
@@ -35,7 +37,14 @@ class CessationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Cessation = Cessation::create([
+            'entry_date'=>$request->entry_date,
+            'entry_reason'=>$request->entry_reason,
+            'cessation_date'=>$request->cessation_date,
+            'cessation_reason'=>$request->cessation_reason,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>UserResource::collection($request->user),
+        ]);
     }
 
     /**
@@ -46,7 +55,7 @@ class CessationController extends Controller
      */
     public function show($id)
     {
-        //
+        $Cessation = Cessation::findOrFail($id);
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\CriminalBackground;
+use App\Http\Resources\CriminalBackgroundResource;
 
 class CriminalBackgroundController extends Controller
 {
@@ -14,7 +16,7 @@ class CriminalBackgroundController extends Controller
      */
     public function index()
     {
-        //
+        $criminalBackground = CriminalBackground::Paginate(15);
     }
 
     /**
@@ -35,7 +37,15 @@ class CriminalBackgroundController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $criminalBackground = CriminalBackground::create([
+            'description'=>$request->description,
+            'user_id'=>UserResource::collection($request->user),
+            'expedition_date'=>$request->expiration_date,
+            'expiry_date'=>$request->expiry_date,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'document'=>$request->document,
+            'removed'=>$request->removed,
+        ]);
     }
 
     /**
@@ -46,7 +56,7 @@ class CriminalBackgroundController extends Controller
      */
     public function show($id)
     {
-        //
+        $criminalBackground = CriminalBackground::findOrFail($id);
     }
 
     /**

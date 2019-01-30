@@ -38,7 +38,16 @@ class BonusDiscountController extends Controller
      */
     public function store(Request $request)
     {
+        $BonusDiscount =BonusDiscount::create([
+            'quantity'=>$request->quantity,
+            'reason'=>$request->reason,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>UserResource::collection($request->user),
+            'month'=>$request->month,
+            'year'=>$request->year,
+            'bonus_discount_category_id'=>BonusDiscountCategoryResource::collection($request->bonusDiscountCategory),
 
+        ]);
     }
 
     /**
@@ -49,7 +58,7 @@ class BonusDiscountController extends Controller
      */
     public function show($id)
     {
-        //
+        $BonusDiscount = BonusDiscount::findOrFail($id);
     }
 
     /**

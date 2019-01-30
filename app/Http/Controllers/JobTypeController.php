@@ -60,8 +60,9 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
+        //$JobType = JobType::findOrFail($id);
+        //return $JobType;
+        https://blog.pusher.com/build-rest-api-laravel-api-resources/
     }
 
     /**
