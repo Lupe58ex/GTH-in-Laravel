@@ -39,7 +39,7 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $JobType=JobType::create([
             'name'=>$request->name,
         ]);
@@ -62,7 +62,7 @@ class JobTypeController extends Controller
     {
         //$JobType = JobType::findOrFail($id);
         //return $JobType;
-        https://blog.pusher.com/build-rest-api-laravel-api-resources/
+
     }
 
     /**

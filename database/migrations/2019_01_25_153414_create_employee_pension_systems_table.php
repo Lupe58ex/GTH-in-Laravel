@@ -20,6 +20,7 @@ class CreateEmployeePensionSystemsTable extends Migration
             $table->boolean('actual')->nullable(false);
             $table->integer('user_id')->nullable(false);
             $table->char('comission_type',1)->nullable();
+
             $table->decimal('comission_on_flow',9,2)->nullable(false);
             $table->decimal('annual_comission',9,2)->nullable(false);
             $table->decimal('comission_for_flow',9,2)->nullable(false);

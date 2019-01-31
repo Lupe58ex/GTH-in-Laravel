@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PensionSystem extends Pivot
+class PensionSystem extends Model
 {
     //
     protected $fillable = [

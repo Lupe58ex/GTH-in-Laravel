@@ -20,6 +20,7 @@ class CreateRolesTable extends Migration
             $table->string('description',1000)->nullable();
             $table->boolean('loan_evaluator')->nullable(false);
             $table->boolean('loan_promoter')->nullable(false);
+            $table->char('appears')->nullable(false);
             $table->timestamps();
         });
     }
