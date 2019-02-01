@@ -8,6 +8,9 @@ class EmployeeSchedule extends Pivot
 {
     //
     protected $fillable=[
-        'day','droped'
+        'employee_id',
+        'schedule_id',
+        'day',
+        'droped'
     ];
 }

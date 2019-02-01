@@ -18,5 +18,6 @@ class ViaResource extends JsonResource
             'name_long'=>$this->name_long,
             'name_short'=>$this->name_short,
         ];
+
     }
 }

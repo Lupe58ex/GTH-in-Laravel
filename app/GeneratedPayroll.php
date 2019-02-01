@@ -21,11 +21,11 @@ class GeneratedPayroll extends Model
         'holiday_bonus',
         'salary_advance',
         'discount',
-        'permit',
+        'permission',
         'license',
         'tardiness',
         'onp',
-        'pension_system',
+        'pension_system_quantity',
         'essalud',
         'business_quantity',
         'employee_quantity'

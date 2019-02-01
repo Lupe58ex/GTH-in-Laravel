@@ -9,12 +9,11 @@ class MedicalCondition extends Model
     //
     protected $fillable = [
         'description',
-        'user_id',
         'expedition_date',
         'employee_id',
-        'document',
-        'expired_date',
-        'removed'
+        'file',
+        'expiration_date',
+        'droped'
     ];
     public function user(){
         return $this->belongsTo(User::class);

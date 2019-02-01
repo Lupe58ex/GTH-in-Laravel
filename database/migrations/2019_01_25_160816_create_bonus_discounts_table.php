@@ -11,7 +11,7 @@ class CreateBonusDiscountsTable extends Migration
      *
      * @return void
      */
-    
+
     public function up()
     {
         Schema::create('bonus_discounts', function (Blueprint $table) {
@@ -20,8 +20,8 @@ class CreateBonusDiscountsTable extends Migration
             $table->string('reason',2000)->nullable();
             $table->bigInteger('employee_id')->nullable(false);
             $table->Integer('user_id')->nullable(false);
-            $table->tinyInteger('month')->nullable(false);
-            $table->smallInteger('year')->nullable(false);
+            $table->tinyInteger('for_month')->nullable(false);
+            $table->smallInteger('for_year')->nullable(false);
             $table->Integer('bonus_discount_category_id')->nullable(false);
             $table->timestamps();
 

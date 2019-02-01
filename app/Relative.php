@@ -14,15 +14,15 @@ class Relative extends Model
         'gender',
         'birthdate',
         'cellphone',
-        'house_via',
+        'house_via_id',
         'house_address',
-        'job_via',
+        'job_via_id',
         'job_address',
         'place_job',
-        'DNI',
+        'dni',
         'full_age',
-        'address_image',
-        'student',
+        'address_file',
+        'is_student',
         'reference'
     ];
     public function employees(){

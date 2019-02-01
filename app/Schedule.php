@@ -11,9 +11,7 @@ class Schedule extends Model
         'start_hour',
         'end_hour',
         'description',
-        'user1_id',
-        'droped',
-        'user2_id',
+        'droped'
     ];
 
     public function employees() {
@@ -31,5 +29,5 @@ class Schedule extends Model
     public function justifications(){
         return $this->hasMany(Justification::class);
     }
-    
+
 }

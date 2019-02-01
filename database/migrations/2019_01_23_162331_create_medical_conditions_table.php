@@ -16,13 +16,16 @@ class CreateMedicalConditionsTable extends Migration
         Schema::create('medical_conditions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description',500)->nullable();
-            $table->integer('user_id')->nullable(false);
             $table->date('expedition_date')->nullable();
             $table->integer('employee_id')->nullable(false);
-            $table->binary('document')->nullable();
-            $table->date('expired_date')->nullable(false);
-            $table->boolean('removed')->nullable();
+            $table->binary('file')->nullable();
+            $table->date('expiration_date')->nullable(false);
+            $table->boolean('droped')->nullable();
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
         });
     }
 

@@ -16,17 +16,13 @@ class CreateCriminalBackgroundsTable extends Migration
         Schema::create('criminal_backgrounds', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description',500)->nullable();
-            $table->integer('user_id')->nullable(false);
             $table->date('expedition_date')->nullable();
-            $table->date('expiry_date')->nullable();
+            $table->date('expiration_date')->nullable();
             $table->bigInteger('employee_id')->nullable(false);
-            $table->binary('document')->nullable();
-            $table->boolean('removed')->nullable();
+            $table->binary('file')->nullable();
+            $table->boolean('droped')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')
-                    ->references('id')->on('users')
-                    ->onDelete('cascade');
             $table->foreign('employee_id')
                     ->references('id')->on('employees')
                     ->onDelete('cascade');

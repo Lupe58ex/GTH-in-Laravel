@@ -14,7 +14,7 @@ class CreateViasTable extends Migration
     public function up()
     {
         Schema::create('vias', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->string('name_long',100)->nullable(false);
             $table->string('name_short',30)->nullable(false);
             $table->timestamps();

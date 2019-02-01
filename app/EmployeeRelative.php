@@ -13,7 +13,7 @@ class EmployeeRelative extends Pivot
         'bail_letter',
         'guarantor',
         'droped',
-        'student',
+        'is_student',
         'employee1_id',
         'relative_id',
         'employee_id'

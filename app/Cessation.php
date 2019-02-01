@@ -12,15 +12,11 @@ class Cessation extends Model
         'entry_reason',
         'cessation_date',
         'cessation_reason',
-        'employee_id',
-        'user_id'
+        'employee_id'
     ];
 
     public function employee(){
         return $this->belongsTo(Employee::class);
-    }
-    Public function user(){
-        return $this->belongsTo(User::class);
     }
 
 }

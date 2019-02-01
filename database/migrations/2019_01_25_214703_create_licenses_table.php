@@ -15,10 +15,14 @@ class CreateLicensesTable extends Migration
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->nullable(false);
+            $table->date('start_date')->nullable(false);
+            $table->date('end_date')->nullable(false);
+            $table->datetime('start_hour')->nullable(false);
+            $table->datetime('end_hour')->nullable(false);
+            $table->char('pension_options',3)->nullable(false);
             $table->integer('user_id')->nullable(false);
             $table->bigInteger('employee_id')->nullable(false);
-            $table->string('observation')->nullable();
+            $table->string('reason',1000)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

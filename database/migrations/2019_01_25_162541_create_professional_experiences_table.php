@@ -11,22 +11,22 @@ class CreateProfessionalExperiencesTable extends Migration
      *
      * @return void
      */
-    
+
     public function up()
     {
         Schema::create('professional_experiences', function (Blueprint $table) {
             $table->bigincrements('id');
-            $table->string('area',500)->nullable(false);
-            $table->smallInteger('experience_role_id')->nullable(false);
-            $table->integer('company_id')->nullable();
+            $table->unsignedSmallInteger('area_id')->nullable(false);
+            $table->smallInteger('role_id')->nullable(false);
+            $table->smallInteger('company_id')->nullable();
             $table->tinyInteger('start_month')->nullable(false);
             $table->smallInteger('start_year')->nullable(false);
             $table->tinyInteger('end_month')->nullable(false);
             $table->smallInteger('end_year')->nullable(false);
             $table->tinyInteger('contract_type_id')->nullable(false);
-            $table->string('functions',4000)->nullable();
+            $table->string('function',4000)->nullable();
             $table->integer('user_id')->nullable(false);
-            $table->string('observations',4000)->nullable();
+            $table->string('observation',4000)->nullable();
             $table->integer('employee_id')->nullable(false);
             $table->string('exit_reason',5000)->nullable();
             $table->timestamps();
@@ -37,11 +37,14 @@ class CreateProfessionalExperiencesTable extends Migration
             $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
-            $table->foreign('experience_role_id')
-                ->references('id')->on('experience_roles')
+            $table->foreign('role_id')
+                ->references('id')->on('roles')
                 ->onDelete('cascade');
             $table->foreign('company_id')
                 ->references('id')->on('companies')
+                ->onDelete('cascade');
+            $table->foreign('area_id')
+                ->references('id')->on('areas')
                 ->onDelete('cascade');
             $table->foreign('contract_type_id')
                 ->references('id')->on('contract_types')

@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payroll extends Model
+class ClosedPayroll extends Model
 {
     //
     protected $fillable =[
         'month',
         'year',
         'user_id',
-        'observations'
+        'observation'
     ];
     public function user(){
         return $this->belongsTo(User::class);

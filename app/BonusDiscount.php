@@ -11,8 +11,8 @@ class BonusDiscount extends Model
         'reason',
         'employee_id',
         'user_id',
-        'month',
-        'year',
+        'for_month',
+        'for_year',
         'bonus_discount_category_id'
     ];
 

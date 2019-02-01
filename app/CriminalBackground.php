@@ -8,12 +8,11 @@ class CriminalBackground extends Model
 {
     protected $fillable = [
         'description',
-        'user_id',
         'expedition_date',
-        'expiry_date',
+        'expiration_date',
         'employee_id',
-        'document',
-        'removed'
+        'file',
+        'droped'
     ];
 
     public function user(){

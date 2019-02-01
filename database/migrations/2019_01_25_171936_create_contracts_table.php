@@ -18,16 +18,12 @@ class CreateContractsTable extends Migration
             $table->string('description',150)->nullable();
             $table->binary('file')->nullable(false);
             $table->integer('employee_id')->nullable(false);
-            $table->integer('user_id')->nullable(false);
-            $table->date('generated_date')->nullable(false);
-            $table->date('expired_date')->nullable(false);
+            $table->date('expedition_date')->nullable(false);
+            $table->date('expiration_date')->nullable(false);
             $table->timestamps();
-            
+
             $table->foreign('employee_id')
                   ->references('id')->on('employees')
-                  ->onDelete('cascade');
-            $table->foreign('user_id')
-                  ->references('id')->on('users')
                   ->onDelete('cascade');
         });
     }

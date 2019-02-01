@@ -21,6 +21,12 @@ class CreateEmployeeSchedulesTable extends Migration
             $table->boolean('droped')->nullable(false);
             $table->timestamps();
 
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('schedule_id')
+                  ->references('id')->on('schedules')
+                  ->onDelete('cascade');
         });
     }
 

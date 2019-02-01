@@ -11,8 +11,7 @@ class ContractType extends Model
         'name',
         'short_name',
         'suggested_duration',
-        'description',
-        'appears'
+        'appears_in'
     ];
     public function professionalExperiences(){
         return $this->hasMany(ProfessionalExperience::class);

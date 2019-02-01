@@ -11,7 +11,7 @@ class CreateAcademicTrainingsTable extends Migration
      *
      * @return void
      */
-    
+
     public function up()
     {
         Schema::create('academic_trainings', function (Blueprint $table) {

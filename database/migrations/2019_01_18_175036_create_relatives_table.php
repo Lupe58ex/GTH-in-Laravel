@@ -21,17 +21,24 @@ class CreateRelativesTable extends Migration
             $table->char('gender',1)->nullable(false);
             $table->date('birthdate')->nullable();
             $table->string('cellphone',30)->nullable();
-            $table->string('house_via',20)->nullable();
+            $table->smallInteger('house_via_id')->nullable();
             $table->string('house_address',500)->nullable();
-            $table->string('job_via',20)->nullable();
+            $table->smallInteger('job_via_id')->nullable();
             $table->string('job_address',500)->nullable();
             $table->string('place_job',500)->nullable();
-            $table->char('DNI',8)->nullable();
+            $table->char('dni',8)->nullable();
             $table->boolean('full_age')->nullable();
-            $table->binary('address_image')->nullable();
-            $table->boolean('student')->nullable();
+            $table->binary('address_file')->nullable();
+            $table->boolean('is_student')->nullable();
             $table->string('reference',500)->nullable();
             $table->timestamps();
+
+            $table->foreign('house_via_id')
+                  ->references('id')->on('vias')
+                  ->onDelete('cascade');
+            $table->foreign('job_via_id')
+                  ->references('id')->on('vias')
+                  ->onDelete('cascade');
         });
     }
 

@@ -11,9 +11,8 @@ class Contract extends Model
         'description',
         'file',
         'employee_id',
-        'user_id',
-        'generated_date',
-        'expired_date'
+        'expedition_date',
+        'expiration_date'
     ];
 
     public function employee(){

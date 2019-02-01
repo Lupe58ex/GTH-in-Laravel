@@ -8,10 +8,14 @@ class License extends Model
 {
     //
     protected $fillable = [
-        'date',
+        'start_date',
+        'end_date',
+        'start_hour',
+        'end_hour',
+        'pension_option',
         'user_id',
         'employee_id',
-        'observation'
+        'reason'
     ];
     public function employee() {
         return $this->belongsTo(Employee::class);

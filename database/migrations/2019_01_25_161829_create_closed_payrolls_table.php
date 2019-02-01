@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDateClosesTable extends Migration
+class CreateClosedPayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class CreateDateClosesTable extends Migration
      */
     public function up()
     {
-        Schema::create('date_closes', function (Blueprint $table) {
+        Schema::create('closed_payrolls', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->nullable(false);
-            $table->integer('user_id')->nullable(false);
+            $table->tinyInteger('month')->nullable(false);
+            $table->smallinteger('year')->nullable(false);
+            $table->integer('user_id')->nullable();
             $table->string('observation',2500)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
-      
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
         });
     }
 
@@ -34,6 +34,6 @@ class CreateDateClosesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('date_closes');
+        Schema::dropIfExists('closed_payrolls');
     }
 }

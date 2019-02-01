@@ -13,7 +13,7 @@ class Employee extends Model
             'lastname_father',
             'lastname_mother',
             'identity_number',
-            'identification_Type_id',
+            'identification_type_id',
             'gender',
             'birthdate',
             'district',
@@ -25,17 +25,17 @@ class Employee extends Model
             'address_sketch',
             'email_main',
             'email_alternative',
-            'active',
+            'enabled',
             'role_id',
             'phone_number01',
             'phone_number02',
             'phone_number03',
-            'phone_Type1_id',
-            'phone_Type2_id',
-            'phone_Type3_id',
-            'phone_Operator1_id',
-            'phone_Operator2_id',
-            'phone_Operator3_id',
+            'phone_type1_id',
+            'phone_type2_id',
+            'phone_type3_id',
+            'phone_operator1_id',
+            'phone_operator2_id',
+            'phone_operator3_id',
             'phone_notes01',
             'phone_notes02',
             'phone_notes03',
@@ -46,9 +46,9 @@ class Employee extends Model
             'planning_date',
             'contract_term',
             'contract_type_id',
-            'contract_image',
+            'contract_file',
             'real_end_hiredate',
-            'job_Type_id',
+            'job_type_id',
             'work_modality',
             'projected_number_time',
             'projected_unity_time',
@@ -58,35 +58,35 @@ class Employee extends Model
             'salary_advance_allowed',
             'salary',
             'payrollsalary',
-            
+
             'marital_status',
             'home_condition',
             'number_of_children',
             'registerphoto_date',
             'availability_travel',
-            'work_area',
+            'area_id',
             'clothing_size',
-            
+
             'newsletter',
             'linkedln',
             'medical_status',
-            
+
             'driver_license_number',
             'date_expedition_driver_license',
             'sellbydate_driver_license',
             'type_driver_license',
-            
-            'image_schedule',
+
+            'file_schedule',
             'date_update_schedule',
 
             'cuspp',
             'bank_account_number',
             'payment_type',
-            'financial_Entity_id',
-            
+            'financial_entity_id',
+
             'bank_account',
             'student_children',
-            
+
     ];
 
     public function licenses () {
@@ -101,6 +101,7 @@ class Employee extends Model
     public function bonusDiscounts(){
         return $this->hasMany(Bonus_Discount::class);
     }
+    //
     public function cessations(){
         return $this->hasMany(Cessation::class);
     }
@@ -128,7 +129,7 @@ class Employee extends Model
     public function employeeRelative(){
         return $this->hasMany(EmployeeRelative::class);
     }
-    
+
 
     public function area(){
         return $this->belongsTo(Area::class);
@@ -141,22 +142,22 @@ class Employee extends Model
     }
     public function role(){
         return $this->belongsTo(Role::class);
-    }   
+    }
     public function phone_Type1(){
         return $this->belongsTo(PhoneType::class,'phone_Type1_id');
-    }            
+    }
     public function phone_Type2(){
         return $this->belongsTo(PhoneType::class,'phone_Type2_id');
-    }  
+    }
     public function phone_Type3(){
         return $this->belongsTo(PhoneType::class,'phone_Type3_id');
     }
     public function phone_Opertor1(){
         return $this->belongsTo(PhoneType::class,'phone_Operator1_id');
-    }            
+    }
     public function phone_Operator2(){
         return $this->belongsTo(PhoneType::class,'phone_Operator2_id');
-    }  
+    }
     public function phone_Operator3(){
         return $this->belongsTo(PhoneType::class,'phone_Operator3_id');
     }
@@ -182,7 +183,7 @@ class Employee extends Model
     public function relatives(){
         return $this->belongsToMany(Relative::class,EmployeeRelative)->withPivot('relationship','observation','bail_letter','guarantor','droped','student','employee1_id');
     }
-   
+
 
 }
 

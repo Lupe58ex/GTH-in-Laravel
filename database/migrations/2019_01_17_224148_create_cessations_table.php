@@ -20,8 +20,11 @@ class CreateCessationsTable extends Migration
             $table->date('cessation_date')->nullable();
             $table->string('cessation_reason',1000)->nullable();
             $table->integer('employee_id')->nullable(false);
-            $table->integer('user_id')->nullable(false);
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
         });
     }
 

@@ -14,7 +14,7 @@ class Reference extends Model
         'role',
         'phone_number',
         'business',
-        'commets'
+        'commet'
     ];
     public function employees(){
         return $this->belongsToMany(Employee::class);

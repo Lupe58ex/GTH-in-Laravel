@@ -18,17 +18,9 @@ class CreateSchedulesTable extends Migration
             $table->time('start_hour')->nullable(false);
             $table->time('end_hour')->nullable(false);
             $table->string('description',1500)->nullable();
-            $table->integer('user1_id')->nullable(false);
             $table->boolean('droped')->nullable(false);
-            $table->integer('user2_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user1_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
-            $table->foreign('user2_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
         });
     }
 
@@ -41,5 +33,5 @@ class CreateSchedulesTable extends Migration
     {
         Schema::dropIfExists('schedules');
     }
-  
+
 }

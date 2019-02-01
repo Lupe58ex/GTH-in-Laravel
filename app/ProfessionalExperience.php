@@ -8,17 +8,17 @@ class ProfessionalExperience extends Model
 {
     //
     protected $fillable=[
-        'area',
-        'experienceRole_id',
+        'area_id',
+        'role_id',
         'company_id',
         'start_month',
         'start_year',
         'end_month',
         'end_year',
-        'contractType_id',
-        'functions',
+        'contract_type_id',
+        'function',
         'user_id',
-        'observations',
+        'observation',
         'employee_id',
         'exit_reason'
     ];

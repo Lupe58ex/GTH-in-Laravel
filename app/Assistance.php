@@ -9,18 +9,11 @@ class Assistance extends Model
     //
     protected $fillable = [
         'date',
-        'employee_id',
-        'planned_start_hour',
-        'planned_end_hour',
         'real_start_time',
         'real_end_time',
         'user_id',
-        'schedule_id',
-        'observation',
-        'no_attendance',
-        'discount_quantity',
-        'observations',
-        'justification_id'
+        'employee_schedules_id',
+        'justification'
     ];
     public function employee(){
         return $this->belongsTo(Employee::class);

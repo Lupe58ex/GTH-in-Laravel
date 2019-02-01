@@ -11,7 +11,6 @@ class PensionSystem extends Model
         'name',
         'short_name',
         'description',
-        'actual_percent',
         'comission_on_flow',
         'annual_comission',
         'comission_for_flow',

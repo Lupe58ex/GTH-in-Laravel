@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DateClose extends Model
+class ClosedAssistances extends Model
 {
     Protected $fillable = [
         'date',
         'user_id',
+        'employee_id',
         'observation'
     ];
     public function user(){

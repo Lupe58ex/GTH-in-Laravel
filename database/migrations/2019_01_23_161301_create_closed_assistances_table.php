@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJustificationsTable extends Migration
+class CreateClosedAssistancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreateJustificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('justifications', function (Blueprint $table) {
+        Schema::create('closed_assistances', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reason',2500)->nullable(false);
-            $table->date('justified_date')->nullable(false);
-            $table->integer('schedule_id')->nullable(false);
+            $table->date('date')->nullable(false);
             $table->integer('user_id')->nullable(false);
+            $table->integer('employee_id')->nullable(false);
             $table->string('observation',2500)->nullable();
-            $table->boolean('is_discount')->nullable(false);
             $table->timestamps();
 
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');
-            $table->foreign('schedule_id')
-                  ->references('id')->on('schedules')
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
         });
     }
@@ -39,6 +37,6 @@ class CreateJustificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('justifications');
+        Schema::dropIfExists('closed_assistances');
     }
 }

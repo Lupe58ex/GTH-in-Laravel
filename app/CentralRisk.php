@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Equifax extends Model
+class CentralRisk extends Model
 {
     //
     protected $fillable = [
@@ -12,8 +12,8 @@ class Equifax extends Model
         'file',
         'employee_id',
         'user_id',
-        'generation_date',
-        'expire_date'
+        'expedition_date',
+        'expiration_date'
     ];
     public function employee(){
         return $this->belongsTo(Employee::class);
