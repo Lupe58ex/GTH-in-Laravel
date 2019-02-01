@@ -19,7 +19,7 @@ class CreateAssistancesTable extends Migration
             $table->bigInteger('user_id')->nullable(false);
             $table->time('real_start')->nullable();
             $table->time('real_end')->nullable();
-            $table->integer('employee_schedules_id')->nullable();
+            $table->integer('employee_schedule_id')->nullable();
             $table->string('justification',2000)->nullable();
             $table->timestamps();
 

@@ -15,9 +15,7 @@ class MedicalCondition extends Model
         'expiration_date',
         'droped'
     ];
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+
     public function employee(){
         return $this->belongsTo(Employee::class);
     }

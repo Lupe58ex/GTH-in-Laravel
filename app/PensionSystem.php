@@ -18,6 +18,6 @@ class PensionSystem extends Model
         'mandatory_contribution',
     ];
     public function employees(){
-        return $this->belongsToMany(Employee::class);
+        return $this->belongsToMany(Employee::class,EmployeePensionSystem)->withPivot('actual','comission_type');
     }
 }

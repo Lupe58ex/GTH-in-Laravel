@@ -33,58 +33,37 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function date_closes(){
-        return $this->hasMany(Date_close::class);
-    }
+    //
     public function academicTrainings(){
         return $this->hasMany(Academic_Training::class);
     }
+    //
     public function assistances(){
         return $this->hasMany(Assistances::class);
     }
+    //
     public function bonusDiscounts(){
         return $this->hasMany(bonus_Discount::class);
     }
-    public function cessations(){
-        return $this->hasMany(Cessation::class);
+    //
+    public function closedAsistances(){
+        return $this->hasMany(closedAsistances::class);
     }
-    public function contracts(){
-        return $this->hasMany(Contract::class);
+    //
+    public function centralRisks(){
+        return $this->hasMany(central_risks::class);
     }
-    public function criminalBackgrounds(){
-        return $this->hasMany(CriminalBackground::class);
-    }
-    public function datecloses(){
-        return $this->hasMany(DateClose::class);
-    }
-    public function equifaxes(){
-        return $this->hasMany(Equifax::class);
-    }
-    public function justifications(){
-        return $this->hasMany(Justification::class);
-    }
+    //
     public function licenses(){
         return $this->hasMany(License::class);
     }
-    public function medicalConditions(){
-        return $this->hasMany(MedicalCondition::class);
+    //
+    public function closedPayrolls(){
+        return $this->hasMany(ClosedPayroll::class);
     }
-    public function payrolls(){
-        return $this->hasMany(Payroll::class);
-    }
+    //
     public function professionalExperiences(){
         return $this->hasMany(ProfessionalExperience::class);
     }
-    public function schedules1(){
-        return $this->hasMany(Schedule::class,'id','user1_id');
-    }
-    public function schedules2(){
-        return $this->hasMany(Schedule::class,'id','user2_id');
-    }
-    public function discounts(){
-        return $this->hasMany(Discount::class);
-    }
-    public function employeePensionSystems(){
-        return $this->hasMany(EmployeePensionSystem::class);
-    }
+
 }

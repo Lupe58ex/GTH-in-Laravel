@@ -21,6 +21,10 @@ class CreateVacationsTable extends Migration
             $table->smallInteger('start_period')->nullable(false);
             $table->smallInteger('end_period')->nullable(false);
             $table->timestamps();
+
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
         });
     }
 

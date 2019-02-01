@@ -13,10 +13,4 @@ class EmployeePensionSystem extends Pivot
         'employee_id',
         'pension_system_id'
     ];
-    public function discounts(){
-        return $this->hasMany(Discount::class);
-    }
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
 }

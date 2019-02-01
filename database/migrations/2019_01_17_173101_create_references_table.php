@@ -21,7 +21,7 @@ class CreateReferencesTable extends Migration
             $table->string('role',150)->nullable(false);
             $table->string('phone_number',30)->nullable();
             $table->string('business',500)->nullable();
-            $table->string('commets',1500)->nullable();
+            $table->string('commet',1500)->nullable();
             $table->timestamps();
         });
     }

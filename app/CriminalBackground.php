@@ -14,11 +14,7 @@ class CriminalBackground extends Model
         'file',
         'droped'
     ];
-
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
     Public function employee(){
-        return $this->belonsTo(Employee::class);
+        return $this->belongsTo(Employee::class);
     }
 }

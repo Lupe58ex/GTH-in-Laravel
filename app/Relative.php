@@ -26,6 +26,12 @@ class Relative extends Model
         'reference'
     ];
     public function employees(){
-        return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot();
+        return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot('employee1_id','relationship','observation','bail_letter','guarantor','droped','is_student');
+    }
+    public function viajob(){
+        return $this->belongsTo(via::class,'job_via_id');
+    }
+    public function viahouse(){
+        return $this->belongsTo(via::class,'house_via_id');
     }
 }

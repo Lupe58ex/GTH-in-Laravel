@@ -17,6 +17,6 @@ class Reference extends Model
         'commet'
     ];
     public function employees(){
-        return $this->belongsToMany(Employee::class);
+        return $this->belongsToMany(Employee::class,EmployeeReference)->withPivot('removed');
     }
 }

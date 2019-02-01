@@ -13,4 +13,7 @@ class EmployeeSchedule extends Pivot
         'day',
         'droped'
     ];
+    public function assistances(){
+        return $this->hasMany(Assistances::class);
+    }
 }

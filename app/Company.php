@@ -15,4 +15,5 @@ class Company extends Model
     public function professionalExperiences(){
         return $this->hasMany(ProfessionalExperience::class);
     }
+
 }

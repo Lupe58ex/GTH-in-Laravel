@@ -22,11 +22,14 @@ class ProfessionalExperience extends Model
         'employee_id',
         'exit_reason'
     ];
-    public function experienceRole(){
-        return $this->belongsTo(ExperienceRole::class);
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
     public function company(){
         return $this->belongsTo(Company::class);
+    }
+    public function area(){
+        return $this->belongsTo(Area::class);
     }
     public function contractType(){
         return $this->belongsTo(ContractType::class);

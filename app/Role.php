@@ -18,5 +18,8 @@ class Role extends Model
     public function employees(){
         return $this->hasMany(Employee::class);
     }
+    public function professionalExperiences(){
+        return $this->hasMany(ProfessionalExperience::class);
+    }
 
 }

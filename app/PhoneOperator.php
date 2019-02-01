@@ -12,14 +12,14 @@ class PhoneOperator extends Model
         'name_long'
     ];
     public function employee1(){
-        return $this->hasMany(Employee::class,'id','phoneOperator1_id');
+        return $this->hasMany(Employee::class,'id','phone_operator1_id');
     }
     public function employee2(){
-        return $this->hasMany(Employee::class,'id','phoneOperator2_id');
+        return $this->hasMany(Employee::class,'id','phone_operator2_id');
     }
     public function employee3(){
-        return $this->hasMany(Employee::class,'id','phoneOperator3_id');
+        return $this->hasMany(Employee::class,'id','phone_operator3_id');
     }
-    
+
 
 }

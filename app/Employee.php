@@ -88,16 +88,16 @@ class Employee extends Model
             'student_children',
 
     ];
-
+    //
     public function licenses () {
         return $this->hasMany(License::class);
     }
+    //
     public function academicTrainings(){
         return $this->hasMany(Academic_Training::class);
     }
-    public function assistances(){
-        return $this->hasMany(Assistances::class);
-    }
+
+    //
     public function bonusDiscounts(){
         return $this->hasMany(Bonus_Discount::class);
     }
@@ -105,30 +105,43 @@ class Employee extends Model
     public function cessations(){
         return $this->hasMany(Cessation::class);
     }
+    //
+    public function closedAssitances(){
+        return $this->hasMany(ClosedAssistances::class);
+    }
+    //
     public function contracts(){
         return $this->hasMany(Contract::class);
     }
+    //
     public function criminalBackgrounds(){
         return $this->hasMany(CriminalBackground::class);
     }
-    public function equifaxes(){
-        return $this->hasMany(Equifax::class);
+    //
+    public function central_risks(){
+        return $this->hasMany(CentralRisk::class);
     }
+    //
     public function generatedPayrolls(){
         return $this->hasMany(GeneratedPayroll::class);
     }
+    //
     public function medicalConditions(){
         return $this->hasMany(MedicalCondition::class);
     }
+    //
     public function professionalExperiences(){
         return $this->hasMany(ProfessionalExperience::class);
     }
+    //
     public function vacations(){
         return $this->hasMany(Vacation::class);
     }
-    public function employeeRelative(){
+    //
+    public function employeeRelatives(){
         return $this->hasMany(EmployeeRelative::class);
     }
+
 
 
     public function area(){
@@ -143,45 +156,48 @@ class Employee extends Model
     public function role(){
         return $this->belongsTo(Role::class);
     }
-    public function phone_Type1(){
-        return $this->belongsTo(PhoneType::class,'phone_Type1_id');
+    public function phoneType1(){
+        return $this->belongsTo(PhoneType::class,'phone_type1_id');
     }
-    public function phone_Type2(){
-        return $this->belongsTo(PhoneType::class,'phone_Type2_id');
+    public function phoneType2(){
+        return $this->belongsTo(PhoneType::class,'phone_type2_id');
     }
-    public function phone_Type3(){
-        return $this->belongsTo(PhoneType::class,'phone_Type3_id');
+    public function phoneType3(){
+        return $this->belongsTo(PhoneType::class,'phone_type3_id');
     }
-    public function phone_Opertor1(){
-        return $this->belongsTo(PhoneType::class,'phone_Operator1_id');
+    public function phoneOpertor1(){
+        return $this->belongsTo(PhoneType::class,'phone_operator1_id');
     }
-    public function phone_Operator2(){
-        return $this->belongsTo(PhoneType::class,'phone_Operator2_id');
+    public function phoneOperator2(){
+        return $this->belongsTo(PhoneType::class,'phone_operator2_id');
     }
-    public function phone_Operator3(){
-        return $this->belongsTo(PhoneType::class,'phone_Operator3_id');
+    public function phoneOperator3(){
+        return $this->belongsTo(PhoneType::class,'phone_operator3_id');
     }
-    public function job_Type(){
+    public function jobType(){
         return $this->belongsTo(JobType::class);
     }
-    public function financial_Entity(){
+    public function financialEntity(){
         return $this->belongsTo(FinancialEntity::class);
     }
-    public function contract_Type(){
+    public function contractType(){
         return $this->belongsTo(ContractType::class);
     }
-
+    //
     public function schedules() {
         return $this->belongsToMany(Schedule::class,EmployeeSchedule)->withPivot('day','droped');
     }
+    //
     public function references(){
         return $this->belongToMany(Reference::class,EmployeeReference)->withPivot('removed');
     }
-    public function pensionSystems(){
-        return $this->belongToMany(PensionSystem::class,EmployeePensionSystem)->withPivot('actual','comission_type','user_id','comission_on_flow','annual_comission','comission_for_flow','insurance_premium','mandatory_contribution');
+    //
+    public function pension_systems(){
+        return $this->belongToMany(PensionSystem::class,EmployeePensionSystem)->withPivot('actual','comission_type');
     }
+    //
     public function relatives(){
-        return $this->belongsToMany(Relative::class,EmployeeRelative)->withPivot('relationship','observation','bail_letter','guarantor','droped','student','employee1_id');
+        return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot('employee1_id','relationship','observation','bail_letter','guarantor','droped','is_student');
     }
 
 

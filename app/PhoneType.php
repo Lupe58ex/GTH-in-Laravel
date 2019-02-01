@@ -13,12 +13,12 @@ class PhoneType extends Model
     ];
 
     public function employee1(){
-        return $this->hasMany(Employee::class,'id','phoneType1_id');
+        return $this->hasMany(Employee::class,'id','phone_type1_id');
     }
     public function employee2(){
-        return $this->hasMany(Employee::class,'id','phoneType2_id');
+        return $this->hasMany(Employee::class,'id','phone_type2_id');
     }
     public function employee3(){
-        return $this->hasMany(Employee::class,'id','phoneType3_id');
+        return $this->hasMany(Employee::class,'id','phone_type3_id');
     }
 }

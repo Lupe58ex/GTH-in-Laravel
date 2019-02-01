@@ -16,4 +16,8 @@ class Area extends Model
     public function employees(){
         return $this->hasMany(Employee::class);
     }
+    public function professionalEsperiences(){
+        return $this->hasMany(ProfessionalExperience::class);
+    }
+
 }
