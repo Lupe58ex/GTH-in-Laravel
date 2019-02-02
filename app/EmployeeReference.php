@@ -8,7 +8,9 @@ class EmployeeReference extends Pivot
 {
     //
     protected $fillable=[
-        'removed'
+        'removed',
+        'employee_id',
+        'reference_id',
     ];
 
 }

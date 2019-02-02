@@ -21,7 +21,6 @@ class CessationResource extends JsonResource
             'cessation_date'=>$this->cessation_date,
             'cessation_reason'=>$this->cessation_reason,
             'employee_id'=>EmployeeResource::collection($this->employee),
-            'user_id'=>UserResource::collection($this->user),
         ];
     }
 }

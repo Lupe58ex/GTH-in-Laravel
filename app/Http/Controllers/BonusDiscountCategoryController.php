@@ -17,7 +17,7 @@ class BonusDiscountCategoryController extends Controller
     public function index()
     {
         //
-        $BonusDiscountCategory = BonusDiscountCategory::paginate(15);
+        $bonusDiscountCategory = BonusDiscountCategory::paginate(15);
     }
 
     /**
@@ -38,8 +38,7 @@ class BonusDiscountCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $BonusDiscountCategory = BonusDiscountCategory::create([
-            'id'=>$request->id,
+        $bonusDiscountCategory = BonusDiscountCategory::create([
             'name'=>$request->name,
             'description'=>$request->description,
             'enabled'=>$request->enabled,
@@ -56,7 +55,7 @@ class BonusDiscountCategoryController extends Controller
     public function show($id)
     {
         //
-        $BonusDiscountCategory =  BonusDiscountCategory::findOrFail($id);
+        $bonusDiscountCategory =  BonusDiscountCategory::findOrFail($id);
     }
 
     /**

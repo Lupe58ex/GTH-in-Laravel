@@ -17,6 +17,8 @@ class EmployeeScheduleResource extends JsonResource
         return [
             'day'=>$this->day,
             'droped'=>$this->droped,
+            'employee_id'=>EmployeeResource::collection($this->employee),
+            'schedule_id'=>ScheduleResource::collection($this->schedule),
         ];
     }
 }

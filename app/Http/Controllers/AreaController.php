@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\JobType;
-use App\Http\Resources\JobTypeResource;
+use App\Area;
+use App\Http\Resource\AreaResource;
 
-class JobTypeController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $area = Area::paginate(15);
+        return $area;
     }
 
     /**
@@ -39,17 +38,13 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $JobType=JobType::create([
+        $area = Area::create([
             'name'=>$request->name,
+            'description'=>$request->description,
+            'internal_code'=>$request->internal_code,
+            'appears_in'=>$request->appears_in,
         ]);
-        new JobTypeResource($JobType);
-        /*
-        $JobType = new JobType;
-        $JobType->name=$request->name;
-
-        $JobType->save();*/
-        return  $JobType;
+        return $area;
     }
 
     /**
@@ -60,9 +55,8 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
-
+        $area = Area::findOrFail($id);
+        return $area;
     }
 
     /**

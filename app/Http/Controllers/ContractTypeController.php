@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ContratType;
+use App\Http\Resource\ContractTypeResource;
 
-class EquifaxController extends Controller
+class ContractTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class EquifaxController extends Controller
      */
     public function index()
     {
-        //
+        $contractType = ContractType::paginate(15);
+        return $contractType;
     }
 
     /**
@@ -35,7 +38,12 @@ class EquifaxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contractType = ContractType::create([
+            'name'=>$request->name,
+            'short_name'=>$requst->short_name,
+            'suggested_duration'=>$request->suggested_duration,
+            'appears_in'=>$request->appears_in,
+        ]);
     }
 
     /**
@@ -46,7 +54,8 @@ class EquifaxController extends Controller
      */
     public function show($id)
     {
-        //
+        $contractType = ContractType::findOrFail($id);
+        return $contractType;
     }
 
     /**

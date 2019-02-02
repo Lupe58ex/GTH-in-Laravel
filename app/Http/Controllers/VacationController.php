@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Vacation;
+use App\Http\Resource\VacationResource;
 
 class VacationController extends Controller
 {
@@ -13,7 +16,7 @@ class VacationController extends Controller
      */
     public function index()
     {
-        //
+        $vacation = Vacation::paginate(15);
     }
 
     /**
@@ -34,7 +37,13 @@ class VacationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vacation = Vacation::create([
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'start_period'=>$request->start_period,
+            'end_period'=>$request->end_period,
+        ]);
     }
 
     /**
@@ -45,8 +54,8 @@ class VacationController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $vacation = Vacation::findOrFail($id)
+;    }
 
     /**
      * Show the form for editing the specified resource.

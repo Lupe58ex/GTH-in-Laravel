@@ -18,6 +18,7 @@ class AreaResource extends JsonResource
             'name'=>$this->name,
             'description'=>$this->description,
             'internal_code'=>$this->internal_code,
+            'appears_in'=>$this->appears_in,
         ];
     }
 }

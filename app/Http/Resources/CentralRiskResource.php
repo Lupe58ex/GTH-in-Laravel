@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PayrollResource extends JsonResource
+class CentralRiskResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,13 @@ class PayrollResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'month'=>$this->month,
-            'year'=>$this->year,
+            'id'=>$this->id,
+            'description'=>$this->description,
+            'file'=>$this->file,
+            'employee_id'=>EmployeeResource::collection($this->employee),
             'user_id'=>UserResource::collection($this->user),
-            'observations'=>$this->observations,
+            'expedition_date'=>$this->expedition_date,
+            'expiration_date'=>$this->expiration_date,
         ];
     }
 }

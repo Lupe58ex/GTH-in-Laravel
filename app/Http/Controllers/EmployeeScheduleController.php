@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\JobType;
-use App\Http\Resources\JobTypeResource;
+use App\EmployeeSchedule;
+use App\Http\Resource\EmployeeScheduleResource;
 
-class JobTypeController extends Controller
+class EmployeeScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $employeeSchedule = EmployeeSchedule::pagination(15);
     }
 
     /**
@@ -39,17 +37,12 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $JobType=JobType::create([
-            'name'=>$request->name,
+        $employeeSchedule = EmployeeSchedule::create([
+            'day'=>$request->day,
+            'droped'=>$request->droped,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'schedule_id'=>ScheduleResource::collection($request->schedule),
         ]);
-        new JobTypeResource($JobType);
-        /*
-        $JobType = new JobType;
-        $JobType->name=$request->name;
-
-        $JobType->save();*/
-        return  $JobType;
     }
 
     /**
@@ -60,9 +53,7 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
-
+        $employeeSchedule = EmployeeSchedule::findOrFail($id);
     }
 
     /**

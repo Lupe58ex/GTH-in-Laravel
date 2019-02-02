@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\PensionSystem;
+use App\Http\Resource\PensionSystemResource;
 
 class PensionSystemController extends Controller
 {
@@ -13,7 +16,7 @@ class PensionSystemController extends Controller
      */
     public function index()
     {
-        //
+        $pensionSystem = PensionSystem::pagination(15);
     }
 
     /**
@@ -34,7 +37,16 @@ class PensionSystemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pensionSystem = PensionSystem::create([
+            'name'=>$request->name,
+            'short_name'=>$request->short_name,
+            'description'=>$request->description,
+            'comission_on_flow'=>$request->comission_on_flow,
+            'annual_comission'=>$request->annual_comission,
+            'comission_for_flow'=>$request->comission_for_flow,
+            'insurance_premium'=>$request->insurance_premium,
+            'mandatory_contribution'=>$request->mandatory_contribution,
+        ]);
     }
 
     /**
@@ -45,7 +57,7 @@ class PensionSystemController extends Controller
      */
     public function show($id)
     {
-        //
+        $pensionSystem = PensionSystem::findOrFail($id);
     }
 
     /**

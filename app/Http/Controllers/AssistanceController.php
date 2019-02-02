@@ -17,8 +17,8 @@ class AssistanceController extends Controller
     public function index()
     {
         //
-        $Assistance = Assistance::pagination(15);
-        return $Assistance;
+        $assistance = Assistance::pagination(15);
+        return $assistance;
     }
 
     /**
@@ -28,7 +28,7 @@ class AssistanceController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -39,22 +39,15 @@ class AssistanceController extends Controller
      */
     public function store(Request $request)
     {
-        $Assistance=Assistance::create([
+        $assistance=Assistance::create([
             'date'=>$request->date,
-            'employee_id'=>EmployeeResource::collection($request->employee),
-            'planned_start_hour'=>$request->planned_start_hour,
-            'planned_end_hour'=>$request->planned_end_hour,
             'real_start_time'=>$request->real_start_time,
             'real_end_time'=>$request->real_end_time,
             'user_id'=>UserResource::collection($request->user),
-            'schedule_id'=>ScheduleResource::collection($request->schedule),
-            'observation'=>$request->observation,
-            'no_attendance'=>$request->no_attendance,
-            'discount_quantity'=>$request->discount_quantity,
-            'observations'=>$request->observations,
-            'justification_id'=>JustificationResource::collection($request->justification)
+            'employee_schedule_id'=>EmployeeScheduleResource::collection($request->employee_schedule),
+            'justification'=>$request->justification,
         ]);
-        
+
     }
 
     /**
@@ -65,8 +58,8 @@ class AssistanceController extends Controller
      */
     public function show($id)
     {
-        $Assistance = Assistance::findOrFail($id);
-        
+        $assistance = Assistance::findOrFail($id);
+
     }
 
     /**

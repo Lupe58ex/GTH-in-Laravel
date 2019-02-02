@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Schedule;
+use App\Http\Resource\ScheduleResource;
 
 class ScheduleController extends Controller
 {
@@ -13,7 +16,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
+        $schedule = Schedule::paginate(15);
     }
 
     /**
@@ -34,7 +37,12 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $schedule = Schedule::create([
+            'start_hour'=>$request->start_hour,
+            'end_hour'=>$request->end_hour,
+            'description'=>$request->description,
+            'droped'=>$request->droped,
+        ]);
     }
 
     /**
@@ -45,7 +53,7 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+        $schedule = Schedule::findOrFail($id);
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Reference;
+use App\Http\Resource\ReferenceResource;
 
 class ReferenceController extends Controller
 {
@@ -13,7 +16,7 @@ class ReferenceController extends Controller
      */
     public function index()
     {
-        //
+        $reference = Reference::paginate(15);
     }
 
     /**
@@ -34,7 +37,15 @@ class ReferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reference = Reference::create([
+            'lastname_father'=>$request->lastname_father,
+            'lastname_mother'=>$request->lastname_mother,
+            'name'=>$request->name,
+            'role'=>$request->role,
+            'phone_number'=>$request->phone_number,
+            'business'=>$request->business,
+            'commet'=>$request->commet,
+        ]);
     }
 
     /**
@@ -45,7 +56,7 @@ class ReferenceController extends Controller
      */
     public function show($id)
     {
-        //
+        $reference = Reference::findOrFail($id);
     }
 
     /**

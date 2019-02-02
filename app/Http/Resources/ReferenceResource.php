@@ -21,7 +21,7 @@ class ReferenceResource extends JsonResource
             'role'=>$this->role,
             'phone_number'=>$this->phone_number,
             'business'=>$this->business,
-            'commets'=>$this->commets,
+            'commet'=>$this->commet,
         ];
     }
 }

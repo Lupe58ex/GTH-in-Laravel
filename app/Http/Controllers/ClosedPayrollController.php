@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\JobType;
-use App\Http\Resources\JobTypeResource;
+use App\ClosedPayroll;
+use App\Http\Resource\ClosedPayrollResource;
 
-class JobTypeController extends Controller
+class ClosedPayrollController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $closedPayroll = ClosedPayroll::paginate(15);
+        return $closedPayroll;
     }
 
     /**
@@ -39,17 +38,12 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $JobType=JobType::create([
-            'name'=>$request->name,
+        $closedPayroll = ClosedPayroll::create([
+            'month'=>$request->month,
+            'year'=>$request->year,
+            'user_id'=>UserResource::collection($request->user),
+            'observation'=>$request->observation,
         ]);
-        new JobTypeResource($JobType);
-        /*
-        $JobType = new JobType;
-        $JobType->name=$request->name;
-
-        $JobType->save();*/
-        return  $JobType;
     }
 
     /**
@@ -60,9 +54,7 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
-
+        $closedPayroll = ClosedPayroll::findOrFail($id);
     }
 
     /**

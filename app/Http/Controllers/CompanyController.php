@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Company;
+use App\Http\Resource\CompanyResource;
 
-class JustificationController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class JustificationController extends Controller
      */
     public function index()
     {
-        //
+        $company = Company::paginate(15);
     }
 
     /**
@@ -35,7 +37,11 @@ class JustificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = Company::create([
+            'large_name'=>$request->large_name,
+            'short_name'=>$request->short_name,
+            'description'=>$request->description,
+        ]);
     }
 
     /**
@@ -46,7 +52,7 @@ class JustificationController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = Company::findOrFail($id);
     }
 
     /**
@@ -80,6 +86,6 @@ class JustificationController extends Controller
      */
     public function destroy($id)
     {
-//
+        //
     }
 }

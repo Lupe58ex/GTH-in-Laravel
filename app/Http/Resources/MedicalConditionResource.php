@@ -16,12 +16,11 @@ class MedicalConditionResource extends JsonResource
     {
         return [
             'description'=>$this->description,
-            'user_id'=>UserResource::collection($this->User),
             'expedition_date'=>$this->expedition_date,
             'employee_id'=>EmployeeResource::collection($this->employee),
-            'document'=>$this->document,
-            'expired_date'=>$this->expired_date,
-            'removed'=>$this->removed,
+            'file'=>$this->file,
+            'expiration_date'=>$this->expiration_date,
+            'droped'=>$this->droped,
         ];
     }
 }

@@ -29,12 +29,12 @@ class EmployeeController extends Controller
     {
         /*
         Employee::create([
-            
+
         ]);
         return response()->json(['status=>201']);
         */
 
-    } 
+    }
 
     /**
      * Store a newly created resource in storage.

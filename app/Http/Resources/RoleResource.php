@@ -20,6 +20,7 @@ class RoleResource extends JsonResource
             'description'=>$this->description,
             'loan_evaluator'=>$this->loan_evaluator,
             'loan_promoter'=>$this->loan_promoter,
+            'appears_in'=>$this->appears_in,
         ];
     }
 }

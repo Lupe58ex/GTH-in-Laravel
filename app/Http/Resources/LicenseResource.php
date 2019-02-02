@@ -15,10 +15,14 @@ class LicenseResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'date'=>$this->date,
+            'start_date'=>$this->start_date,
+            'end_date'=>$this->end_date,
+            'start_hour'=>$this->start_hour,
+            'end_hour'=>$this->end_hour,
+            'pension_option'=>$this->pension_option,
             'user_id'=>UserResource::collection($this->user),
             'employee_id'=>EmployeeResource::collection($this->employee),
-            'observation'=>$this->observation,
+            'reason'=>$this->reason,
         ];
     }
 }

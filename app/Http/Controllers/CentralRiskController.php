@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\CentralRisk;
+use App\Http\Resources\CentralRiskResource;
 
-class UserController extends Controller
+class CentralRiskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $centralRisk = CentralRisk::paginate(15);
+        return $centralRisk;
     }
 
     /**
@@ -34,7 +38,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $centralRisk = CentralRisk::create([
+            'description'=>$request->description,
+            'file'=>$request->file,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>UserResource::collection($request->user),
+            'expedition_date'=>$request->expedition_date,
+            'expiration_date'=>$request->expiration_date,
+        ]);
     }
 
     /**
@@ -45,7 +56,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $centralRisk = CentralRisk::findOrFail($id);
+        return $centralRisk;
     }
 
     /**

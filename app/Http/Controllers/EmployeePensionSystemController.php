@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\JobType;
-use App\Http\Resources\JobTypeResource;
+use App\EmployeePensionSystem;
+use App\Http\Resource\EmployeePensionSystemResource;
 
-class JobTypeController extends Controller
+class EmployeePensionSystemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $employeePensionSystem = EmployeePensionSystem::paginate(15);
     }
 
     /**
@@ -39,17 +37,12 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $JobType=JobType::create([
-            'name'=>$request->name,
+        $employeePensionSystem = EmployeePensionSystem::create([
+            'actual'=>$request->actual,
+            'comission_type'=>$request->comission_type,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'pension_system_id'=>$request->pension_system,
         ]);
-        new JobTypeResource($JobType);
-        /*
-        $JobType = new JobType;
-        $JobType->name=$request->name;
-
-        $JobType->save();*/
-        return  $JobType;
     }
 
     /**
@@ -60,9 +53,7 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
-
+        $employeePensionSystem = EmployeePensionSystem::findOrFail();
     }
 
     /**

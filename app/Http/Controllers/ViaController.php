@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Discount;
-use App\Http\Controllers\DiscountController;
+use App\Via;
+use App\Http\Resource\ViaResource;
 
-class DiscountController extends Controller
+class ViaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        $discount = Discount::Paginate(15);
+        $via = Via::paginate(15);
     }
 
     /**
@@ -26,7 +26,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -37,7 +37,10 @@ class DiscountController extends Controller
      */
     public function store(Request $request)
     {
-        $discount = DiscountController::create;
+        $via = Via::create([
+            'name_long'=>$request->name_long,
+            'name_short'=>$request->name_short,
+        ]);
     }
 
     /**
@@ -48,7 +51,7 @@ class DiscountController extends Controller
      */
     public function show($id)
     {
-        //
+        $via = Via::findOrFail($id);
     }
 
     /**

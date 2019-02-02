@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\ClosedAssistance;
+use App\Http\Resource\ClosedAssistanceResource;
 
-class PayrollController extends Controller
+class ClosedAsssitanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,8 @@ class PayrollController extends Controller
      */
     public function index()
     {
-        //
+        $closedAssistance = ClosedAsssitance::paginate(15);
+        return $closedAssistance;
     }
 
     /**
@@ -34,7 +38,11 @@ class PayrollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $closedAssistance = ClosedAsssitance::create([
+            'user_id'=>UserResource::collection($request->user),
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'observation'=>$request->observation,
+        ]);
     }
 
     /**
@@ -45,7 +53,7 @@ class PayrollController extends Controller
      */
     public function show($id)
     {
-        //
+        $closedAssistance = ClosedAsssitance::findOrFail($id);
     }
 
     /**

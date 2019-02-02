@@ -18,8 +18,7 @@ class ContractTypeResource extends JsonResource
             'name'=>$this->name,
             'short_name'=>$this->short_name,
             'suggested_duration'=>$this->suggested_duration,
-            'description'=>$this->description,
-            'appears'=>$this->appears,
+            'appears_in'=>$this->appears,
         ];
     }
 }

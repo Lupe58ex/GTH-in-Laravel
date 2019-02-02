@@ -19,9 +19,8 @@ class ContractResource extends JsonResource
             'description'=>$this->description,
             'file'=>$this->file,
             'employee_id'=>EmployeeResource::collection($this->employee),
-            'user_id'=>UserResource::collection($this->user),
-            'generated_date'=>$this->genertaed_date,
-            'expired_date'=>$this->expired_date,
+            'expedition_date'=>$this->expedition_date,
+            'expiration_date'=>$this->expiration_date,
         ];
     }
 }

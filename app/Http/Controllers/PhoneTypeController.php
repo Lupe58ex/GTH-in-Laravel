@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\JobType;
-use App\Http\Resources\JobTypeResource;
+use App\PhoneType;
+use App\Http\Resource\PhoneTypeResource;
 
-class JobTypeController extends Controller
+class PhoneTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class JobTypeController extends Controller
      */
     public function index()
     {
-        //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $phoneType = PhoneType::paginate(15);
     }
 
     /**
@@ -39,17 +37,10 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
-
-        $JobType=JobType::create([
-            'name'=>$request->name,
+        $phoneType = PhoneType::create([
+            'name_long'=>$request->name_long,
+            'name_short'=>$request->name_short,
         ]);
-        new JobTypeResource($JobType);
-        /*
-        $JobType = new JobType;
-        $JobType->name=$request->name;
-
-        $JobType->save();*/
-        return  $JobType;
     }
 
     /**
@@ -60,9 +51,7 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
-
+        $phoneType = PhoneType::findOrFail($id);
     }
 
     /**

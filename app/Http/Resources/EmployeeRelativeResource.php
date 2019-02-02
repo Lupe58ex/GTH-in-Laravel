@@ -20,7 +20,7 @@ class EmployeeRelativeResource extends JsonResource
             'bail_letter'=>$this->bail_letter,
             'guarantor'=>$this->guarantor,
             'droped'=>$this->droped,
-            'student'=>$this->student,
+            'is_student'=>$this->is_student,
             'employee_id'=>EmployeeResource::collection($this->employee),
             'employee1_id'=>EmployeeResource::collection($this->employee1),
             'relative_id'=>RelativeResource::collection($this->relative),

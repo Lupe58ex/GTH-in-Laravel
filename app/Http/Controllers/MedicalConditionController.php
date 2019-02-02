@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\MedicalCondition;
+use App\Http\Resource\MedicalConditionResource;
 
 class MedicalConditionController extends Controller
 {
@@ -14,7 +16,7 @@ class MedicalConditionController extends Controller
      */
     public function index()
     {
-        //
+        $medicalCondition = MedicalCondition::pagination(15);
     }
 
     /**
@@ -35,7 +37,14 @@ class MedicalConditionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $medicalCondition = MedicalCondition::create([
+            'description'=>$request->description,
+            'expedition_date'=>$request->expedition_date,
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'file'=>$request->file,
+            'expiration_date'=>$request->expiration_date,
+            'droped'=>$request->droped,
+        ]);
     }
 
     /**
@@ -46,7 +55,7 @@ class MedicalConditionController extends Controller
      */
     public function show($id)
     {
-        //
+        $medicalCondition = MedicalCondition::findOrFail($id);
     }
 
     /**

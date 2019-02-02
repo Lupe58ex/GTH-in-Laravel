@@ -16,7 +16,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $Contract = Contract::paginate(15);
+        $contract = Contract::paginate(15);
     }
 
     /**
@@ -37,13 +37,12 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        $Contract = Contract::create([
+        $contract = Contract::create([
             'description'=>$request->description,
             'file'=>$request->file,
             'employee_id'=>EmployeeResource::collection($request->employee),
-            'user_id'=>UserResource::collection($request->user),
-            'generated_date'=>$request->genertaed_date,
-            'expired_date'=>$request->expired_date,
+            'expedition_date'=>$request->expedition_date,
+            'expiration_date'=>$request->expiration_date,
         ]);
     }
 
@@ -55,7 +54,7 @@ class ContractController extends Controller
      */
     public function show($id)
     {
-        $Contract = Contract::findOrFail($id);
+        $contract = Contract::findOrFail($id);
     }
 
     /**

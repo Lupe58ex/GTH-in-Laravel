@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\License;
+use App\Http\Resource\LicenseResource;
 
 class LicenseController extends Controller
 {
@@ -14,7 +16,7 @@ class LicenseController extends Controller
      */
     public function index()
     {
-        //
+        $license = License::pagination(15);
     }
 
     /**
@@ -35,7 +37,16 @@ class LicenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $license = License::create([
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+            'start_hour'=>$request->start_hour,
+            'end_hour'=>$request->end_hour,
+            'pension_option'=>$request->pension_option,
+            'user_id'=>UserResource::collection($request->user),
+            'employee_id'=>EmployeeResource::collection($request->employee),
+            'reason'=>$request->reason,
+        ]);
     }
 
     /**
@@ -46,7 +57,7 @@ class LicenseController extends Controller
      */
     public function show($id)
     {
-        //
+        $license = License::findOrFail($id);
     }
 
     /**

@@ -26,7 +26,7 @@ class CriminalBackgroundController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -39,12 +39,11 @@ class CriminalBackgroundController extends Controller
     {
         $criminalBackground = CriminalBackground::create([
             'description'=>$request->description,
-            'user_id'=>UserResource::collection($request->user),
             'expedition_date'=>$request->expiration_date,
-            'expiry_date'=>$request->expiry_date,
+            'expiration_date'=>$request->expiration_date,
             'employee_id'=>EmployeeResource::collection($request->employee),
-            'document'=>$request->document,
-            'removed'=>$request->removed,
+            'file'=>$request->file,
+            'droped'=>$request->droped,
         ]);
     }
 

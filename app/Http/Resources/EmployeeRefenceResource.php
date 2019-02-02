@@ -16,6 +16,8 @@ class EmployeeRefenceResource extends JsonResource
     {
         return [
             'removed'=>$this->removed,
+            'employee_id'=>EmployeeResource::collection($this->employee_id),
+            'reference_id'=>ReferenceResource::collection($this->reference_id),
         ];
     }
 }

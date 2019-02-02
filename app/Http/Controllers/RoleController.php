@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Role;
+use App\Http\Resource\RoleResource;
 
 class RoleController extends Controller
 {
@@ -13,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role = Role::pagiante(15);
     }
 
     /**
@@ -34,7 +37,14 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = Role::create([
+            'name_long'=>$request->name_long,
+            'name_short'=>$request->name_short,
+            'description'=>$request->description,
+            'loan_evaluator'=>$request->loan_evaluator,
+            'loan_promoter'=>$request->loan_promoter,
+            'appears_in'=>$request->appears_in,
+        ]);
     }
 
     /**
@@ -45,7 +55,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::findOrFail($id);
     }
 
     /**
