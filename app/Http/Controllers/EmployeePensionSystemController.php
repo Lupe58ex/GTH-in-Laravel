@@ -40,7 +40,7 @@ class EmployeePensionSystemController extends Controller
         $employeePensionSystem = EmployeePensionSystem::create([
             'actual'=>$request->actual,
             'comission_type'=>$request->comission_type,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'pension_system_id'=>$request->pension_system,
         ]);
     }
@@ -76,7 +76,8 @@ class EmployeePensionSystemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$employeePensionSystem = EmployeePensionSystem::where('id',$request->id)->update($request->only(''));
+        $employeePensionSystem = EmployeePensionSystem::where('id',$request->id)->update($request->all());
     }
 
     /**

@@ -74,7 +74,8 @@ class PhoneOperatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$phoneOperator = PhoneOperator::where('id',$request->id)->update($request->only());
+        $phoneOperator = PhoneOperator::where('id',$request->id)->update($request->all());
     }
 
     /**

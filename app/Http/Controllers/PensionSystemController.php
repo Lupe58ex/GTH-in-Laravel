@@ -68,7 +68,8 @@ class PensionSystemController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$pensionSystem = PensionSystem::where('id',$request->id)->update($request->only(''));
+        $pensionSystem = PensionSystem::where('id',$request->id)->update($request->all());
     }
 
     /**

@@ -39,8 +39,8 @@ class ClosedAsssitanceController extends Controller
     public function store(Request $request)
     {
         $closedAssistance = ClosedAsssitance::create([
-            'user_id'=>UserResource::collection($request->user),
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>$request->user_id,
+            'employee_id'=>$request->employee_id,
             'observation'=>$request->observation,
         ]);
     }

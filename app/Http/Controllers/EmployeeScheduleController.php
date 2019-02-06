@@ -40,8 +40,8 @@ class EmployeeScheduleController extends Controller
         $employeeSchedule = EmployeeSchedule::create([
             'day'=>$request->day,
             'droped'=>$request->droped,
-            'employee_id'=>EmployeeResource::collection($request->employee),
-            'schedule_id'=>ScheduleResource::collection($request->schedule),
+            'employee_id'=>$request->employee_id,
+            'schedule_id'=>$request->schedule_id,
         ]);
     }
 
@@ -76,7 +76,8 @@ class EmployeeScheduleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$employeeSchedule = EmployeeSchedule::where('id',$request->id)->update($request->only(''));
+        $employeeSchedule = EmployeeSchedule::where('id',$request->id)->update($request->all());
     }
 
     /**

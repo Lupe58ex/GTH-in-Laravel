@@ -74,7 +74,8 @@ class FinantialEntityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$financialEntity = FinancialEntity::where('id',$request->id)->update($request->only(''));
+        $financialEntity = FinancialEntity::where('id',$request->id)->update($request->all());
     }
 
     /**

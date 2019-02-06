@@ -41,7 +41,7 @@ class CriminalBackgroundController extends Controller
             'description'=>$request->description,
             'expedition_date'=>$request->expiration_date,
             'expiration_date'=>$request->expiration_date,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'file'=>$request->file,
             'droped'=>$request->droped,
         ]);
@@ -78,7 +78,8 @@ class CriminalBackgroundController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$criminalBackground = CriminalBackground::where('id',$request->id)->update($request->only(''));
+        $criminalBackground = CriminalBackground::where('id',$request->id)->update($request->all());
     }
 
     /**

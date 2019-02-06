@@ -40,7 +40,7 @@ class VacationController extends Controller
         $vacation = Vacation::create([
             'start_date'=>$request->start_date,
             'end_date'=>$request->end_date,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee,
             'start_period'=>$request->start_period,
             'end_period'=>$request->end_period,
         ]);
@@ -77,7 +77,8 @@ class VacationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$vacation = Vacation::where('id',$request->id)->update($request->only(''));
+        $vacation = Vacation::where('id',$request->id)->update($request->all());
     }
 
     /**

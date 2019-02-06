@@ -41,6 +41,7 @@ class IdentificationTypeController extends Controller
             'large_name'=>$request->large_name,
             'short_name'=>$request->short_name,
         ]);
+        return $identificationType
     }
 
     /**
@@ -74,7 +75,8 @@ class IdentificationTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$identificationType = IdentificationType::where('id',$request->id)->update($request->only(''));
+        $identificationType = IdentificationType::where('id'.$request->id)->update($request->all());
     }
 
     /**

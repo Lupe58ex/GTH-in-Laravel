@@ -74,7 +74,8 @@ class PhoneTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$phoneType = PhoneType::where('id',$request->id)->update($request->only(''));
+        $phoneType = PhoneType::where('id',$request->id)->update($request->all());
     }
 
     /**

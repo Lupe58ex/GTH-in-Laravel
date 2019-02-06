@@ -38,18 +38,18 @@ class ProfessionalExperienceController extends Controller
     public function store(Request $request)
     {
         $professionalExperience = ProfessionalExperience::create([
-            'area_id'=>AreaResource::collection($request->area),
-            'role_id'=>RoleResource::collection($request->role),
-            'company_id'=>CompanyResource::collection($request->company),
+            'area_id'=>$request->area_id,
+            'role_id'=>$request->role_id,
+            'company_id'=>$request->company_id,
             'start_month'=>$request->start_month,
             'start_year'=>$request->start_year,
             'end_month'=>$request->end_month,
             'end_year'=>$request->end_year,
-            'contract_type_id'=>ContractTypeResource::collection($request->contrat_type),
+            'contract_type_id'=>$request->contrat_type_id,
             'function'=>$request->function,
-            'user_id'=>UserResource::collection($request->user),
+            'user_id'=>$request->user_id,
             'observation'=>$request->observation,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'exit_reason'=>$request->exit_reason,
         ]);
     }
@@ -85,7 +85,8 @@ class ProfessionalExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$professionalExperience = ProfessionalExperience::where('id',$request->id)->update($request->only(''));
+        $professionalExperience = ProfessionalExperience::where('id',$request->id)->update($request->all());
     }
 
     /**

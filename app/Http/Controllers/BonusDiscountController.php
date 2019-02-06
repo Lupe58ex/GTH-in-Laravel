@@ -42,11 +42,11 @@ class BonusDiscountController extends Controller
         $bonusDiscount =BonusDiscount::create([
             'quantity'=>$request->quantity,
             'reason'=>$request->reason,
-            'employee_id'=>EmployeeResource::collection($request->employee),
-            'user_id'=>UserResource::collection($request->user),
+            'employee_id'=>$request->employee_id,
+            'user_id'=>$request->user_id,
             'for_month'=>$request->for_month,
             'for_year'=>$request->for_year,
-            'bonus_discount_category_id'=>BonusDiscountCategoryResource::collection($request->bonusDiscountCategory),
+            'bonus_discount_category_id'=>$request->bonusDiscountCategory_id,
 
         ]);
     }
@@ -82,7 +82,8 @@ class BonusDiscountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$bonusDiscount = BonusDiscount::where('id', $request->id)->update($request->only('name'));   
+        $bonusDiscount = BonusDiscount::where('id', $request->id)->update($request->all());   
     }
 
     /**

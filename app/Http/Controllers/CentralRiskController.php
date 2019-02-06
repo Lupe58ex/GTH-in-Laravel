@@ -41,8 +41,8 @@ class CentralRiskController extends Controller
         $centralRisk = CentralRisk::create([
             'description'=>$request->description,
             'file'=>$request->file,
-            'employee_id'=>EmployeeResource::collection($request->employee),
-            'user_id'=>UserResource::collection($request->user),
+            'employee_id'=>$request->employee_id,
+            'user_id'=>$request->user_id,
             'expedition_date'=>$request->expedition_date,
             'expiration_date'=>$request->expiration_date,
         ]);
@@ -80,7 +80,8 @@ class CentralRiskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$centralRisk = CentralRisk::where('id', $request->id)->update($request->only('name'));   
+        $centralRisk = CentralRisk::where('id', $request->id)->update($request->all());   
     }
 
     /**

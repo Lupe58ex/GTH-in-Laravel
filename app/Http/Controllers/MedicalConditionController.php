@@ -40,7 +40,7 @@ class MedicalConditionController extends Controller
         $medicalCondition = MedicalCondition::create([
             'description'=>$request->description,
             'expedition_date'=>$request->expedition_date,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'file'=>$request->file,
             'expiration_date'=>$request->expiration_date,
             'droped'=>$request->droped,
@@ -78,7 +78,8 @@ class MedicalConditionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$medicalCondition = MedicalCondition::where('id',$request->id)->update($request->only(''));
+        $medicalCondition = MedicalCondition::where('id',$request->id)->update($request->all());
     }
 
     /**

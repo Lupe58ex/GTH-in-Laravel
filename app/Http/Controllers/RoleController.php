@@ -78,7 +78,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$role = Role::where('id',$request->id)->update($request->only(''));
+        $role = Role::where('id',$request->id)->update($request->all());
     }
 
     /**

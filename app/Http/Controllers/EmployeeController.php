@@ -46,7 +46,7 @@ class EmployeeController extends Controller
     {
         //
         return Employee::create($request->all());
-        return response()->json($article, 201);
+        //return response()->json($article, 201);
     }
 
     /**

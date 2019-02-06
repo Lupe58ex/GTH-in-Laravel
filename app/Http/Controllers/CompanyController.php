@@ -63,7 +63,7 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -75,7 +75,8 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$company = Company::where('id', $request->id)->update($request->only('name'));
+        $company = Company::where('id', $request->id)->update($request->all());
     }
 
     /**

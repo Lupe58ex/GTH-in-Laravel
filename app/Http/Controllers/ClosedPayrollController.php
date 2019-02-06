@@ -41,7 +41,7 @@ class ClosedPayrollController extends Controller
         $closedPayroll = ClosedPayroll::create([
             'month'=>$request->month,
             'year'=>$request->year,
-            'user_id'=>UserResource::collection($request->user),
+            'user_id'=>$request->user_id,
             'observation'=>$request->observation,
         ]);
     }

@@ -78,7 +78,8 @@ class ContractTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$contractType = ContractType::where('id',$request->id)->update($request->onlu(''));
+        $contractType = ContractType::where('id',$request->id)->update($request->all());
     }
 
     /**

@@ -39,8 +39,8 @@ class EmployeeReferenceController extends Controller
     {
         $employeeReference = EmployeeReference::create([
             'removed'=>$request->removed,
-            'employee_id'=>EmployeeResource::collection($request->employee_id),
-            'reference_id'=>ReferenceResource::collection($request->reference_id),
+            'employee_id'=>$request->employee_id,
+            'reference_id'=>$request->reference_id,
         ]);
     }
 
@@ -75,7 +75,8 @@ class EmployeeReferenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$employeeReference = EmployeeReference::where('id',$request->id)->update($request->only(''));
+        $employeeReference = EmployeeReference::where('id',$request->id)->update($request->all());
     }
 
     /**

@@ -78,7 +78,8 @@ class BonusDiscountCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$bonusDiscountCategory = BonusDiscountCategory::where('id', $request->id)->update($request->only('name'));   
+        $bonusDiscountCategory = BonusDiscountCategory::where('id', $request->id)->update($request->all());   
     }
 
     /**

@@ -43,8 +43,8 @@ class LicenseController extends Controller
             'start_hour'=>$request->start_hour,
             'end_hour'=>$request->end_hour,
             'pension_option'=>$request->pension_option,
-            'user_id'=>UserResource::collection($request->user),
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>$request->user_id,
+            'employee_id'=>$request->employee_id,
             'reason'=>$request->reason,
         ]);
     }
@@ -80,7 +80,8 @@ class LicenseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$license = License::where('id',$request->id)->update($request->only(''));
+        $license = License::where('id',$request->id)->update($request->all());
     }
 
     /**

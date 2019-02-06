@@ -79,7 +79,8 @@ class AreaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$area = Area::where('id', $request->id)->update($request->only('name'));   
+        $area = Area::where('id', $request->id)->update($request->all());   
     }
 
     /**

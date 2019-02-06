@@ -44,9 +44,9 @@ class RelativeController extends Controller
             'gender'=>$request->gender,
             'birthdate'=>$request->birthdate,
             'cellphone'=>$request->cellphone,
-            'house_via_id'=>ViaResource::collection($request->house_via),
+            'house_via_id'=>$request->house_via_id,
             'house_address'=>$request->house_address,
-            'job_via_id'=>ViaResource::collection($request->job_via),
+            'job_via_id'=>$request->job_via_id,
             'job_address'=>$request->job_address,
             'place_job'=>$request->place_job,
             'dni'=>$request->DNI,
@@ -55,6 +55,7 @@ class RelativeController extends Controller
             'is_student'=>$request->is_student,
             'reference'=>$request->reference,
         ]);
+        return $relative;
     }
 
     /**
@@ -88,7 +89,8 @@ class RelativeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$relative = Relative::where('id', $request->id)->update($request->only('name'));
+        $relative = Relative::where('id', $request->id)->update($request->all());
     }
 
     /**

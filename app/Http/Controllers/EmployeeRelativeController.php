@@ -44,9 +44,9 @@ class EmployeeRelativeController extends Controller
             'guarantor'=>$request->guarantor,
             'droped'=>$request->droped,
             'is_student'=>$request->is_student,
-            'employee_id'=>EmployeeResource::collection($request->employee),
-            'employee1_id'=>EmployeeResource::collection($request->employee1),
-            'relative_id'=>RelativeResource::collection($request->relative),
+            'employee_id'=>$request->employee_id,
+            'employee1_id'=>$request->employee1_id,
+            'relative_id'=>$request->relative_id,
         ]);
     }
 
@@ -81,7 +81,8 @@ class EmployeeRelativeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$employeeRelative = EmployeeRelative::where('id',$request->id)->update($request->only(''));
+        $employeeRelative = EmployeeRelative::where('id',$request->id)->update($request->all());
     }
 
     /**

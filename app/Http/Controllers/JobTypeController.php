@@ -17,8 +17,8 @@ class JobTypeController extends Controller
     public function index()
     {
         //
-        $JobType = JobType::paginate(15);
-        return $JobType;
+        $jobType = JobType::paginate(15);
+        return $jobType;
     }
 
     /**
@@ -40,16 +40,16 @@ class JobTypeController extends Controller
     public function store(Request $request)
     {
 
-        $JobType=JobType::create([
+        $jobType=JobType::create([
             'name'=>$request->name,
         ]);
-        new JobTypeResource($JobType);
+        new JobTypeResource($jobType);
         /*
         $JobType = new JobType;
         $JobType->name=$request->name;
 
         $JobType->save();*/
-        return  $JobType;
+        return  $jobType;
     }
 
     /**
@@ -60,8 +60,8 @@ class JobTypeController extends Controller
      */
     public function show($id)
     {
-        $JobType = JobType::findOrFail($id);
-        return $JobType;
+        $jobType = JobType::findOrFail($id);
+        return $jobType;
 
     }
 
@@ -85,7 +85,8 @@ class JobTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$jobType = JobType::where('id',$request->id)->update($request->only());
+        $jobType = JobType::where('id',$request->id)->update($request->all());
     }
 
     /**

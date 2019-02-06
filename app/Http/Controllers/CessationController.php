@@ -42,7 +42,7 @@ class CessationController extends Controller
             'entry_reason'=>$request->entry_reason,
             'cessation_date'=>$request->cessation_date,
             'cessation_reason'=>$request->cessation_reason,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
         ]);
     }
 
@@ -77,7 +77,9 @@ class CessationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$cessation = Cessation::where('id', $request->id)->update($request->only('name'));
+        $cessation = Cessation::where('id', $request->id)->update($request->all());
+
     }
 
     /**

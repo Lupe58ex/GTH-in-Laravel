@@ -40,7 +40,7 @@ class GeneratedPayrollController extends Controller
         $generatedPayroll = GeneratedPayroll::create([
             'month'=>$request->month,
             'year'=>$request->year,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'real_salary'=>$request->real_salary,
             'payroll_salary'=>$request->payroll_salary,
             'quantity_consider'=>$request->quantity_consider,

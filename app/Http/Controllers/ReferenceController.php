@@ -79,7 +79,8 @@ class ReferenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$reference = Reference::where('id',$request->id)->update($reference->only(''));
+        $reference = Reference::where('id',$request->id)->update($reference->all());
     }
 
     /**

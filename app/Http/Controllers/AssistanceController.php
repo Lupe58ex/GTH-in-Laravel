@@ -43,8 +43,8 @@ class AssistanceController extends Controller
             'date'=>$request->date,
             'real_start_time'=>$request->real_start_time,
             'real_end_time'=>$request->real_end_time,
-            'user_id'=>UserResource::collection($request->user),
-            'employee_schedule_id'=>EmployeeScheduleResource::collection($request->employee_schedule),
+            'user_id'=>$request->user_id,
+            'employee_schedule_id'=>$request->employee_schedule_id,
             'justification'=>$request->justification,
         ]);
 
@@ -82,7 +82,8 @@ class AssistanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$assistance = Assistance::where('id', $request->id)->update($request->only('name'));   
+        $assistance = Assistance::where('id', $request->id)->update($request->all());   
     }
 
     /**

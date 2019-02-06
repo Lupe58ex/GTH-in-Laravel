@@ -40,7 +40,7 @@ class ContractController extends Controller
         $contract = Contract::create([
             'description'=>$request->description,
             'file'=>$request->file,
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'employee_id'=>$request->employee_id,
             'expedition_date'=>$request->expedition_date,
             'expiration_date'=>$request->expiration_date,
         ]);
@@ -77,7 +77,8 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$contract = Contract::where('id',$request->id)->update($request->only(''));
+        $contract = Contract::where('id',$request->id)->update($request->all());
     }
 
     /**

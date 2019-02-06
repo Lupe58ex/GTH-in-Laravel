@@ -43,8 +43,8 @@ class AcademicTrainingController extends Controller
             'institute'=>$request->insitute,
             'period'=>$request->period,
             'condition'=>$request->condition,
-            'user_id'=>UserResource::collection($request->user),
-            'employee_id'=>EmployeeResource::collection($request->employee),
+            'user_id'=>$request->user_id,
+            'employee_id'=>$request->employee_id,
         ]);
         new AcademicTraining($academicTraining);
         return $academicTraining;
@@ -83,7 +83,8 @@ class AcademicTrainingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$academicTraining = AcademicTraining::where('id', $request->id)->update($request->only('name'));   
+        $academicTraining = AcademicTraining::where('id', $request->id)->update($request->all());   
     }
 
     /**
