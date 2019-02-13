@@ -38,10 +38,10 @@ class IdentificationTypeController extends Controller
     public function store(Request $request)
     {
         $identificationType = IdentificationType::create([
-            'large_name'=>$request->large_name,
-            'short_name'=>$request->short_name,
+            'name_long'=>$request->name_long,
+            'name_short'=>$request->short_short,
         ]);
-        return $identificationType
+        return $identificationType;
     }
 
     /**

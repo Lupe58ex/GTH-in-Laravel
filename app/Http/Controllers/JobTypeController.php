@@ -39,17 +39,18 @@ class JobTypeController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
 
         $jobType=JobType::create([
             'name'=>$request->name,
         ]);
-        new JobTypeResource($jobType);
+
         /*
         $JobType = new JobType;
         $JobType->name=$request->name;
 
         $JobType->save();*/
-        return  $jobType;
+
     }
 
     /**
