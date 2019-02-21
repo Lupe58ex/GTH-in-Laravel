@@ -39,9 +39,9 @@ class IdentificationTypeController extends Controller
     {
         $identificationType = IdentificationType::create([
             'name_long'=>$request->name_long,
-            'name_short'=>$request->short_short,
+            'name_short'=>$request->name_short,
         ]);
-        return $identificationType;
+        //return $identificationType;
     }
 
     /**

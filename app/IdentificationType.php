@@ -9,10 +9,10 @@ class IdentificationType extends Model
     //
     protected $fillable = [
         'name_long',
-        'name_short'
+        'name_short',
     ];
     public function employees(){
         return $this->hasMany(Employee::class);
     }
-   
+
 }
