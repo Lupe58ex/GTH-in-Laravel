@@ -8,8 +8,8 @@ class FinancialEntity extends Model
 {
     //
     protected $fillable = [
-        'large_name',
-        'short_name'
+        'name_long',
+        'name_short'
     ];
     public function employee(){
         return $this->hasMany(Employee::class);

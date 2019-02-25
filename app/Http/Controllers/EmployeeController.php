@@ -27,12 +27,13 @@ class EmployeeController extends Controller
      */
     public function create(Request $request)
     {
-        /*
-        Employee::create([
+        $identificationType= Identification::all();
+        $gender = [
+            'M'=>'Masculino',
+            'F'=>'Femenino'
+        ];
+        return response()->json($identificationType,$gender);
 
-        ]);
-        return response()->json(['status=>201']);
-        */
 
     }
 
