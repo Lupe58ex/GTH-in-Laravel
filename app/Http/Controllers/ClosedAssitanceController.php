@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\ClosedAssistance;
 use App\Http\Resource\ClosedAssistanceResource;
 
-class ClosedAsssitanceController extends Controller
+class ClosedAssitanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ClosedAsssitanceController extends Controller
      */
     public function index()
     {
-        $closedAssistance = ClosedAsssitance::paginate(15);
+        $closedAssistance = ClosedAssitance::paginate(15);
         return $closedAssistance;
     }
 
@@ -38,7 +38,7 @@ class ClosedAsssitanceController extends Controller
      */
     public function store(Request $request)
     {
-        $closedAssistance = ClosedAsssitance::create([
+        $closedAssistance = ClosedAssitance::create([
             'user_id'=>$request->user_id,
             'employee_id'=>$request->employee_id,
             'observation'=>$request->observation,
@@ -53,7 +53,7 @@ class ClosedAsssitanceController extends Controller
      */
     public function show($id)
     {
-        $closedAssistance = ClosedAsssitance::findOrFail($id);
+        $closedAssistance = ClosedAssitance::findOrFail($id);
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Employee;
 use App\Http\Resouces\EmployeeResource;
+use App\IdentificationType;
 
 class EmployeeController extends Controller
 {
@@ -27,12 +28,11 @@ class EmployeeController extends Controller
      */
     public function create(Request $request)
     {
-        /*
-        Employee::create([
-
+        $identificationTypes = IdentificationType::all();
+        return response()->json([
+            'identificationTypes' => $identificationTypes
         ]);
-        return response()->json(['status=>201']);
-        */
+        dd( $identificationTypes);
 
     }
 

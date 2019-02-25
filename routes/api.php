@@ -79,6 +79,7 @@ Route::post('/criminalBackground/Update/{id}', 'CriminalBackgroundController@upd
 //employee
 Route::post('/employee/Store', 'EmployeeController@store');
 Route::get('/employee/Index', 'EmployeeController@index');
+Route::get('/employee/Create', 'EmployeeController@create');
 Route::get('/employee/Show/{id}', 'EmployeeController@show');
 Route::post('/employee/Update/{id}', 'EmployeeController@update');
 //employeePensionSystem
