@@ -15,8 +15,8 @@ class FinancialEntityResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'large_name'=>$this->large_name,
-            'short_name'=>$this->short_name,
+            'name_long'=>$this->large_name,
+            'name_short'=>$this->short_name,
         ];
     }
 }

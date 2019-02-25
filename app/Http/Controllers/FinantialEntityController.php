@@ -38,8 +38,8 @@ class FinantialEntityController extends Controller
     public function store(Request $request)
     {
         $financialEntity = FinancialEntity::create([
-            'large_name'=>$request->large_name,
-            'short_name'=>$request->short_name,
+            'name_long'=>$request->large_name,
+            'name_short'=>$request->short_name,
         ]);
     }
 

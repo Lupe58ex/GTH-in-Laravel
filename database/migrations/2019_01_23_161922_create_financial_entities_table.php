@@ -15,8 +15,8 @@ class CreateFinancialEntitiesTable extends Migration
     {
         Schema::create('financial_entities', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('large_name',250)->nullable(false);
-            $table->string('short_name',70)->nullable(false);
+            $table->string('name_long',250)->nullable(false);
+            $table->string('name_short',70)->nullable(false);
             $table->timestamps();
         });
     }

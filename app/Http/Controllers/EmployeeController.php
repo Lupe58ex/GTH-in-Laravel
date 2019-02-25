@@ -34,6 +34,14 @@ class EmployeeController extends Controller
         ]);
         dd( $identificationTypes);
 
+        /*$identificationType= Identification::all();
+        $gender = [
+            'M'=>'Masculino',
+            'F'=>'Femenino'
+        ];
+        return response()->json($identificationType,$gender);
+        */
+
     }
 
     /**
