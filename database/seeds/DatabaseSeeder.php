@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(JobTypesTableSeeder::class);
         $this->call(PhoneOperatorsTableSeeder::class);
         $this->call(PhoneTypesTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
     }
 }

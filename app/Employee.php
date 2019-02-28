@@ -25,7 +25,7 @@ class Employee extends Model
             'address_sketch',
             'email_main',
             'email_alternative',
-            'enabled',
+            'enable',
             'role_id',
             'phone_number01',
             'phone_number02',

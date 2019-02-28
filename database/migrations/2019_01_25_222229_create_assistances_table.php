@@ -27,7 +27,7 @@ class CreateAssistancesTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->foreign('employee_schedule_id')
-                ->references('id')->on('employee_schedules')
+                ->references('id')->on('employee_schedule')
                 ->onDelete('cascade');
         });
     }

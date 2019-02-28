@@ -31,7 +31,7 @@ class EmployeeResource extends JsonResource
             'address_sketch'=>$this->address_sketh,
             'email_main'=>$this->email_name,
             'email_alternative'=>$this->email_alternative,
-            'enabled'=>$this->enabled,
+            'enable'=>$this->enable,
             'role_id'=>RoleResource::collection($this->role),
             'phone_number01'=>$this->phone_number01,
             'phone_number02'=>$this->phone_number02,

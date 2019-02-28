@@ -32,7 +32,7 @@ class EmployeeController extends Controller
         return response()->json([
             'identificationTypes' => $identificationTypes
         ]);
-        dd( $identificationTypes);
+        dd( response);
 
         /*$identificationType= Identification::all();
         $gender = [
@@ -53,8 +53,8 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
-        return Employee::create($request->all());
-        //return response()->json($article, 201);
+        $employee =  Employee::create($request->all());
+        return response()->json($employee);
     }
 
     /**

@@ -47,7 +47,7 @@ class CreateEmployeesTable extends Migration
             $table->string('phone_notes02',30)->nullable();
             $table->string('phone_notes03',30)->nullable();
             //imagen
-            $table->string('photo')->nulllable();
+            $table->string('photo')->nullable();
             $table->datetime('date_update_photo')->nullable();
             $table->date('admission_date')->nullable();
             $table->date('hire_date')->nullable();

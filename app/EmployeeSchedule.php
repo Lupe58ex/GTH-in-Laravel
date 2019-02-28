@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class EmployeeSchedule extends Pivot
 {
@@ -14,6 +15,6 @@ class EmployeeSchedule extends Pivot
         'droped'
     ];
     public function assistances(){
-        return $this->hasMany(Assistances::class);
+        return $this->hasMany(Assistance::class);
     }
 }

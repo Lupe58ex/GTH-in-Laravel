@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeeRelativesTable extends Migration
+class CreateEmployeeRelativeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEmployeeRelativesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_relatives', function (Blueprint $table) {
+        Schema::create('employee_relative', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('employee1_id')->nullable(false);
             $table->bigInteger('employee_id')->nullable(false);
@@ -45,6 +45,6 @@ class CreateEmployeeRelativesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_relatives');
+        Schema::dropIfExists('employee_relative');
     }
 }

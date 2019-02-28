@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeePensionSystemsTable extends Migration
+class CreateEmployeePensionSystemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEmployeePensionSystemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_pension_systems', function (Blueprint $table) {
+        Schema::create('employee_pension_system', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pension_system_id')->nullable(false);
             $table->integer('employee_id')->nullable(false);
@@ -38,6 +38,6 @@ class CreateEmployeePensionSystemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_pension_systems');
+        Schema::dropIfExists('employee_pension_system');
     }
 }

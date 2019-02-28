@@ -22,6 +22,7 @@ Route::get('/area/Index', 'AreaController@index');
 Route::get('/area/Show/{id}', 'AreaController@show');
 Route::post('/area/Update/{id}', 'AreaController@update');
 //Assitance
+Route::get('/assistance/Create', 'AssistanceController@create');
 Route::post('/assistance/Store', 'AssistanceController@store');
 Route::get('/assistance/Index', 'AssistanceController@index');
 Route::get('/assitance/Show/{id}', 'AssistanceController@show');
