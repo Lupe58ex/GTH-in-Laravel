@@ -17,4 +17,10 @@ class EmployeeSchedule extends Pivot
     public function assistances(){
         return $this->hasMany(Assistance::class);
     }
+    public function employees(){
+        return $this->belongsTo(Employee::class);
+    }
+    public function schedules(){
+        return $this->belongsTo(Schedule::class);
+    }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Assistance;
+use App\EmployeeSchedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Assistance;
-use App\Http\Resources\AssistanceResource;
-use App\EmployeeSchedule;
-use App\Employee;
+use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\EmployeeScheduleResource;
 
 class AssistanceController extends Controller
@@ -30,15 +30,13 @@ class AssistanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        $data = EmployeeSchedule::all()->where('droped',false);
-        $data_resource = new EmployeeScheduleResource($data);
-        dd($data_resource);
+    {
+        $employee = EmployeeSchedule::all();
+        $data_resource = new EmployeeScheduleResource($employee);
+        
         return response()->json([
-            'employee'=>$data_resource
+            'assitances'=>$data_resource
             ]);
-       
-
     }
 
     /**

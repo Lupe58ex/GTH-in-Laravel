@@ -185,7 +185,7 @@ class Employee extends Model
     }
     //
     public function schedules() {
-        return $this->belongsToMany(Schedule::class,EmployeeSchedule)->withPivot('day','droped');
+        return $this->belongsToMany(Schedule::class)->withPivot('day');
     }
     //
     public function references(){

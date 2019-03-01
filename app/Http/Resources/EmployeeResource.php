@@ -13,8 +13,15 @@ class EmployeeResource extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        return [
+    {   
+        //return $this->resource->map(function ($employee){
+            return [
+            'name'=>$this->name,
+            'lastname_father'=>$this->lastname_father,
+            'lastname_mother'=>$this->lastname_mother,
+            ];  
+        //}); 
+        /*return [
             'name'=>$this->name,
             'lastname_father'=>$this->lastname_father,
             'lastname_mother'=>$this->lastname_mother,
@@ -95,6 +102,6 @@ class EmployeeResource extends JsonResource
 
             'created_at' => (string) $this->created_at,
             'updated_at' => (string) $this->updated_at,
-        ];
+        ];*/
     }
 }

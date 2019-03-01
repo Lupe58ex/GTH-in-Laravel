@@ -2,6 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Employee;
+use App\Schedule;
+use App\Http\Resources\EmployeeResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EmployeeScheduleResource extends JsonResource
@@ -13,12 +16,28 @@ class EmployeeScheduleResource extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        return [
+    {  
+        
+        return $this->resource->map(function ($employee){
+        $this->resource->load('employees');
+        $this->resource->load('schedules');
+            return [
+            'day'=>$employee->day,
+            'droped'=>$employee->droped,
+            'employee'=>new EmployeeResource($employee->employees),
+            'schedule'=>new ScheduleResource($employee->schedules),
+            ];
+
+        /*
+        $this->resource->load('employees');
+        $this->resource->load('schedules');
+            return [
             'day'=>$this->day,
             'droped'=>$this->droped,
-            'employee_id'=>EmployeeResource::collection($this->employee_id),
-            'schedule_id'=>ScheduleResource::collection($this->schedule_id),
-        ];
+            'employee'=>new EmployeeResource(Employee::find($this->employee_id)),
+            'schedule'=>new ScheduleResource($this->schedules),
+            ];  
+                */
+        });
     }
 }

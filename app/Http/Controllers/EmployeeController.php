@@ -66,7 +66,9 @@ class EmployeeController extends Controller
     public function show($id)
     {
         //
-        $employee = Employee::find($id);
+        $employee= Employee::find($id);
+        $employeeJustName = new EmployeeResource($employee);
+        return $employeeJustName;
     }
 
     /**
