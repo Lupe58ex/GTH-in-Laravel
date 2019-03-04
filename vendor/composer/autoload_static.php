@@ -515,6 +515,7 @@ class ComposerStaticInitc749362fee69bdaaf869e24470d539ef
         'App\\Http\\Controllers\\EmployeeScheduleController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeeScheduleController.php',
         'App\\Http\\Controllers\\FinantialEntityController' => __DIR__ . '/../..' . '/app/Http/Controllers/FinantialEntityController.php',
         'App\\Http\\Controllers\\GeneratedPayrollController' => __DIR__ . '/../..' . '/app/Http/Controllers/GeneratedPayrollController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IdentificationTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/IdentificationTypeController.php',
         'App\\Http\\Controllers\\JobTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/JobTypeController.php',
         'App\\Http\\Controllers\\LicenseController' => __DIR__ . '/../..' . '/app/Http/Controllers/LicenseController.php',

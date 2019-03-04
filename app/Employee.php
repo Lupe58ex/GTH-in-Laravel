@@ -200,7 +200,10 @@ class Employee extends Model
         return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot('employee1_id','relationship','observation','bail_letter','guarantor','droped','is_student');
     }
 
-
+    // Mutators
+    public function getFullNameAttribute() {
+        return "{$this->name} {$this->lastname_father} {$this->lastname_mother}";
+    }
 }
 
 

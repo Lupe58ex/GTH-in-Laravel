@@ -24,8 +24,6 @@ class EmployeeScheduleResource extends JsonResource
             return [
             'day'=>$employee->day,
             'droped'=>$employee->droped,
-            'employee'=>new EmployeeResource($employee->employees),
-            'schedule'=>new ScheduleResource($employee->schedules),
             ];
 
         /*

@@ -55,6 +55,7 @@ return array(
     'App\\Http\\Controllers\\EmployeeScheduleController' => $baseDir . '/app/Http/Controllers/EmployeeScheduleController.php',
     'App\\Http\\Controllers\\FinantialEntityController' => $baseDir . '/app/Http/Controllers/FinantialEntityController.php',
     'App\\Http\\Controllers\\GeneratedPayrollController' => $baseDir . '/app/Http/Controllers/GeneratedPayrollController.php',
+    'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\IdentificationTypeController' => $baseDir . '/app/Http/Controllers/IdentificationTypeController.php',
     'App\\Http\\Controllers\\JobTypeController' => $baseDir . '/app/Http/Controllers/JobTypeController.php',
     'App\\Http\\Controllers\\LicenseController' => $baseDir . '/app/Http/Controllers/LicenseController.php',

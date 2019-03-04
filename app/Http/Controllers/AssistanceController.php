@@ -31,12 +31,12 @@ class AssistanceController extends Controller
      */
     public function create()
     {
-        $employee = EmployeeSchedule::all();
-        $data_resource = new EmployeeScheduleResource($employee);
+        $employees = Employee::all();
+        $employeeWithSchedule = new EmployeeResource($employees);
         
         return response()->json([
-            'assitances'=>$data_resource
-            ]);
+            'employeeWithSchedule' => $employeeWithSchedule
+        ]);
     }
 
     /**

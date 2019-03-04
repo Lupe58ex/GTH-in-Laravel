@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Employee;
 
 class EmployeeResource extends JsonResource
 {
@@ -14,13 +16,15 @@ class EmployeeResource extends JsonResource
      */
     public function toArray($request)
     {   
-        //return $this->resource->map(function ($employee){
+        $this->resource->load('schedules');
+        return $this->resource->map(function ($employee){
             return [
-            'name'=>$this->name,
-            'lastname_father'=>$this->lastname_father,
-            'lastname_mother'=>$this->lastname_mother,
-            ];  
-        //}); 
+                //Employee::select(DB::raw("CONCAT(name, ' ', lastname_father,' ',lastname_mother) as fullname"))->where('id',$employees->id)->get(),
+                'fullname' => $employee->fullname,
+                'schedules' => new ScheduleResource($employee->schedules)
+            ];
+            
+        }); 
         /*return [
             'name'=>$this->name,
             'lastname_father'=>$this->lastname_father,
