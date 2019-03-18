@@ -14,9 +14,7 @@ class Relative extends Model
         'gender',
         'birthdate',
         'cellphone',
-        'house_via_id',
         'house_address',
-        'job_via_id',
         'job_address',
         'place_job',
         'dni',
@@ -27,11 +25,5 @@ class Relative extends Model
     ];
     public function employees(){
         return $this->belongsToMany(Employee::class,EmployeeRelative)->withPivot('employee1_id','relationship','observation','bail_letter','guarantor','droped','is_student');
-    }
-    public function viajob(){
-        return $this->belongsTo(via::class,'job_via_id');
-    }
-    public function viahouse(){
-        return $this->belongsTo(via::class,'house_via_id');
     }
 }

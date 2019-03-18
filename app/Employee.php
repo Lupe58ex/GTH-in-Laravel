@@ -8,7 +8,7 @@ class Employee extends Model
 {
     //
     protected $fillable=[
-
+            'id',
             'name',
             'lastname_father',
             'lastname_mother',
@@ -16,10 +16,9 @@ class Employee extends Model
             'identification_type_id',
             'gender',
             'birthdate',
-            'district',
-            'province',
-            'department',
-            'via_id',
+            'district_id',
+            'province_id',
+            'department_id',
             'address',
             'address_reference',
             'address_sketch',
@@ -27,18 +26,18 @@ class Employee extends Model
             'email_alternative',
             'enable',
             'role_id',
-            'phone_number01',
-            'phone_number02',
-            'phone_number03',
+            'phone_number1',
+            'phone_number2',
+            'phone_number3',
             'phone_type1_id',
             'phone_type2_id',
             'phone_type3_id',
             'phone_operator1_id',
             'phone_operator2_id',
             'phone_operator3_id',
-            'phone_notes01',
-            'phone_notes02',
-            'phone_notes03',
+            'phone_notes1',
+            'phone_notes2',
+            'phone_notes3',
             'photo',
             'date_update_photo',
             'admission_date',
@@ -73,7 +72,7 @@ class Employee extends Model
 
             'driver_license_number',
             'date_expedition_driver_license',
-            'sellbydate_driver_license',
+            'date_expiration_driver_license',
             'type_driver_license',
 
             'file_schedule',
@@ -86,6 +85,7 @@ class Employee extends Model
 
             'bank_account',
             'student_children',
+            'agency_id'
 
     ];
     //
@@ -182,6 +182,18 @@ class Employee extends Model
     }
     public function contractType(){
         return $this->belongsTo(ContractType::class);
+    }
+    public function agency(){
+        return $this->belongsTo(Agency::class);
+    }
+    public function district(){
+        return $this->belongsTo(District::class);
+    }
+    public function province(){
+        return $this->belongsTo(Province::class);
+    }
+    public function department(){
+        return $this->belongsTo(Department::class);
     }
     //
     public function schedules() {

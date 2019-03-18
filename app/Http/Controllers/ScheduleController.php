@@ -26,7 +26,11 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $turns = [
+            ['id' => 'M', 'name' => 'Mañana'],
+            ['id' => 'T', 'name' => 'Tarde']
+        ];
+        return view('schedules.create', compact('turns'));
     }
 
     /**
@@ -37,12 +41,7 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $schedule = Schedule::create([
-            'start_hour'=>$request->start_hour,
-            'end_hour'=>$request->end_hour,
-            'description'=>$request->description,
-            'droped'=>$request->droped,
-        ]);
+        $schedule = Schedule::create($request->all());
     }
 
     /**

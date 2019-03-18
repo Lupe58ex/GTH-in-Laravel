@@ -18,13 +18,6 @@ class EmployeeScheduleResource extends JsonResource
     public function toArray($request)
     {  
         
-        return $this->resource->map(function ($employee){
-        $this->resource->load('employees');
-        $this->resource->load('schedules');
-            return [
-            'day'=>$employee->day,
-            'droped'=>$employee->droped,
-            ];
 
         /*
         $this->resource->load('employees');
@@ -36,6 +29,6 @@ class EmployeeScheduleResource extends JsonResource
             'schedule'=>new ScheduleResource($this->schedules),
             ];  
                 */
-        });
+        
     }
 }

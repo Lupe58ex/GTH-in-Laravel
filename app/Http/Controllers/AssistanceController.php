@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Assistance;
-use App\EmployeeSchedule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
-use App\Http\Resources\EmployeeScheduleResource;
 
 class AssistanceController extends Controller
 {
@@ -20,8 +18,8 @@ class AssistanceController extends Controller
     public function index()
     {
         //
-        $assistance = Assistance::pagination(15);
-        return $assistance;
+        //$assistance = Assistance::pagination(15);
+        //return $assistance;
     }
 
     /**
@@ -31,12 +29,15 @@ class AssistanceController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-        $employeeWithSchedule = new EmployeeResource($employees);
+        $employeesEnabled = Employee::all()->where('enable',true);
+        //$schedules = Employee::all()->schedules;
+
+        $employeesWithSchedules = new EmployeeResource($employeesEnabled);
         
-        return response()->json([
-            'employeeWithSchedule' => $employeeWithSchedule
-        ]);
+        //return $employeesWithSchedules;
+        return view('assistances.create', compact(
+           'employeesWithSchedules'
+        ));
     }
 
     /**

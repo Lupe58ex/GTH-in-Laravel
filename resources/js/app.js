@@ -12,6 +12,12 @@ import Buefy from 'buefy'
 Vue.use(Buefy, {
     defaultIconPack: 'fas'
 })
+import VeeValidate, { Validator } from 'vee-validate';
+import es from 'vee-validate/dist/locale/es';
+Vue.use(VeeValidate, {
+    events: ''
+});
+Validator.localize('es', es);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24,6 +30,11 @@ Vue.use(Buefy, {
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('schedule-create-component', require('./components/schedules/ScheduleCreateComponent.vue').default);
+Vue.component('employee-create-component', require('./components/employees/EmployeeCreateComponent.vue').default);
+Vue.component('employee_schedule-create-component', require('./components/employee_schedules/Employee_scheduleCreateComponent.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

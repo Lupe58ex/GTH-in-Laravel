@@ -2,7 +2,7 @@
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
-$primary: #8c67ef;
+$primary: #305da8;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
@@ -43,7 +43,7 @@ $link-focus-border: $primary;
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: #000;
   height: 100%;
   width: 6px;
   display: inline-block;
@@ -97,4 +97,10 @@ $link-focus-border: $primary;
 
 .b-tabs .tab-content {
   overflow: unset;
+}
+.navbar{
+  background-color: #9ACD32;
+}
+.card-header{
+  background-color: #cef084;
 }

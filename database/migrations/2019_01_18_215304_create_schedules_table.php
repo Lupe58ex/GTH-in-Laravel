@@ -15,10 +15,11 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('start_hour')->nullable(false);
-            $table->time('end_hour')->nullable(false);
+            $table->time('start_hour');
+            $table->time('end_hour');
+            $table->char('turn',1);
             $table->string('description',1500)->nullable();
-            $table->boolean('droped')->nullable(false);
+            $table->boolean('enable')->default(true);
             $table->timestamps();
 
         });

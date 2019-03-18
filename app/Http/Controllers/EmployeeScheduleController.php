@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\EmployeeSchedule;
-use App\Http\Resource\EmployeeScheduleResource;
+use App\Employee;
+use App\Schedule;
+use App\Http\Resources\ScheduleResource;
 
 class EmployeeScheduleController extends Controller
 {
@@ -26,7 +28,13 @@ class EmployeeScheduleController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::all()->where('enable',true);
+        $morningSchedules = Schedule::all()->where('enable',true)->where('turn','M');
+        $afternoonSchedules = Schedule::all()->where('enable',true)->where('turn','T');
+
+        //dd(date('H', strtotime($schedules[0]->start_hour)));
+        //dd(strtotime($schedules->start_hour),);
+        return view('employee_schedules.create ',compact('employees','morningSchedules','afternoonSchedules'));
     }
 
     /**

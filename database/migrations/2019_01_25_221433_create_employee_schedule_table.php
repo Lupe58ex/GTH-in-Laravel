@@ -15,10 +15,10 @@ class CreateEmployeeScheduleTable extends Migration
     {
         Schema::create('employee_schedule', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('employee_id')->nullable(false);
-            $table->Integer('schedule_id')->nullable(false);
-            $table->char('day',1)->nullable(false);
-            $table->boolean('droped')->nullable(false);
+            $table->bigInteger('employee_id');
+            $table->Integer('schedule_id');
+            $table->char('day',1);
+            $table->boolean('droped')->default(false);
             $table->timestamps();
 
             $table->foreign('employee_id')

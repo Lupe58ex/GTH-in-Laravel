@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
+use App\Role;
+use App\Agency;
+use App\JobType;
+use App\District;
+use App\Employee;
+use App\Province;
+use App\PhoneType;
+use App\Department;
+use App\ContractType;
+use App\PhoneOperator;
+use App\IdentificationType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Employee;
 use App\Http\Resouces\EmployeeResource;
-use App\IdentificationType;
 
 class EmployeeController extends Controller
 {
@@ -27,21 +37,63 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
+    {   
         $identificationTypes = IdentificationType::all();
-        return response()->json([
-            'identificationTypes' => $identificationTypes
-        ]);
-        dd( response);
-
-        /*$identificationType= Identification::all();
-        $gender = [
-            'M'=>'Masculino',
-            'F'=>'Femenino'
+        $genders = [
+            ['id' => 'M', 'name' => 'Masculino'],
+            ['id' => 'F', 'name' => 'Feminino']
         ];
-        return response()->json($identificationType,$gender);
-        */
-
+        $civilStates = [
+            ['name' => 'Soltero(a)'],
+            ['name' => 'Conviviente'],
+            ['name' => 'Casado(a)'],
+            ['name' => 'Divorciado(a)'],
+            ['name' => 'Viudo(a)']
+        ];
+        $departments = Department::all();
+        $provinces = Province::all();
+        $districts = District::all();
+        $phoneOperators = PhoneOperator::all();
+        $phoneTypes = PhoneType::all();
+        $agencies = Agency::all();
+        $areas = Area::all();
+        $roles = Role::all();
+        $contractTypes = ContractType::all();
+        $jobTypes = JobType::all();
+        $disponibilityToTravel = [
+            ['id'=>1,'name'=>'si'],
+            ['id'=>0,'name'=>'no']
+        ];
+        $typesLicenses = [
+            ['id'=>'moto','name'=>'Moto'],
+            ['id'=>'auto','name'=>'Auto'],
+            ['id'=>'ambos','name'=>'ambos']
+        ];
+        $clothingSizes = [
+            ['name' => 'XS'],
+            ['name' => 'S'],
+            ['name' => 'M'],
+            ['name' => 'L'],
+            ['name' => 'XL']
+        ];
+        
+        return view('employees.create', compact('identificationTypes',
+        'genders',
+        'departments',
+        'civilStates',
+        'provinces',
+        'districts',
+        'phoneOperators',
+        'phoneTypes',
+        'agencies',
+        'areas',
+        'roles',
+        'contractTypes',
+        'jobTypes',
+        'disponibilityToTravel',
+        'typesLicenses',
+        'clothingSizes'
+        ));
     }
 
     /**
@@ -52,9 +104,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $employee =  Employee::create($request->all());
-        return response()->json($employee);
+        Employee::create($request->all());
     }
 
     /**

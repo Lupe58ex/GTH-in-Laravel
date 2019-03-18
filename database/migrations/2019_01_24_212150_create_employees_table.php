@@ -18,34 +18,33 @@ class CreateEmployeesTable extends Migration
             $table->string('name',50)->nullable(false);
             $table->string('lastname_father',30)->nullable(false);
             $table->string('lastname_mother',30)->nullable(false);
-            $table->string('identity_number',40)->nullable(false);
+            $table->string('identity_number',40)->nullable(false)->unique();
             $table->integer('identification_type_id')->nullable(false);
             $table->char('gender',1)->nullable(false);
             $table->date('birthdate')->nullable(false);
-            $table->string('district',100)->nullable(false);
-            $table->string('province',100)->nullable(false);
-            $table->string('department',100)->nullable(false);
-            $table->integer('via_id')->nullable(false);
+            $table->integer('district_id')->nullable(false);
+            $table->integer('province_id')->nullable(false);
+            $table->integer('department_id')->nullable(false);
             $table->string('address',500)->nullable(false);
             $table->string('address_references',500)->nullable();
             //imagen
             $table->string('address_sketch',1000)->nullable();
             $table->string('email_main',100)->nullable(false);
             $table->string('email_alternative',100)->nullable();
-            $table->boolean('enable')->nullable(false);
+            $table->boolean('enable')->default(true);
             $table->integer('role_id')->nullable(false);
-            $table->string('phone_number01',30)->nullable();
-            $table->string('phone_number02',30)->nullable();
-            $table->string('phone_number03',30)->nullable();
+            $table->string('phone_number1',30)->nullable();
+            $table->string('phone_number2',30)->nullable();
+            $table->string('phone_number3',30)->nullable();
             $table->integer('phone_type1_id')->nullable();
             $table->integer('phone_type2_id')->nullable();
             $table->integer('phone_type3_id')->nullable();
             $table->integer('phone_operator1_id')->nullable();
             $table->integer('phone_operator2_id')->nullable();
             $table->integer('phone_operator3_id')->nullable();
-            $table->string('phone_notes01',30)->nullable();
-            $table->string('phone_notes02',30)->nullable();
-            $table->string('phone_notes03',30)->nullable();
+            $table->string('phone_notes1',30)->nullable();
+            $table->string('phone_notes2',30)->nullable();
+            $table->string('phone_notes3',30)->nullable();
             //imagen
             $table->string('photo')->nullable();
             $table->datetime('date_update_photo')->nullable();
@@ -82,8 +81,8 @@ class CreateEmployeesTable extends Migration
 
             $table->string('driver_license_number',30)->nullable();
             $table->date('date_expedition_driver_license')->nullable();
-            $table->date('sellbydate_driver_license')->nullable();
-            $table->char('type_driver_license',1)->nullable();
+            $table->date('date_expiration_driver_license')->nullable();
+            $table->string('type_driver_license',15)->nullable();
             //imagen
             $table->binary('file_schedule')->nullable();
             $table->datetime('date_update_schedule')->nullable();
@@ -95,14 +94,12 @@ class CreateEmployeesTable extends Migration
 
             $table->string('bank_account')->nullable();
             $table->boolean('student_children')->nullable();
+            $table->smallInteger('agency_id');
 
             $table->timestamps();
 
             $table->foreign('identification_type_id')
                   ->references('id')->on('identification_types')
-                  ->onDelete('cascade');
-            $table->foreign('via_id')
-                  ->references('id')->on('vias')
                   ->onDelete('cascade');
             $table->foreign('role_id')
                   ->references('id')->on('roles')
@@ -136,6 +133,18 @@ class CreateEmployeesTable extends Migration
                   ->onDelete('cascade');
             $table->foreign('contract_type_id')
                   ->references('id')->on('contract_types')
+                  ->onDelete('cascade');
+            $table->foreign('agency_id')
+                  ->references('id')->on('agencies')
+                  ->onDelete('cascade');
+            $table->foreign('department_id')
+                  ->references('id')->on('departments')
+                  ->onDelete('cascade');
+            $table->foreign('province_id')
+                  ->references('id')->on('provinces')
+                  ->onDelete('cascade');
+            $table->foreign('district_id')
+                  ->references('id')->on('districts')
                   ->onDelete('cascade');
         });
     }

@@ -8,10 +8,12 @@ class Schedule extends Model
 {
     //
     protected $fillable =[
+        'id',
+        'turn',
         'start_hour',
         'end_hour',
         'description',
-        'droped'
+        'enable'
     ];
 
     public function employees() {
