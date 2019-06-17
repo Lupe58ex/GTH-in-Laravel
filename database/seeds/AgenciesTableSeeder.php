@@ -21,6 +21,5 @@ class AgenciesTableSeeder extends Seeder
         \App\Agency::create([
             'name'=>'Agencia Pampas'
         ]);
-        
     }
 }

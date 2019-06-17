@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\EmployeePensionSystem;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeListResource;
 use App\Http\Resource\EmployeePensionSystemResource;
+use App\PensionSystem;
 
 class EmployeePensionSystemController extends Controller
 {
@@ -26,7 +29,10 @@ class EmployeePensionSystemController extends Controller
      */
     public function create()
     {
-        //
+        $employee = Employee::all();
+        $employees = New EmployeeListResource($employee);
+        $pensionSystems = PensionSystem::all();
+        return view('employee_pensionsystems.create', compact('employees','pensionSystems'));
     }
 
     /**

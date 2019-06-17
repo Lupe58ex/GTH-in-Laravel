@@ -19,11 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('assitances', 'AssistanceController');
+Route::resource('assistances', 'AssistanceController');
 Route::resource('schedules', 'ScheduleController');
 Route::resource('employees', 'EmployeeController');
+Route::resource('relatives', 'RelativeController');
 Route::resource('employee_schedules', 'EmployeeScheduleController');
-
+Route::resource('employee_pensionsystems', 'EmployeePensionSystemController');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

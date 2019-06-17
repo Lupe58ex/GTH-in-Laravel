@@ -1787,6 +1787,229 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['employees_with_schedules'],
+  data: function data() {
+    return {
+      assistances: {
+        date: null,
+        real_start_time: null,
+        real_end_time: null,
+        user_id: null,
+        employee_schedule_id: '',
+        justification: ''
+      },
+      employeesWithSchedulesParsed: [],
+      isPaginated: true,
+      isPaginationSimple: false,
+      defaultSortDirection: 'desc',
+      currentPage: 1,
+      perPage: 15,
+      morning: false,
+      afternoon: false
+    };
+  },
+  mounted: function mounted() {
+    this.employeesWithSchedulesParsed = JSON.parse(this.employees_with_schedules);
+  },
+  methods: {},
+  computed: {
+    getHour: function getHour() {
+      console.log(this.employeesWithSchedulesParsed);
+      var date = new Date(parseInt(this.employeesWithSchedulesParsed[0].schedulesMorning[0].startHour.getTime()));
+      console.log(this.employeesWithSchedulesParsed[0].schedulesMorning[0].startHour), console.log(date.toLocaleTimeString(navigator.language, {
+        hour: '2-digit',
+        minute: '2-digit'
+      }));
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['employees', 'pensionsystems'],
+  data: function data() {
+    return {
+      only_employees: [],
+      employee_pension_system: {
+        comission_type: '',
+        pension_system_id: ''
+      },
+      employeesParsed: [],
+      pensionsystemsParsed: [],
+      isPaginated: true,
+      isPaginationSimple: false,
+      defaultSortDirection: 'desc',
+      currentPage: 1,
+      perPage: 15,
+      morning: false,
+      afternoon: false
+    };
+  },
+  mounted: function mounted() {
+    this.employeesParsed = JSON.parse(this.employees);
+    this.pensionsystemsParsed = JSON.parse(this.pensionsystems);
+  },
+  methods: {},
+  computed: {
+    getActualPercent: function getActualPercent() {
+      var _this = this;
+
+      var percent;
+      this.pensionsystemsParsed.map(function (item) {
+        if (item.id == _this.employee_pension_system.pension_system_id) {
+          percent = item.actual_percent;
+        }
+      });
+      return percent;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=script&lang=js& ***!
@@ -1918,24 +2141,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['employees', 'morning_schedules', 'afternoon_schedules'],
   data: function data() {
     return {
-      employee_schedule: {
-        employee_id: '',
-        schedule_id: '',
-        day: ''
-      },
+      employees_id: [],
+      schedule_id: '',
+      day: [],
       employeesParsed: [],
       morningSchedulesParsed: [],
       afternoonSchedulesParsed: [],
@@ -1952,14 +2164,93 @@ __webpack_require__.r(__webpack_exports__);
       thursday: false,
       friday: false,
       saturday: false,
-      scheduleSelected: false,
-      employeeSelected: false
+      scheduleSelected: true,
+      employeeSelected: false,
+      checkedRows: []
     };
   },
   mounted: function mounted() {
     this.employeesParsed = JSON.parse(this.employees);
     this.morningSchedulesParsed = JSON.parse(this.morning_schedules);
     this.afternoonSchedulesParsed = JSON.parse(this.afternoon_schedules);
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      var employee_schedule = [];
+      this.checkedRows.forEach(function (element) {
+        //console.log(employee_schedule)
+        if (_this.monday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'M'
+          });
+        }
+
+        if (_this.tuesday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'T'
+          });
+        }
+
+        if (_this.wednesday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'W'
+          });
+        }
+
+        if (_this.thursday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'R'
+          });
+        }
+
+        if (_this.friday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'F'
+          });
+        }
+
+        if (_this.saturday) {
+          employee_schedule.push({
+            'employee_id': element.id,
+            'schedule_id': _this.schedule_id,
+            'day': 'S'
+          });
+        }
+      });
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          employee_schedule.forEach(function (element) {
+            axios.post('/employee_schedules', element);
+          }).then(function (res) {
+            _this.$toast.open({
+              message: 'Form is valid!',
+              type: 'is-success',
+              position: 'is-bottom'
+            });
+          }).catch(function (err) {
+            console.log(err);
+
+            _this.$toast.open({
+              message: 'No está rellenando los campos requeridos',
+              type: 'is-danger',
+              position: 'is-bottom'
+            });
+          });
+        }
+      });
+    }
   }
 });
 
@@ -2617,6 +2908,360 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['employees'],
+  data: function data() {
+    return {
+      employees: [],
+      employeesParsed: [],
+      isPaginated: true,
+      isPaginationSimple: false,
+      defaultSortDirection: 'desc',
+      currentPage: 1,
+      perPage: 15,
+      morning: false,
+      afternoon: false
+    };
+  },
+  mounted: function mounted() {
+    this.employeesParsed = JSON.parse(this.employees);
+  },
+  methods: {}
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['relationships', 'genders', 'employees'],
+  data: function data() {
+    return {
+      relative: {
+        name: '',
+        lastname_father: '',
+        lastname_mother: '',
+        dni: '',
+        birthdate: null,
+        cellphone: null,
+        gender: null,
+        is_student: null,
+        full_age: null,
+        house_address: '',
+        house_reference: '',
+        place_job: '',
+        job_address: ''
+      },
+      isPaginated: true,
+      isPaginationSimple: false,
+      defaultSortDirection: 'desc',
+      currentPage: 1,
+      perPage: 15,
+      employeeRelative: {
+        relationship: '',
+        guarantor: '',
+        observation: ''
+      },
+      relationshipsParsed: [],
+      gendersParsed: [],
+      employeesParsed: [],
+      is_employee: false
+    };
+  },
+  methods: {
+    submit: function submit() {
+      var _this = this;
+
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          axios.post('/relatives', _this.relative).then(function (res) {
+            _this.$toast.open({
+              message: 'Form is valid!',
+              type: 'is-success',
+              position: 'is-bottom'
+            });
+          }).catch(function (err) {
+            console.log(err);
+          });
+        } else _this.$toast.open({
+          message: 'No está rellenado los campos requeridos',
+          type: 'is-danger',
+          position: 'is-bottom'
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.relationshipsParsed = JSON.parse(this.relationships);
+    this.gendersParsed = JSON.parse(this.genders);
+    this.employeesParsed = JSON.parse(this.employees);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/schedules/ScheduleCreateComponent.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/schedules/ScheduleCreateComponent.vue?vue&type=script&lang=js& ***!
@@ -2626,7 +3271,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -59174,10 +59818,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=template&id=f6042bfc&":
-/*!******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=template&id=f6042bfc& ***!
-  \******************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -59197,7 +59841,7 @@ var render = function() {
         _c("div", { staticClass: "columns" }, [
           _c(
             "div",
-            { staticClass: "block column" },
+            { staticClass: "column" },
             [
               _c(
                 "b-switch",
@@ -59222,7 +59866,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "block column" },
+            { staticClass: "column" },
             [
               _c(
                 "b-switch",
@@ -59246,66 +59890,442 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm.morning
-          ? _c(
-              "div",
-              { staticClass: "columns" },
-              _vm._l(_vm.morningSchedulesParsed, function(schedule) {
-                return _c(
-                  "div",
-                  { key: schedule.id },
-                  [
-                    _c(
-                      "b-radio",
-                      {
-                        staticClass: "column",
-                        model: {
-                          value: _vm.scheduleSelected,
-                          callback: function($$v) {
-                            _vm.scheduleSelected = $$v
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c("b-table", {
+                attrs: {
+                  data: _vm.employeesWithSchedulesParsed,
+                  paginated: _vm.isPaginated,
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentPage,
+                  "pagination-simple": _vm.isPaginationSimple,
+                  "default-sort-direction": _vm.defaultSortDirection
+                },
+                on: {
+                  "update:currentPage": function($event) {
+                    _vm.currentPage = $event
+                  },
+                  "update:current-page": function($event) {
+                    _vm.currentPage = $event
+                  }
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "b-table-column",
+                          {
+                            attrs: {
+                              field: "fullname",
+                              label: "Colaborador",
+                              sortable: ""
+                            }
                           },
-                          expression: "scheduleSelected"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(schedule.start_hour) +
-                            " hasta " +
-                            _vm._s(schedule.end_hour) +
-                            "\n                    "
-                        )
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(props.row.fullname) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-table-column",
+                          {
+                            attrs: {
+                              field: "start_hour",
+                              label: "Hora de entrada",
+                              sortable: ""
+                            }
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "input",
+                              attrs: {
+                                type: "time",
+                                name: "start_hour",
+                                icon: "clock"
+                              },
+                              domProps: { value: { getHour: _vm.getHour } }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-table-column",
+                          {
+                            attrs: {
+                              field: "end_hour",
+                              label: "Hora de salida",
+                              sortable: ""
+                            }
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "input",
+                              attrs: {
+                                type: "time",
+                                name: "end_hour",
+                                icon: "clock"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("b-table-column", { attrs: { label: "notas" } })
                       ]
-                    )
-                  ],
-                  1
-                )
-              }),
-              0
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.afternoon
-          ? _c("div", { staticClass: "columns" }, [
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-header-title" }, [
+        _vm._v("\n                Listado de Colaboradores\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc&":
+/*!****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", [
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
               _c(
-                "ul",
-                _vm._l(_vm.afternoonSchedulesParsed, function(schedule) {
-                  return _c(
-                    "li",
-                    { key: schedule.id },
-                    [
-                      _c(
-                        "b-radio",
-                        {
-                          staticClass: "column",
-                          model: {
-                            value: _vm.scheduleSelected,
-                            callback: function($$v) {
-                              _vm.scheduleSelected = $$v
-                            },
-                            expression: "scheduleSelected"
-                          }
+                "b-field",
+                { attrs: { label: "Sistema de pensión" } },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      attrs: {
+                        name: "type_driver_license",
+                        expanded: "",
+                        value: "Seleccione"
+                      },
+                      model: {
+                        value: _vm.employee_pension_system.pension_system_id,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.employee_pension_system,
+                            "pension_system_id",
+                            $$v
+                          )
                         },
+                        expression: "employee_pension_system.pension_system_id"
+                      }
+                    },
+                    _vm._l(_vm.pensionsystemsParsed, function(option) {
+                      return _c(
+                        "option",
+                        { key: option.id, domProps: { value: option.id } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(option.short_name) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-field",
+                { attrs: { label: "Porcentaje de descuento" } },
+                [
+                  _c(
+                    "b-input",
+                    {
+                      directives: [
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required",
+                          expression: "'required'"
+                        }
+                      ],
+                      attrs: {
+                        type: "number",
+                        name: "actual_percent",
+                        expanded: "",
+                        placeholder: "Seleccione",
+                        value: this.getActualPercent
+                      }
+                    },
+                    [_vm._v(_vm._s(this.getActualPercent))]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-field",
+                { attrs: { label: "Tipo de comisión" } },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      attrs: {
+                        name: "comission_Type",
+                        expanded: "",
+                        placeholder: "Seleccione"
+                      },
+                      model: {
+                        value: _vm.employee_pension_system.comission_type,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.employee_pension_system,
+                            "comission_type",
+                            $$v
+                          )
+                        },
+                        expression: "employee_pension_system.comission_type"
+                      }
+                    },
+                    _vm._l(_vm.pensionsystemsParsed, function(option) {
+                      return _c(
+                        "option",
+                        { key: option.id, domProps: { value: option.id } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(option.actual_percent) +
+                              "\n                            "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c("b-table", {
+                attrs: {
+                  data: _vm.employeesParsed,
+                  paginated: _vm.isPaginated,
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentPage,
+                  "pagination-simple": _vm.isPaginationSimple,
+                  "default-sort-direction": _vm.defaultSortDirection
+                },
+                on: {
+                  "update:currentPage": function($event) {
+                    _vm.currentPage = $event
+                  },
+                  "update:current-page": function($event) {
+                    _vm.currentPage = $event
+                  }
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "b-table-column",
+                          {
+                            attrs: {
+                              field: "fullname",
+                              label: "Colaborador",
+                              sortable: ""
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(props.row.fullname) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("b-table-column", {
+                          attrs: {
+                            field: "DNI",
+                            label: "Hora de entrada",
+                            sortable: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("b-table-column", {
+                          attrs: {
+                            field: "end_hour",
+                            label: "Hora de salida",
+                            sortable: ""
+                          }
+                        })
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-header-title" }, [
+        _vm._v("\n                Listado de Colaboradores\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=template&id=f6042bfc&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue?vue&type=template&id=f6042bfc& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", [
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-switch",
+                {
+                  model: {
+                    value: _vm.morning,
+                    callback: function($$v) {
+                      _vm.morning = $$v
+                    },
+                    expression: "morning"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Turno Mañana\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.morning
+            ? _c(
+                "div",
+                { staticClass: "column" },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      attrs: { placeholder: "Seleccionar", required: "" },
+                      model: {
+                        value: _vm.schedule_id,
+                        callback: function($$v) {
+                          _vm.schedule_id = $$v
+                        },
+                        expression: "schedule_id"
+                      }
+                    },
+                    _vm._l(_vm.morningSchedulesParsed, function(schedule) {
+                      return _c(
+                        "option",
+                        { key: schedule.id, domProps: { value: schedule.id } },
                         [
                           _vm._v(
                             "\n                            " +
@@ -59316,14 +60336,78 @@ var render = function() {
                           )
                         ]
                       )
-                    ],
-                    1
+                    }),
+                    0
                   )
-                }),
-                0
+                ],
+                1
               )
-            ])
-          : _vm._e()
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-switch",
+                {
+                  model: {
+                    value: _vm.afternoon,
+                    callback: function($$v) {
+                      _vm.afternoon = $$v
+                    },
+                    expression: "afternoon"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Turno Tarde\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.afternoon
+            ? _c(
+                "div",
+                { staticClass: "column" },
+                [
+                  _c(
+                    "b-select",
+                    {
+                      attrs: { placeholder: "Seleccionar", required: "" },
+                      model: {
+                        value: _vm.schedule_id,
+                        callback: function($$v) {
+                          _vm.schedule_id = $$v
+                        },
+                        expression: "schedule_id"
+                      }
+                    },
+                    _vm._l(_vm.afternoonSchedulesParsed, function(schedule) {
+                      return _c(
+                        "option",
+                        { key: schedule.id, domProps: { value: schedule.id } },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(schedule.start_hour) +
+                              " hasta " +
+                              _vm._s(schedule.end_hour) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ],
+                1
+              )
+            : _vm._e()
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -59392,11 +60476,11 @@ var render = function() {
                 "b-checkbox",
                 {
                   model: {
-                    value: _vm.wendnesday,
+                    value: _vm.wednesday,
                     callback: function($$v) {
-                      _vm.wendnesday = $$v
+                      _vm.wednesday = $$v
                     },
-                    expression: "wendnesday"
+                    expression: "wednesday"
                   }
                 },
                 [
@@ -59499,7 +60583,7 @@ var render = function() {
                   "pagination-simple": _vm.isPaginationSimple,
                   "default-sort-direction": _vm.defaultSortDirection,
                   checkable: "",
-                  "default-sort": "user.first_name"
+                  "checked-rows": _vm.checkedRows
                 },
                 on: {
                   "update:currentPage": function($event) {
@@ -59507,6 +60591,12 @@ var render = function() {
                   },
                   "update:current-page": function($event) {
                     _vm.currentPage = $event
+                  },
+                  "update:checkedRows": function($event) {
+                    _vm.checkedRows = $event
+                  },
+                  "update:checked-rows": function($event) {
+                    _vm.checkedRows = $event
                   }
                 },
                 scopedSlots: _vm._u([
@@ -59566,32 +60656,7 @@ var render = function() {
                                 "\n                            "
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-table-column",
-                          { attrs: { label: "Lunes" } },
-                          [
-                            _vm.morning &&
-                            _vm.scheduleSelected &&
-                            _vm.checkedRow
-                              ? _c("b-tag", { attrs: { type: "is-info" } }, [
-                                  _vm._v("aa")
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("b-table-column", { attrs: { label: "Martes" } }),
-                        _vm._v(" "),
-                        _c("b-table-column", { attrs: { label: "Miercoles" } }),
-                        _vm._v(" "),
-                        _c("b-table-column", { attrs: { label: "Jueves" } }),
-                        _vm._v(" "),
-                        _c("b-table-column", { attrs: { label: "Viernes" } }),
-                        _vm._v(" "),
-                        _c("b-table-column", { attrs: { label: "Sábado" } })
+                        )
                       ]
                     }
                   }
@@ -61884,6 +62949,1003 @@ var staticRenderFns = [
     return _c("header", { staticClass: "card-header" }, [
       _c("p", { staticClass: "card-header-title" }, [
         _vm._v("\n                    Licencia de conducir\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "control" }, [
+      _c("button", { staticClass: "button is-text" }, [_vm._v("Cancelar")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", [
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-content" }, [
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-switch",
+                {
+                  model: {
+                    value: _vm.morning,
+                    callback: function($$v) {
+                      _vm.morning = $$v
+                    },
+                    expression: "morning"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Turno Mañana\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c(
+                "b-switch",
+                {
+                  model: {
+                    value: _vm.afternoon,
+                    callback: function($$v) {
+                      _vm.afternoon = $$v
+                    },
+                    expression: "afternoon"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Turno Tarde\n                    "
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "columns" }, [
+          _c(
+            "div",
+            { staticClass: "column" },
+            [
+              _c("b-table", {
+                attrs: {
+                  data: _vm.employeesParsed,
+                  paginated: _vm.isPaginated,
+                  "per-page": _vm.perPage,
+                  "current-page": _vm.currentPage,
+                  "pagination-simple": _vm.isPaginationSimple,
+                  "default-sort-direction": _vm.defaultSortDirection
+                },
+                on: {
+                  "update:currentPage": function($event) {
+                    _vm.currentPage = $event
+                  },
+                  "update:current-page": function($event) {
+                    _vm.currentPage = $event
+                  }
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(props) {
+                      return [
+                        _c(
+                          "b-table-column",
+                          {
+                            attrs: {
+                              field: "fullname",
+                              label: "Colaborador",
+                              sortable: ""
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(props.row.fullname) +
+                                "\n                            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("b-table-column", {
+                          attrs: {
+                            field: "DNI",
+                            label: "Hora de entrada",
+                            sortable: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("b-table-column", {
+                          attrs: {
+                            field: "end_hour",
+                            label: "Hora de salida",
+                            sortable: ""
+                          }
+                        })
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-header-title" }, [
+        _vm._v("\n                Listado de Colaboradores\n            ")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("form", [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-content" }, [
+          _c("div", { staticClass: "columns" }, [
+            _c(
+              "div",
+              { staticClass: "column" },
+              [
+                _c(
+                  "b-field",
+                  {
+                    attrs: {
+                      label: "Parentesco",
+                      type: { "is-danger": _vm.errors.has("relationship") },
+                      message: {
+                        "Es requerido": _vm.errors.first("relationship")
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "b-select",
+                      {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          }
+                        ],
+                        attrs: {
+                          name: "relationship",
+                          expanded: "",
+                          placeholder: "Seleccione"
+                        },
+                        model: {
+                          value: _vm.employeeRelative.relationship,
+                          callback: function($$v) {
+                            _vm.$set(_vm.employeeRelative, "relationship", $$v)
+                          },
+                          expression: "employeeRelative.relationship"
+                        }
+                      },
+                      _vm._l(_vm.relationshipsParsed, function(option) {
+                        return _c(
+                          "option",
+                          {
+                            key: option.name,
+                            domProps: { value: option.name }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(option.name) +
+                                "\n                                "
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "column" },
+              [
+                _c(
+                  "b-field",
+                  { attrs: { label: "Es garante" } },
+                  [
+                    _c(
+                      "b-checkbox",
+                      {
+                        model: {
+                          value: _vm.employeeRelative.guarantor,
+                          callback: function($$v) {
+                            _vm.$set(_vm.employeeRelative, "guarantor", $$v)
+                          },
+                          expression: "employeeRelative.guarantor"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                ¿Es garante?\n                            "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "column" },
+              [
+                _c(
+                  "b-field",
+                  { attrs: { label: "Es un colaborador" } },
+                  [
+                    _c(
+                      "b-checkbox",
+                      {
+                        model: {
+                          value: _vm.is_employee,
+                          callback: function($$v) {
+                            _vm.is_employee = $$v
+                          },
+                          expression: "is_employee"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                ¿Es un colaborador?\n                            "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _c(
+              "div",
+              { staticClass: "column" },
+              [
+                _c(
+                  "b-field",
+                  { attrs: { label: "Observación" } },
+                  [
+                    _c("b-input", {
+                      attrs: {
+                        type: "textarea",
+                        placeholder: "Escriba las observaciones aquí"
+                      },
+                      model: {
+                        value: _vm.employeeRelative.observation,
+                        callback: function($$v) {
+                          _vm.$set(_vm.employeeRelative, "observation", $$v)
+                        },
+                        expression: "employeeRelative.observation"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _vm.is_employee == false
+          ? _c("div", { staticClass: "card-content" }, [
+              _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Nombres",
+                          type: { "is-danger": _vm.errors.has("name") },
+                          message: { "Es requerido": _vm.errors.first("name") }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: { name: "name", placeholder: "Nombres" },
+                          model: {
+                            value: _vm.relative.name,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "name", $$v)
+                            },
+                            expression: "relative.name"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Apellido Paterno",
+                          type: {
+                            "is-danger": _vm.errors.has("lastname_father")
+                          },
+                          message: {
+                            "Es requerido": _vm.errors.first("lastname_father")
+                          }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: {
+                            name: "lastname_father",
+                            placeholder: "Apellido Paterno"
+                          },
+                          model: {
+                            value: _vm.relative.lastname_father,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "lastname_father", $$v)
+                            },
+                            expression: "relative.lastname_father"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Apellido Materno",
+                          type: {
+                            "is-danger": _vm.errors.has("lastname_mother")
+                          },
+                          message: {
+                            "Es requerido": _vm.errors.first("lastname_mother")
+                          }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: {
+                            name: "lastname_mother",
+                            placeholder: "Apellido Materno"
+                          },
+                          model: {
+                            value: _vm.relative.lastname_mother,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "lastname_mother", $$v)
+                            },
+                            expression: "relative.lastname_mother"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "DNI",
+                          type: { "is-danger": _vm.errors.has("dni") },
+                          message: { "Es requerido": _vm.errors.first("dni") }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: { name: "dni", placeholder: "Seleccione" },
+                          model: {
+                            value: _vm.relative.dni,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "dni", $$v)
+                            },
+                            expression: "relative.dni"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Fecha de Nacimiento",
+                          type: { "is-danger": _vm.errors.has("birthdate") },
+                          message: {
+                            "Es requerido": _vm.errors.first("birthdate")
+                          }
+                        }
+                      },
+                      [
+                        _c("b-datepicker", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: {
+                            placeholder: "Seleccione",
+                            icon: "calendar",
+                            name: "birthdate"
+                          },
+                          model: {
+                            value: _vm.relative.birthdate,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "birthdate", $$v)
+                            },
+                            expression: "relative.birthdate"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Sexo",
+                          type: { "is-danger": _vm.errors.has("gender") },
+                          message: {
+                            "Es requerido": _vm.errors.first("gender")
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "b-select",
+                          {
+                            directives: [
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required",
+                                expression: "'required'"
+                              }
+                            ],
+                            attrs: {
+                              name: "gender",
+                              expanded: "",
+                              placeholder: "Seleccione"
+                            },
+                            model: {
+                              value: _vm.relative.gender,
+                              callback: function($$v) {
+                                _vm.$set(_vm.relative, "gender", $$v)
+                              },
+                              expression: "relative.gender"
+                            }
+                          },
+                          _vm._l(_vm.gendersParsed, function(option) {
+                            return _c(
+                              "option",
+                              {
+                                key: option.id,
+                                domProps: { value: option.id }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(option.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Número celular",
+                          type: {
+                            "is-danger": _vm.errors.has("phone_number1")
+                          },
+                          message: {
+                            "Es requerido": _vm.errors.first("phone_number1")
+                          }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: {
+                            name: "phone_number1",
+                            placeholder: "Número 1"
+                          },
+                          model: {
+                            value: _vm.relative.cellphone,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "cellphone", $$v)
+                            },
+                            expression: "relative.cellphone"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Estudiante" } },
+                      [
+                        _c(
+                          "b-checkbox",
+                          {
+                            model: {
+                              value: _vm.relative.is_student,
+                              callback: function($$v) {
+                                _vm.$set(_vm.relative, "is_student", $$v)
+                              },
+                              expression: "relative.is_student"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                ¿Es estudiante?\n                            "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Mayor de edad" } },
+                      [
+                        _c(
+                          "b-checkbox",
+                          {
+                            model: {
+                              value: _vm.relative.full_age,
+                              callback: function($$v) {
+                                _vm.$set(_vm.relative, "full_age", $$v)
+                              },
+                              expression: "relative.full_age"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                ¿Es mayor de edad?\n                            "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      {
+                        attrs: {
+                          label: "Dirección",
+                          type: { "is-danger": _vm.errors.has("address") },
+                          message: {
+                            "Es requerida": _vm.errors.first("address")
+                          }
+                        }
+                      },
+                      [
+                        _c("b-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required",
+                              expression: "'required'"
+                            }
+                          ],
+                          attrs: { name: "address", placeholder: "Dirección" },
+                          model: {
+                            value: _vm.relative.house_address,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "house_address", $$v)
+                            },
+                            expression: "relative.house_address"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Referencia de la dirección" } },
+                      [
+                        _c("b-input", {
+                          attrs: {
+                            name: "address_references",
+                            placeholder: "Referencia de dirección"
+                          },
+                          model: {
+                            value: _vm.relative.house_reference,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "house_reference", $$v)
+                            },
+                            expression: "relative.house_reference"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Lugar de Trabajo" } },
+                      [
+                        _c("b-input", {
+                          attrs: {
+                            name: "home_condition",
+                            placeholder: "Lugar de trabajo"
+                          },
+                          model: {
+                            value: _vm.relative.place_job,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "place_job", $$v)
+                            },
+                            expression: "relative.place_job"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c(
+                      "b-field",
+                      { attrs: { label: "Dirección de trabajo" } },
+                      [
+                        _c("b-input", {
+                          attrs: {
+                            name: "home_condition",
+                            placeholder: "Dirección de trabajo"
+                          },
+                          model: {
+                            value: _vm.relative.job_address,
+                            callback: function($$v) {
+                              _vm.$set(_vm.relative, "job_address", $$v)
+                            },
+                            expression: "relative.job_address"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.is_employee == true
+          ? _c("div", { staticClass: "card-content" }, [
+              _c("div", { staticClass: "columns" }, [
+                _c(
+                  "div",
+                  { staticClass: "column" },
+                  [
+                    _c("b-table", {
+                      attrs: {
+                        data: _vm.employeesParsed,
+                        paginated: _vm.isPaginated,
+                        "per-page": _vm.perPage,
+                        "current-page": _vm.currentPage,
+                        "pagination-simple": _vm.isPaginationSimple,
+                        "default-sort-direction": _vm.defaultSortDirection,
+                        checkable: "",
+                        "checked-rows": _vm.checkedRows
+                      },
+                      on: {
+                        "update:currentPage": function($event) {
+                          _vm.currentPage = $event
+                        },
+                        "update:current-page": function($event) {
+                          _vm.currentPage = $event
+                        },
+                        "update:checkedRows": function($event) {
+                          _vm.checkedRows = $event
+                        },
+                        "update:checked-rows": function($event) {
+                          _vm.checkedRows = $event
+                        }
+                      },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "default",
+                            fn: function(props) {
+                              return [
+                                _c(
+                                  "b-table-column",
+                                  {
+                                    attrs: {
+                                      field: "fullname",
+                                      label: "Colaborador",
+                                      sortable: ""
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(props.row.fullname) +
+                                        "\n                                "
+                                    )
+                                  ]
+                                )
+                              ]
+                            }
+                          }
+                        ],
+                        null,
+                        false,
+                        2938336094
+                      )
+                    })
+                  ],
+                  1
+                )
+              ])
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "field is-grouped" }, [
+        _c("div", { staticClass: "control" }, [
+          _c(
+            "button",
+            {
+              staticClass: "button is-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.submit($event)
+                }
+              }
+            },
+            [_vm._v("Guardar")]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "card-header" }, [
+      _c("p", { staticClass: "card-header-title" }, [
+        _vm._v("\n                    Datos de pariente\n                ")
       ])
     ])
   },
@@ -74323,6 +76385,10 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('schedule-create-component', __webpack_require__(/*! ./components/schedules/ScheduleCreateComponent.vue */ "./resources/js/components/schedules/ScheduleCreateComponent.vue").default);
 Vue.component('employee-create-component', __webpack_require__(/*! ./components/employees/EmployeeCreateComponent.vue */ "./resources/js/components/employees/EmployeeCreateComponent.vue").default);
 Vue.component('employee_schedule-create-component', __webpack_require__(/*! ./components/employee_schedules/Employee_scheduleCreateComponent.vue */ "./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue").default);
+Vue.component('assistance-create-component', __webpack_require__(/*! ./components/assistances/AssistanceCreateComponent.vue */ "./resources/js/components/assistances/AssistanceCreateComponent.vue").default);
+Vue.component('employee-index-componenet', __webpack_require__(/*! ./components/employees/EmployeeIndexComponent.vue */ "./resources/js/components/employees/EmployeeIndexComponent.vue").default);
+Vue.component('relative-create-component', __webpack_require__(/*! ./components/relatives/RelativeCreateComponent.vue */ "./resources/js/components/relatives/RelativeCreateComponent.vue").default);
+Vue.component('employee_pensionsystem-create-component', __webpack_require__(/*! ./components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue */ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -74465,6 +76531,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/assistances/AssistanceCreateComponent.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/assistances/AssistanceCreateComponent.vue ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c& */ "./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c&");
+/* harmony import */ var _AssistanceCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AssistanceCreateComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AssistanceCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/assistances/AssistanceCreateComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssistanceCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssistanceCreateComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssistanceCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c& ***!
+  \**********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/assistances/AssistanceCreateComponent.vue?vue&type=template&id=e38b7b4c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssistanceCreateComponent_vue_vue_type_template_id_e38b7b4c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc& */ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc&");
+/* harmony import */ var _employee_pensionsystemCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _employee_pensionsystemCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_employee_pensionsystemCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_employee_pensionsystemCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc&":
+/*!**********************************************************************************************************************************!*\
+  !*** ./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc& ***!
+  \**********************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue?vue&type=template&id=bac096dc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_employee_pensionsystemCreateComponent_vue_vue_type_template_id_bac096dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/employee_schedules/Employee_scheduleCreateComponent.vue ***!
@@ -74598,6 +76802,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeCreateComponent_vue_vue_type_template_id_2a8dbe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeCreateComponent_vue_vue_type_template_id_2a8dbe24_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/employees/EmployeeIndexComponent.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/employees/EmployeeIndexComponent.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmployeeIndexComponent.vue?vue&type=template&id=3729b964& */ "./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964&");
+/* harmony import */ var _EmployeeIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeIndexComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EmployeeIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/employees/EmployeeIndexComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EmployeeIndexComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeIndexComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EmployeeIndexComponent.vue?vue&type=template&id=3729b964& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/employees/EmployeeIndexComponent.vue?vue&type=template&id=3729b964&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeIndexComponent_vue_vue_type_template_id_3729b964___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/relatives/RelativeCreateComponent.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/relatives/RelativeCreateComponent.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true& */ "./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true&");
+/* harmony import */ var _RelativeCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RelativeCreateComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RelativeCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "387234b2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/relatives/RelativeCreateComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RelativeCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RelativeCreateComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RelativeCreateComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/relatives/RelativeCreateComponent.vue?vue&type=template&id=387234b2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RelativeCreateComponent_vue_vue_type_template_id_387234b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

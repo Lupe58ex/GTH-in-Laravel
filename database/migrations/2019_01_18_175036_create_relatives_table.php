@@ -28,7 +28,8 @@ class CreateRelativesTable extends Migration
             $table->boolean('full_age')->nullable();
             $table->binary('address_file')->nullable();
             $table->boolean('is_student')->nullable();
-            $table->string('reference',500)->nullable();
+            $table->string('house_reference',500)->nullable();
+
             $table->timestamps();
 
            

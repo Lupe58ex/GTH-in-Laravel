@@ -29,14 +29,12 @@ class AssistanceController extends Controller
      */
     public function create()
     {
-        $employeesEnabled = Employee::all()->where('enable',true);
-        //$schedules = Employee::all()->schedules;
-
+        $employeesEnabled = Employee::all();
+        //dd($employeesEnabled[0]->schedules[0]->start_hour);
         $employeesWithSchedules = new EmployeeResource($employeesEnabled);
-        
-        //return $employeesWithSchedules;
+        dd($employeesWithSchedules[0]);
         return view('assistances.create', compact(
-           'employeesWithSchedules'
+            'employeesWithSchedules'
         ));
     }
 

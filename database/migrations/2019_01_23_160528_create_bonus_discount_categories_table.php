@@ -15,10 +15,10 @@ class CreateBonusDiscountCategoriesTable extends Migration
     {
         Schema::create('bonus_discount_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',250)->nullable(false);
+            $table->string('name',250);
             $table->string('description',2000)->nullable();
-            $table->boolean('enabled')->nullable(false);
-            $table->char('appears_in',1)->nullable(false);
+            $table->boolean('enable')->default(true);
+            $table->char('appears_in',1);
             $table->timestamps();
         });
     }

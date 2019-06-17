@@ -18,7 +18,7 @@ class BonusDiscountCategoryResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'description'=>$this->description,
-            'enabled'=>$this->enabled,
+            'enable'=>$this->enable,
             'appears_in'=>$this->appears_in,
         ];
     }

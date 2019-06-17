@@ -17,6 +17,7 @@ use App\IdentificationType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resouces\EmployeeResource;
+use App\Http\Resources\EmployeeListResource;
 
 class EmployeeController extends Controller
 {
@@ -26,9 +27,12 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //return EmployeeResource::all();
-        return EmployeeResource::collection();
+    {   
+        return "hey there";
+        //$emp = Employee::all();       
+        //$employees = new EmployeeListResource($emp);
+        //return $employees;
+        //return view('employees.index',compact('employees'));
     }
 
     /**

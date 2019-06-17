@@ -14,14 +14,15 @@ class ScheduleResource extends JsonResource
      */
     public function toArray($request)
     {   
-        return [
-            'id'=>$this->id,
-            'start_hour'=>$this->start_hour,
-            'end_hour'=>$this->end_hour,
-            'turn' =>$this->turn,
-            'description'=>$request->description,
-        ];
-          
+        return $this->resource->map(function ($schedule){
+            return [
+                'id'=>$schedule->id,
+                'start_hour'=>$schedule->start_hour,
+                'end_hour'=>$schedule->end_hour,
+                'turn' =>$schedule->turn,
+                'description'=>$schedule->description,
+            ];
+        });
     }
     
 }

@@ -8,6 +8,7 @@ use App\EmployeeSchedule;
 use App\Employee;
 use App\Schedule;
 use App\Http\Resources\ScheduleResource;
+use SebastianBergmann\Environment\Console;
 
 class EmployeeScheduleController extends Controller
 {
@@ -44,13 +45,26 @@ class EmployeeScheduleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $employeeSchedule = EmployeeSchedule::create([
-            'day'=>$request->day,
-            'droped'=>$request->droped,
-            'employee_id'=>$request->employee_id,
-            'schedule_id'=>$request->schedule_id,
-        ]);
+    {   
+        /*for($i=0; $i<=count($request); $i++) {
+            $object = (object) $request[$i];
+            EmployeeSchedule::create(
+                [
+                    'employee_id'=>$object->employee_id,
+                    'schedule_id'=>$object->schedule_id,
+                    'day'=>$object->day
+                ]
+                );
+        }   */
+        //foreach ($request->element as $element) {
+            EmployeeSchedule::create(
+                [
+                    'employee_id'=>$request->employee_id,
+                    'schedule_id'=>$request->schedule_id,
+                    'day'=>$request->day
+                ]
+                );
+            //}
     }
 
     /**

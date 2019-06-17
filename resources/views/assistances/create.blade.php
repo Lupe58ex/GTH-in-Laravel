@@ -2,6 +2,6 @@
 
 @section('content')
     <assistance-create-component
-    employeesWithSchedules = "{{ json_encode($employeesWithSchedules) }}"
+        employees_with_schedules = "{{ json_encode($employeesWithSchedules) }}"
     ></assistance-create-component>
 @endsection

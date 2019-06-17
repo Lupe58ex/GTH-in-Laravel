@@ -21,9 +21,8 @@ class CreateEmployeeRelativeTable extends Migration
             $table->string('relationship',50)->nullable(false);
             $table->string('observation',1500)->nullable();
             $table->binary('bail_letter')->nullable();
-            $table->boolean('guarantor')->nullable(false);
+            $table->boolean('guarantor')->default(false);
             $table->boolean('droped')->nullable();
-            $table->boolean('is_student')->nullable();
             $table->timestamps();
 
             $table->foreign('employee1_id')

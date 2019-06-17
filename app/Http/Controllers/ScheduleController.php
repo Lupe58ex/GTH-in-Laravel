@@ -41,7 +41,7 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        $schedule = Schedule::create($request->all());
+        Schedule::create($request->all());
     }
 
     /**

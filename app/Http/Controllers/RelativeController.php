@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Relative;
+use App\EmployeeReference;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Relative;
 use App\Http\Resource\RelativeResource;
+use App\Http\Resources\EmployeeListResource;
 
 class RelativeController extends Controller
 {
@@ -26,7 +29,23 @@ class RelativeController extends Controller
      */
     public function create()
     {
-        //
+        $genders = [
+            ['id' => 'M', 'name' => 'Masculino'],
+            ['id' => 'F', 'name' => 'Feminino']
+        ];
+        $relationships = [
+            ['name' => 'Conviviente'],
+            ['name' => 'Esposo(a)'],
+            ['name' => 'Hermano(a)'],
+            ['name' => 'Hijo(a)'],
+            ['name' => 'Madre'],
+            ['name' => 'Padre'],
+            ['name' => 'Sobrino(a)']
+        ];
+        $employees = new EmployeeListResource(Employee::all());
+        return view('relatives.create', compact('relationships',
+        'genders','employees'
+        ));
     }
 
     /**
@@ -49,11 +68,11 @@ class RelativeController extends Controller
             'job_via_id'=>$request->job_via_id,
             'job_address'=>$request->job_address,
             'place_job'=>$request->place_job,
-            'dni'=>$request->DNI,
+            'dni'=>$request->dni,
             'full_age'=>$request->full_age,
             'address_file'=>$request->address_file,
             'is_student'=>$request->is_student,
-            'reference'=>$request->reference,
+            'house_reference'=>$request->house_reference,
         ]);
         return $relative;
     }

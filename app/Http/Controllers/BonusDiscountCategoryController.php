@@ -41,7 +41,7 @@ class BonusDiscountCategoryController extends Controller
         $bonusDiscountCategory = BonusDiscountCategory::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            'enabled'=>$request->enabled,
+            'enable'=>$request->enable,
             'appears_in'=>$request->appears_in,
         ]);
     }

@@ -43,7 +43,6 @@ class EmployeeRelativeController extends Controller
             'bail_letter'=>$request->bail_letter,
             'guarantor'=>$request->guarantor,
             'droped'=>$request->droped,
-            'is_student'=>$request->is_student,
             'employee_id'=>$request->employee_id,
             'employee1_id'=>$request->employee1_id,
             'relative_id'=>$request->relative_id,

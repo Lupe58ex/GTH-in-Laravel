@@ -25,7 +25,6 @@ Validator.localize('es', es);
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
@@ -33,7 +32,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('schedule-create-component', require('./components/schedules/ScheduleCreateComponent.vue').default);
 Vue.component('employee-create-component', require('./components/employees/EmployeeCreateComponent.vue').default);
 Vue.component('employee_schedule-create-component', require('./components/employee_schedules/Employee_scheduleCreateComponent.vue').default);
-
+Vue.component('assistance-create-component', require('./components/assistances/AssistanceCreateComponent.vue').default);
+Vue.component('employee-index-componenet', require('./components/employees/EmployeeIndexComponent.vue').default);
+Vue.component('relative-create-component', require('./components/relatives/RelativeCreateComponent.vue').default);
+Vue.component('employee_pensionsystem-create-component', require('./components/employee_pensionsystems/employee_pensionsystemCreateComponent.vue').default);
 
 
 /**

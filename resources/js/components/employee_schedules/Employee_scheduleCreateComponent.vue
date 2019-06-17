@@ -8,32 +8,36 @@
             </header>
             <div class="card-content">
                 <div class="columns">
-                    <div class="block column" >
+                    <div class="column" >
                         <b-switch  v-model="morning">
                             Turno Mañana
                         </b-switch>
                     </div>
-                    <div class="block column">
+                    <div v-if="morning" class="column">
+                        <b-select placeholder="Seleccionar" v-model="schedule_id" required>
+                            <option
+                                v-for="schedule in morningSchedulesParsed"
+                                :value="schedule.id"
+                                :key="schedule.id">
+                                {{ schedule.start_hour }} hasta {{ schedule.end_hour }}
+                            </option>
+                        </b-select>
+                    </div>
+                    <div class="column">
                         <b-switch v-model="afternoon">
                             Turno Tarde
                         </b-switch>
                     </div>
-                </div>
-                <div v-if="morning" class="columns">
-                    <div v-for="schedule in morningSchedulesParsed" :key="schedule.id" >
-                        <b-radio class="column" v-model="scheduleSelected">
-                            {{ schedule.start_hour }} hasta {{ schedule.end_hour }}
-                        </b-radio>
-                    </div>
-                </div>
-                <div v-if="afternoon" class="columns">
-                    <ul>
-                        <li v-for="schedule in afternoonSchedulesParsed" :key="schedule.id">
-                            <b-radio class="column" v-model="scheduleSelected">
+                    <div v-if="afternoon" class="column">
+                        <b-select placeholder="Seleccionar" v-model="schedule_id" required>
+                            <option
+                                v-for="schedule in afternoonSchedulesParsed"
+                                :value="schedule.id"
+                                :key="schedule.id">
                                 {{ schedule.start_hour }} hasta {{ schedule.end_hour }}
-                            </b-radio>
-                        </li>
-                    </ul>
+                            </option>
+                        </b-select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,7 +61,7 @@
                         </b-checkbox>
                     </div>
                     <div class="column">
-                        <b-checkbox v-model="wendnesday">
+                        <b-checkbox v-model="wednesday">
                             Miercoles
                         </b-checkbox>
                     </div>
@@ -87,7 +91,7 @@
                                 :pagination-simple="isPaginationSimple"
                                 :default-sort-direction="defaultSortDirection"
                                 checkable
-                                default-sort="user.first_name">
+                                :checked-rows.sync="checkedRows">
                             <template slot-scope="props">
                                 <b-table-column field="name" label="Nombres" sortable>
                                     {{ props.row.name }}
@@ -97,20 +101,7 @@
                                 </b-table-column>
                                 <b-table-column field="lastname_mother" label="Apellido Materno" sortable>
                                     {{ props.row.lastname_mother }}
-                                </b-table-column>
-                                <b-table-column label="Lunes">
-                                    <b-tag type="is-info" v-if="morning && scheduleSelected && checkedRow">aa</b-tag>
-                                </b-table-column>
-                                <b-table-column label="Martes">
-                                </b-table-column>   
-                                <b-table-column label="Miercoles">
-                                </b-table-column>
-                                <b-table-column label="Jueves">
-                                </b-table-column>
-                                <b-table-column label="Viernes">
-                                </b-table-column>
-                                <b-table-column label="Sábado">
-                                </b-table-column>
+                                </b-table-column>                              
                             </template>
                         </b-table>
                     </div>
@@ -139,12 +130,11 @@
 
         data() {
             return {
-                employee_schedule:{
-                    employee_id:'',
-                    schedule_id:'',
-                    day:''
-                },
+                employees_id:[],
+                schedule_id:'',
+                day:[],
                 employeesParsed: [],
+
                 morningSchedulesParsed:[],
                 afternoonSchedulesParsed:[],
                 isPaginated: true,
@@ -152,7 +142,6 @@
                 defaultSortDirection: 'desc',
                 currentPage: 1,
                 perPage: 15,
-                
                 morning: false,
                 afternoon: false,
                 monday: false,
@@ -161,14 +150,66 @@
                 thursday: false,
                 friday: false,
                 saturday: false, 
-                scheduleSelected: false,
+                scheduleSelected: true,
                 employeeSelected: false,
+                checkedRows: [],
             }
         },
         mounted() {
             this.employeesParsed = JSON.parse(this.employees);
             this.morningSchedulesParsed = JSON.parse(this.morning_schedules);
             this.afternoonSchedulesParsed = JSON.parse(this.afternoon_schedules);
-        }
+        },
+        methods: {
+            
+            submit() {
+                let employee_schedule = [];
+                this.checkedRows.forEach(element => {
+                    //console.log(employee_schedule)
+                    if(this.monday){
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'M'});           
+                    }
+                    if(this.tuesday) {
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'T'});
+                    }
+                    if(this.wednesday) {
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'W'});
+                    }
+                    if(this.thursday) {
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'R'});
+                    }
+                    if(this.friday) {
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'F'});
+                    }
+                    if(this.saturday) {
+                        employee_schedule.push({'employee_id' : element.id, 'schedule_id':this.schedule_id,'day':'S'});
+                    }        
+                });
+
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        employee_schedule.forEach(element => {
+                        axios.post('/employee_schedules',element)
+                        })
+                        .then(res => {
+                            this.$toast.open({
+                            message: 'Form is valid!',
+                            type: 'is-success',
+                            position: 'is-bottom'
+                            });
+                        })
+                        .catch(err => {
+                            console.log(err)
+                            this.$toast.open({
+                            message: 'No está rellenando los campos requeridos',
+                            type: 'is-danger',
+                            position: 'is-bottom'
+                            })
+                        });
+                    } 
+                }); 
+            }
+        },
+       
     }
 </script>b
